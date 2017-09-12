@@ -11,7 +11,7 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 	}
 
 
-	void OnTriggerEnter2D (Collision2D col)
+	void OnTriggerEnter2D (Collider2D col)
 	{
 
 		if (col.gameObject.name == "Player") {

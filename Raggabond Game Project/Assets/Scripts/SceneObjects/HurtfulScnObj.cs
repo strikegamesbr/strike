@@ -12,12 +12,12 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 	}
 
 
-	void OnTriggerEnter2D (Collision2D col)
+	void OnTriggerEnter2D (Collider2D col)
 	{
 
 		if (col.gameObject.name == "Player") {
 
-			ulong damageToTake = 0;
+			int damageToTake = 0;
 
 			if (gameObject.name == "skatista")
 				damageToTake = scnObjManager.damagePerSkatista;
