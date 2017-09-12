@@ -4,10 +4,10 @@
     <Files>
       <File FileName="Assets\Scripts\SceneObjects\SceneObjects.cs" Line="65" Column="17" />
       <File FileName="Assets\Scripts\Player\PlayerState.cs" Line="89" Column="2" />
-      <File FileName="Assets\Scripts\SceneObjects\PointfulScnObj.cs" Line="36" Column="15" />
-      <File FileName="Assets\Scripts\SceneObjects\HurtfulScnObj.cs" Line="39" Column="15" />
-      <File FileName="Assets\Scripts\SceneObjects\ScnObjManager.cs" Line="11" Column="59" />
-      <File FileName="Assets\Scripts\Player\PlayerCollisions.cs" Line="39" Column="23" />
+      <File FileName="Assets\Scripts\SceneObjects\PointfulScnObj.cs" Line="28" Column="4" />
+      <File FileName="Assets\Scripts\SceneObjects\HurtfulScnObj.cs" Line="29" Column="56" />
+      <File FileName="Assets\Scripts\SceneObjects\ScnObjManager.cs" Line="11" Column="45" />
+      <File FileName="Assets\Scripts\Player\PlayerCollisions.cs" Line="9" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

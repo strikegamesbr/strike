@@ -7,8 +7,8 @@ public class ScnObjManager : MonoBehaviour {
 	[SerializeField]
 	private Material normalMaterial, hurtMaterial, pointMaterial;
 
-	public ulong scoreApple = 100, scoreGuitar = 300;
-	public int damagePerSkatista = 1, damagePerPatinadora = 1;
+	public ulong scoreApple = 1, scoreGuitar = 3;
+	public int danoSkatista = 1, danoPatinadora = 1;
 
 	// Use this for initialization
 	void Start () {

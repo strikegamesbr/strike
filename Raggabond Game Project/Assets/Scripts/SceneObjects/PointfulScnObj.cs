@@ -26,8 +26,6 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 			playerState.gainScore (scoreToGain);
 
 		}
-
-
 	}
 
 

@@ -20,17 +20,24 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 			int damageToTake = 0;
 
 			if (gameObject.name == "skatista")
-				damageToTake = scnObjManager.damagePerSkatista;
+				damageToTake = scnObjManager.danoSkatista;
 			else if (gameObject.name == "patinadora")
-				damageToTake = scnObjManager.damagePerPatinadora;
+				damageToTake = scnObjManager.danoPatinadora;
 
 			playerState.takeDamage (damageToTake);
 
+			StartCoroutine (takeDamageRoutine (col.gameObject));
+
 		}
+	}
+
+
+	IEnumerator takeDamageRoutine (GameObject player)
+	{
+		//mudar material de player e dele mesmo
 
 
 	}
-
 
 
 	
