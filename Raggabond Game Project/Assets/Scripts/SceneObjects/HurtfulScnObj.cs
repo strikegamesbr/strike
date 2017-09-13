@@ -26,18 +26,18 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 
 			playerState.takeDamage (damageToTake);
 
-			StartCoroutine (takeDamageRoutine (col.gameObject));
+//			StartCoroutine (takeDamageRoutine (col.gameObject));
 
 		}
 	}
 
-
-	IEnumerator takeDamageRoutine (GameObject player)
-	{
-		//mudar material de player e dele mesmo
-
-
-	}
+//
+//	IEnumerator takeDamageRoutine (GameObject player)
+//	{
+//		//mudar material de player e dele mesmo
+//
+//
+//	}
 
 
 	
