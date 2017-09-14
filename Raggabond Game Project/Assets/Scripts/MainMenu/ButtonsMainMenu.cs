@@ -39,6 +39,7 @@ public class ButtonsMainMenu : MonoBehaviour {
 
 	public void pressOptionsButton ()
 	{
+		SceneManager.LoadScene ("login");
 	}
 
 	public void pressLeaderboardsButton ()
@@ -49,8 +50,6 @@ public class ButtonsMainMenu : MonoBehaviour {
 	{
 		Application.OpenURL (faceURL);
 	}
-
-
 
 
 

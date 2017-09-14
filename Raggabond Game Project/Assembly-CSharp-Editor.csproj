@@ -141,8 +141,17 @@
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>D:/Guilherme2/Unity/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="Google.IOSResolver_v1.2.37.0">
+ <HintPath>D:/Guilherme2/Unity/Git/strike/Raggabond Game Project/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.37.0.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.JarResolver_v1.2.37.0">
+ <HintPath>D:/Guilherme2/Unity/Git/strike/Raggabond Game Project/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.37.0.dll</HintPath>
+ </Reference>
  <Reference Include="Google.VersionHandler">
  <HintPath>D:/Guilherme2/Unity/Git/strike/Raggabond Game Project/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.VersionHandlerImpl_v1.2.37.0">
+ <HintPath>D:/Guilherme2/Unity/Git/strike/Raggabond Game Project/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.37.0.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>D:/Guilherme2/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

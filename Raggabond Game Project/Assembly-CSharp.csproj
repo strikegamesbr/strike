@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GPGSIds.cs" />
      <Compile Include="Assets\GooglePlayGames\BasicApi\Achievement.cs" />
      <Compile Include="Assets\GooglePlayGames\BasicApi\CommonStatusCodes.cs" />
      <Compile Include="Assets\GooglePlayGames\BasicApi\CommonTypes.cs" />
@@ -259,6 +260,8 @@
      <Compile Include="Assets\Scripts\Tracking\MoreFloorCollisions.cs" />
      <Compile Include="Assets\Scripts\Tracking\Track.cs" />
      <Compile Include="Assets\Scripts\enums.cs" />
+     <Compile Include="Assets\Scripts\login\GooglePlayService.cs" />
+     <Compile Include="Assets\Scripts\login\login.cs" />
      <Compile Include="Assets\Scripts\misc\teste.cs" />
      <None Include="Assets\PlayServicesResolver\Editor\play-services-resolver_v1.2.37.0.txt" />
      <None Include="Assets\Plugins\Android\MainLibProj\AndroidManifest.xml" />
