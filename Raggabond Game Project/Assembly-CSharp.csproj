@@ -158,6 +158,7 @@
      <Compile Include="Assets\Scripts\FloorColliders.cs" />
      <Compile Include="Assets\Scripts\Leaderboard\FacebookAndPlayFabFunctions.cs" />
      <Compile Include="Assets\Scripts\Leaderboard\FacebookAndPlayFabInfo.cs" />
+     <Compile Include="Assets\Scripts\Leaderboard\positionPlayer.cs" />
      <Compile Include="Assets\Scripts\MainController.cs" />
      <Compile Include="Assets\Scripts\MainMenu\ButtonsMainMenu.cs" />
      <Compile Include="Assets\Scripts\MusicControl.cs" />

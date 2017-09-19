@@ -12,16 +12,28 @@ using System;
 //todo não está logando no PlayFab corretamente sme fazer isso na interface do Unity
 public class FacebookAndPlayFabFunctions : MonoBehaviour
 {
+
+	//Todos os atributos públicos abaixo não devem ser mudados durante a execução no editor do Unity
+
 	//Title Id do seu jogo no site do PlayFab
-	public string gameTitleId = "B6F2";
+	public string gameTitleId;
+	public string scoreName;
+
+	public int numberPlayersFetched = 5; //O tamanho aqui eh o limite de quantos jogadores do leaderboard vai pegar. 
+	public positionPlayer[] leaderboardLoaded; 
+
+
 
 	void Start()
 	{
+
+		leaderboardLoaded = new positionPlayer[numberPlayersFetched];
+
 		//Usado para inicializar o sdk do facebook.
 		FB.Init(InitCallback, null, null);
 		//Usado para indicar ao sdk do PlayFab o Id do seu jogo.
 		PlayFabSettings.TitleId = gameTitleId;
-
+		print ("PlayFabSettings.TitleId = " + PlayFabSettings.TitleId);
 
 	}
 
@@ -168,4 +180,209 @@ public class FacebookAndPlayFabFunctions : MonoBehaviour
 		Debug.Log(playfabError.ErrorMessage);
 		Debug.Log(playfabError.ErrorDetails);
 	}
+
+
+	public void UpdateScore(int score)
+	{
+		//Verifica se o usuário está logado no PlayFab, pois só é possível alterar o score caso ele esteja logado.
+		if( FacebookAndPlayFabInfo.isLoggedOnPlayFab )
+		{
+			//Usado para passar o valor para o PlayFab. O nome do campo Score deve ser identico ao usado no Leadeboard
+			//no site do PlayFab. Caso quisesssem armazenar o nome do jogador poderiam criar um Dictionary<string, string>
+			List<PlayFab.ClientModels.StatisticUpdate> stats = new List<PlayFab.ClientModels.StatisticUpdate>();
+//			Dictionary<string, int> stats = new Dictionary<string, int>();
+			//Ao adicionar o valor para o servidor sempre é preciso definir uma chave ( nesse caso "Score") para identificar
+			//o que é o dado que você está passando e o outro parâmetro é o valor.
+//			stats.Add("Score", score);
+
+			PlayFab.ClientModels.StatisticUpdate objeto = new PlayFab.ClientModels.StatisticUpdate ();
+
+			objeto.StatisticName = scoreName;//"Score";
+			objeto.Value = score;
+
+			stats.Add (objeto);
+
+			//Configura a chamada para atualizar o score no servidor.
+			PlayFab.ClientModels.UpdatePlayerStatisticsRequest request = new PlayFab.ClientModels.UpdatePlayerStatisticsRequest();
+			request.Statistics = stats;
+
+//			PlayFab.ClientModels.UpdateUserStatisticsRequest request = new PlayFab.ClientModels.UpdateUserStatisticsRequest();
+//			request.UserStatistics = stats;
+
+			//Utiliza o SDK do PlayFab para atualizar os dados. Informando a chamada e a função de callback de sucesso e erro.
+			PlayFabClientAPI.UpdatePlayerStatistics (request, UpdatePlayerStatisticsSucessCallback, PlayFabErrorCallBack);
+
+
+//			PlayFabClientAPI.UpdateUserStatistics(request, UpdateUserStatisticsSucessCallback, PlayFabErrorCallBack );
+		}
+		else
+		{
+			Debug.Log("Não é possível alterar o Score sem estar logado.");
+		}
+	}
+
+	private void UpdatePlayerStatisticsSucessCallback (UpdatePlayerStatisticsResult updateUserStatisticsResult )
+	{
+		//Exibe no console da Unity que o dado foi alterado no PlayFab com sucesso.
+		Debug.Log("Sucesso ao inserir/atualizar o Score do jogador no PlayFab.");
+	}
+
+
+	public void LoadLeaderBoard()
+	{
+		//Verifica se o usuário está logado pois só é possível carregar os dados do Leadeboard caso ele esteja logado.
+		if( FacebookAndPlayFabInfo.isLoggedOnPlayFab )
+		{
+			//Configura a chamada para carregar os dados do Leaderboard. Informa qual é a o nome do Leaderboard e quantos
+			//resultados deve trazer no máximo.
+			PlayFab.ClientModels.GetLeaderboardRequest request = new PlayFab.ClientModels.GetLeaderboardRequest();
+			request.MaxResultsCount = numberPlayersFetched;
+			request.StatisticName = scoreName;
+
+			//Atualiza a váriavel para falso indicando que os dados ainda não foram carregados.
+			FacebookAndPlayFabInfo.leaderboardLoaded = false;
+			//Atualiza a váriavel para verdadeiro indicando que os dados estão sendo carregados.
+			FacebookAndPlayFabInfo.leaderboardIsLoading = true;
+
+			//As variáveis acima podem ser usadas em outros scripts que precisem esperar até os dados serem carregados ou 
+			//identificar quando começou a carregar para realizar alguma ação dentro do seu jogo.
+
+			//Utiliza o SDK do PlayFab para coletar os dados. Informando a chamada e a função de callback de sucesso e erro.
+			PlayFabClientAPI.GetLeaderboard(request, GetLeaderboardSucessCallback, PlayFabErrorCallBack);
+		}
+		else
+		{
+			Debug.Log("Não é possível carregar os Dados do Leadeboard sem está logado.");
+		}
+	}
+
+	private void GetLeaderboardSucessCallback(PlayFab.ClientModels.GetLeaderboardResult result)
+	{
+		//Verifica se o resultado não veio nulo.
+		if( result != null && result.Leaderboard != null )
+		{
+			//Pega o objeto que representa o Leaderboard.
+//			GameObject leaderboardGameObject = GameObject.Find("Leadeboard");
+
+			//Percorre cada uma das 5 linhas que podem vir no Leaderboard e atualiza os campos na cena da Unity
+			foreach (PlayFab.ClientModels.PlayerLeaderboardEntry leadeboardLine in result.Leaderboard)
+			{
+				GetUserInfoAndUpdateLeaderboard(leadeboardLine, result);  
+			}
+		}
+	}
+
+	private void GetUserInfoAndUpdateLeaderboard( PlayFab.ClientModels.PlayerLeaderboardEntry leaderBoardLine, GetLeaderboardResult result )
+	{
+		//Coleta o id do Facebook do usuário que está no rank através do Display Name que atualizamos ao usuário efetuar o login.
+		string userFacebookId = leaderBoardLine.DisplayName;
+
+		//Utiliza o SDK do Facebook para coletar as informações do usuário. O valor "/" + userFacebookId serve
+		//para indicar de qual usuário queremos os dados. O valor HttpMethod.GET indica que a nossa chamada ao
+		//facebook tem a intenção de somente coletar dados.
+		FB.API("/" + userFacebookId, HttpMethod.GET,
+			//Esta é uma outra forma de criar uma função de callback, o userInfoResult é a váriavel que
+			//recebe o resultado que é passado para a função de callback
+			(userInfoResult) =>
+			{
+				//Caso o resultado seja nulo, deu algum erro ao coletar os dados.
+				if (userInfoResult == null)
+				{
+					Debug.Log("Não foi possível coletar os dados do usuário no Facebook.");
+
+					//Verifica se está no ultimo registro do Leadeboard. Para indicar que finalizou o carregamento.
+					if (leaderBoardLine.Position + 1 == result.Leaderboard.Count)
+					{
+						//Atualiza a váriavel para verdadeiro indicando que os dados ainda já foram carregados.
+						FacebookAndPlayFabInfo.leaderboardLoaded = true;
+						//Atualiza a váriavel para falso indicando que os dados estão já foram carregados.
+						FacebookAndPlayFabInfo.leaderboardIsLoading = false;
+
+						Debug.Log("Os dados do Leaderboard foram carregados.");
+					}
+
+					return;
+				}
+
+				//Verifica se o retorno não foi um erro, ou algum tipo de cancelamento caso não seja nenhum desses tipos indica
+				//que foi possível coletar os dados do facebook com sucesso.
+				if (string.IsNullOrEmpty(userInfoResult.Error) && !userInfoResult.Cancelled && !string.IsNullOrEmpty(userInfoResult.RawResult))
+				{
+					Debug.Log("Sucesso ao coletar os dados da conta do usuário no Facebook");
+
+					try
+					{
+						//A resposta do Facebook vem em formato de Json e com isso nós convertemos o Json para um Dictionary
+						//para ser mais facil de coletar os dados
+						Dictionary<string, object> dict = Json.Deserialize(userInfoResult.RawResult) as Dictionary<string, object>;
+						string userFacebookName = dict["name"] as string;
+
+						//Pega o objeto que possui as informações de um jogador no Leaderboard.
+//						GameObject playerLeadeboardGameObject = leaderboardGameObject.transform.FindChild("Player (" + (leaderBoardLine.Position + 1) + ")").gameObject;
+//
+//						//Atualiza o texto com a posiçao do jogador no Leaderboard.
+//						playerLeadeboardGameObject.transform.FindChild("Position").GetComponent<Text>().text = (leaderBoardLine.Position + 1).ToString();
+//
+//						//Atualiza o texto com o nome do jogador no Facebook.
+//						playerLeadeboardGameObject.transform.FindChild("Name").GetComponent<Text>().text = userFacebookName;
+//
+//						//Atualiza o texto com o valor do Score do jogador no Leaderboard.
+//						playerLeadeboardGameObject.transform.FindChild("Score").GetComponent<Text>().text = leaderBoardLine.StatValue.ToString();
+
+						//agora o player é colocado em leaderboardLoaded
+						positionPlayer playerFetched = new positionPlayer(userFacebookName, leaderBoardLine.StatValue);
+						leaderboardLoaded[leaderBoardLine.Position] = playerFetched;
+
+						print("player: " + leaderboardLoaded[leaderBoardLine.Position].PlayerName + " has score: " + leaderboardLoaded[leaderBoardLine.Position].Score);
+
+
+						//Verifica se está no ultimo registro do Leadeboard. Para indicar que finalizou o carregamento.
+						if (leaderBoardLine.Position + 1 == result.Leaderboard.Count)
+						{
+							//Atualiza a váriavel para verdadeiro indicando que os dados ainda já foram carregados.
+							FacebookAndPlayFabInfo.leaderboardLoaded = true;
+							//Atualiza a váriavel para falso indicando que os dados estão já foram carregados.
+							FacebookAndPlayFabInfo.leaderboardIsLoading = false;
+
+							Debug.Log("Os dados do Leaderboard foram carregados.");
+						}
+					}
+					//Usado caso o Facebook não tenha retornado o id ou o nome do usuário.
+					catch (KeyNotFoundException e)
+					{
+						//Verifica se está no ultimo registro do Leadeboard. Para indicar que finalizou o carregamento.
+						if (leaderBoardLine.Position + 1 == result.Leaderboard.Count)
+						{
+							//Atualiza a váriavel para verdadeiro indicando que os dados ainda já foram carregados.
+							FacebookAndPlayFabInfo.leaderboardLoaded = true;
+							//Atualiza a váriavel para falso indicando que os dados estão já foram carregados.
+							FacebookAndPlayFabInfo.leaderboardIsLoading = false;
+
+							Debug.Log("Os dados do Leaderboard foram carregados.");
+						}
+
+						Debug.Log("Não foi possível coletar os dados do usuário no Facebook. Erro: " + e.Message);
+					}
+				}
+				else
+				{
+					//Verifica se está no ultimo registro do Leadeboard. Para indicar que finalizou o carregamento.
+					if (leaderBoardLine.Position + 1 == result.Leaderboard.Count)
+					{
+						//Atualiza a váriavel para verdadeiro indicando que os dados ainda já foram carregados.
+						FacebookAndPlayFabInfo.leaderboardLoaded = true;
+						//Atualiza a váriavel para falso indicando que os dados estão já foram carregados.
+						FacebookAndPlayFabInfo.leaderboardIsLoading = false;
+
+						Debug.Log("Os dados do Leaderboard foram carregados.");
+					}
+
+					Debug.Log("Não foi possível coletar os dados do usuário no Facebook.");
+				}
+			});
+	}
+
+
+
+
 }
