@@ -20,7 +20,7 @@ public class MoreBlockCollisions : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D col)
 	{
 
-		if (col.gameObject.name == "Player") {
+		if (col.name == "Player") {
 			blocks.putRandomBlock ();
 		}
 

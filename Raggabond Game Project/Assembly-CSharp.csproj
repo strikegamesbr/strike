@@ -156,6 +156,7 @@
      <Compile Include="Assets\Scripts\BackBuildings\MoreBackGroundCollisions.cs" />
      <Compile Include="Assets\Scripts\ButtonsStages.cs" />
      <Compile Include="Assets\Scripts\FloorColliders.cs" />
+     <Compile Include="Assets\Scripts\HUDManager.cs" />
      <Compile Include="Assets\Scripts\Leaderboard\FacebookAndPlayFabFunctions.cs" />
      <Compile Include="Assets\Scripts\Leaderboard\FacebookAndPlayFabInfo.cs" />
      <Compile Include="Assets\Scripts\Leaderboard\positionPlayer.cs" />
@@ -166,6 +167,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerInputMoves.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerPositions.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerState.cs" />
+     <Compile Include="Assets\Scripts\Player\ScoreByTimeManager.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\HurtfulScnObj.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\PointfulScnObj.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\SceneObjects.cs" />

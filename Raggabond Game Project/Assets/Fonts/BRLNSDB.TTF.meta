@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 3fb02a8a054c1ec439a3cb855e742d4c
-timeCreated: 1503926149
+guid: 4cd3ad7ab6924004baceb293ad32bd37
+timeCreated: 1506011670
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,9 +9,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Aero
+  fontName: Berlin Sans FB Demi
   fontNames:
-  - Aero
+  - Berlin Sans FB Demi
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

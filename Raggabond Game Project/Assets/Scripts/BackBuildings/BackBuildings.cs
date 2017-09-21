@@ -5,8 +5,21 @@ using UnityEngine;
 public class BackBuildings : MonoBehaviour {
 
 	[SerializeField]
-	float 	speed = 10;
+	private float 	speed = 10, defaultSpeed = 10;
 
+
+	public float Speed {
+		get {
+			return speed;
+		}
+
+		set {
+			if (!lockSpeedChange)
+				speed = value;
+		}
+	}
+
+	bool lockSpeedChange = false; //só mude para Game Over
 
 
 	// Use this for initialization
@@ -14,6 +27,25 @@ public class BackBuildings : MonoBehaviour {
 		
 	}
 
+
+	public IEnumerator stopTrackForSeconds (float seconds)
+	{
+
+		Speed = 0;
+
+		yield return new WaitForSeconds(seconds);
+
+		Speed = defaultSpeed;
+
+	}
+
+	//só para GameOver
+	public void stopTrackAndLock ()
+	{
+		Speed = 0;
+
+		lockSpeedChange = true;
+	}
 
 	// Update is called once per frame
 	void Update () {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //todo quando chegar a zero
 
@@ -13,6 +14,10 @@ public class PlayerState : MonoBehaviour {
 
 	[SerializeField]
 	private ulong score = 0;
+
+	[SerializeField]
+	private GameObject GameOverScreen;
+
 
 
 	[SerializeField]
@@ -28,7 +33,8 @@ public class PlayerState : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
+		GameOverScreen.SetActive (false);
 		aviso = "Não mude o lane no Unity! É para consulta somente!";
 
 	}
@@ -45,13 +51,13 @@ public class PlayerState : MonoBehaviour {
 			switch (lane) {
 
 			case Lane.lower:
-				GetComponent<SpriteRenderer> ().sortingOrder = 0;
+				GetComponent<SpriteRenderer> ().sortingOrder = 2;
 				break;
 			case Lane.middle:
 				GetComponent<SpriteRenderer> ().sortingOrder = 1;
 				break;
 			case Lane.upper:
-				GetComponent<SpriteRenderer> ().sortingOrder = 2;
+				GetComponent<SpriteRenderer> ().sortingOrder = 0;
 				break;
 			}
 
@@ -67,7 +73,7 @@ public class PlayerState : MonoBehaviour {
 		}
 
 		set {
-			if (value >= 0)
+			if (value >= 0 && value <= 5)
 				lives = value;
 
 		}
@@ -166,17 +172,40 @@ public class PlayerState : MonoBehaviour {
 
 		if (Lives <= 0) {//quando chegar a zero
 
-			//todo quando chegar a zero
+			StartCoroutine (GameOver ());
 
 		}
 
 	}
 
 
+	IEnumerator GameOver () {
 
-	public void gainScore (ulong howMuch)
+		float timeStoppedByDamage = FindObjectOfType<ScnObjManager> ().TimeDamage;
+
+		//dá o tempo para ele parar com o dano
+		yield return new WaitForSeconds (timeStoppedByDamage);
+
+		GetComponent<SpriteRenderer> ().enabled = false; //faz ele sumir sem destruir o objeto, o que pararia esta rotina
+
+		FindObjectOfType<Track> ().stopTrackAndLock ();
+
+		GameOverScreen.SetActive (true);
+
+		yield return new WaitForSeconds (FindObjectOfType<MainController>().TimeGameOverToMainMenu);
+		SceneManager.LoadScene ("MainMenu");
+
+
+
+	}
+
+
+
+
+	public void gainScoreLives (ulong scoreToGain, int livesToGain)
 	{
-		Score = Score + howMuch;
+		Score = Score + scoreToGain;
+		Lives = Lives + livesToGain;
 	}
 
 

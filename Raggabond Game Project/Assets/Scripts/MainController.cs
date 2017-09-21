@@ -7,6 +7,17 @@ public class MainController : MonoBehaviour {
 	[SerializeField]
 	PlayerState playerState;
 
+	[SerializeField]
+	private float timeGameOverToMainMenu=3;
+
+
+	public float TimeGameOverToMainMenu {
+		get {
+			return timeGameOverToMainMenu;
+		}
+	}
+
+
 
 	void Awake () 
 	{
