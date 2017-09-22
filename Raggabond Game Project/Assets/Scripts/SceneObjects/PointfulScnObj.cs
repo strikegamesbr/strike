@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviour
 
@@ -53,7 +54,7 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 			playerState.gainScoreLives (scoreToGain, livesToGain);
 
 			StartCoroutine (playerGetPointsFromObjRoutine ());
-
+			scnObjManager.showScoreGained(scoreToGain, this.transform);
 
 
 		}
@@ -93,6 +94,38 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 
 		Destroy (this.gameObject); //para destruir
 	}
+
+//	//mostrar o score ganho ao pegar um item subindo
+//	IEnumerator showScoreGained (ulong scoreToGain)
+//	{
+//		//instanciar o texto e escrever o valor da pontuação ganha
+//		Text scoreText = Instantiate (scnObjManager.ScoreFromItemTextPrefab);
+//		scoreText.text = scoreToGain.ToString ();
+//
+//		//colocá-lo na mesma posição do item, o que requer que tenha o mesmo parent do item
+//		scoreText.transform.parent = transform.parent;
+//		scoreText.transform.position = transform.position;
+//
+//		//agora vamos deixar o Canvas como parent para ele aparecer!
+//		scoreText.transform.parent = scnObjManager.CanvasParent;
+//
+//
+//		//agora vamos definir a posição de destino do texto
+//		float destY = scoreText.transform.position.y + 3;
+//
+//		float speedUp = 4;
+//
+//		//e vamos fazê-lo subir até lá
+//		while (destY - scoreText.transform.position.y > 2){
+//			yield return new WaitForEndOfFrame ();
+//			scoreText.rectTransform.position = scoreText.rectTransform.position + new Vector3 (0, speedUp*Time.deltaTime, 0);
+//		}
+//
+//
+//		Destroy (scoreText.gameObject);
+//
+//	}
+
 
 
 	// Update is called once per frame

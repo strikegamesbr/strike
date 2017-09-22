@@ -56,11 +56,10 @@ public class Track : MonoBehaviour {
 	}
 
 
-	// Use this for initialization
-	void Start () {
-
-		currentSpeedType = speedType.normal;
-
+	public float CurrentSpeed {
+		get {
+			return currentSpeed;
+		}
 	}
 
 
@@ -73,6 +72,14 @@ public class Track : MonoBehaviour {
 		set {
 			currentSpeedType = value;
 		}
+	}
+
+
+	// Use this for initialization
+	void Start () {
+
+		currentSpeedType = speedType.normal;
+
 	}
 
 

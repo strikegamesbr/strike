@@ -61,6 +61,18 @@ public class SceneObjects : MonoBehaviour {
 		}
 	}
 
+	public Transform DefaultParent {
+
+		get {
+			return defaultParent;
+		}
+
+	}
+
+	[SerializeField]
+	private float speed;
+
+
 
 
 	// Use this for initialization
@@ -81,29 +93,34 @@ public class SceneObjects : MonoBehaviour {
 			yUpper = scnObjManager.yUpperApple;
 			yMedium = scnObjManager.yMediumApple;
 			yLower = scnObjManager.yLowerApple;
+			speed = scnObjManager.speedApple;
 		} else if ( gameObject.name.Contains ("guitar")) {
 			yUpper = scnObjManager.yUpperGuitar;
 			yMedium = scnObjManager.yMediumGuitar;
 			yLower = scnObjManager.yLowerGuitar;
+			speed = scnObjManager.speedGuitar;
 		} else if (gameObject.name.Contains ("lilMario")) {
 			yUpper = scnObjManager.yUpperLilMario;
 			yMedium = scnObjManager.yMediumLilMario;
 			yLower = scnObjManager.yLowerLilMario;
+			speed = scnObjManager.speedLilMario;
 		} else if ( gameObject.name.Contains ("patinadora")) {
 			yUpper = scnObjManager.yUpperPatinadora;
 			yMedium = scnObjManager.yMediumPatinadora;
 			yLower = scnObjManager.yLowerPatinadora;
+			speed = scnObjManager.speedPatinadora;
 		} else if ( gameObject.name.Contains ("beachBall")) {
 			yUpper = scnObjManager.yUpperBeachBall;
 			yMedium = scnObjManager.yMediumBeachBall;
 			yLower = scnObjManager.yLowerBeachBall;
+			speed = scnObjManager.speedBeachBall;
 		} else if (gameObject.name.Contains ("skatista")) {
 			yUpper = scnObjManager.yUpperSkatista;
 			yMedium = scnObjManager.yMediumSkatista;
-			yLower = scnObjManager.yLowerSkatista;		
+			yLower = scnObjManager.yLowerSkatista;	
+			speed = scnObjManager.speedSkatista;
 
 		}
-
 
 
 	}
@@ -111,7 +128,21 @@ public class SceneObjects : MonoBehaviour {
 	protected void toUpdate ()
 	{		
 		Lane = lane; //caso o valor seja mudado na janela 
+		transform.position = transform.position + new Vector3(speed/1000, 0, 0);
 
+
+//		//rolar a bola, enquanto for child de um mesh não dá, daí a troca de parent
+//		if (gameObject.name.Contains ("beachBall")) {
+//			
+//			float speedRoll = 60;
+//			transform.parent = null;
+//
+//			transform.Rotate(new Vector3(- 0.1f, - 0.1f, - 0.1f));
+//
+//			transform.parent = DefaultParent;
+//		}
+
+//		speedRoll*Time.deltaTime
 	}
 
 
@@ -119,5 +150,6 @@ public class SceneObjects : MonoBehaviour {
 	//start e update não são passados por herança!
 	void Update () {
 		toUpdate ();
+
 	}
 }

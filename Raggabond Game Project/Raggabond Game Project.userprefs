@@ -1,8 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FadeInOut.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SceneObjects\SceneObjects.cs">
     <Files>
-      <File FileName="Assets\Scripts\FadeInOut.cs" Line="29" Column="14" />
+      <File FileName="Assets\Scripts\Tracking\Track.cs" Line="146" Column="3" />
+      <File FileName="Assets\Scripts\SceneObjects\ScnObjManager.cs" Line="100" Column="20" />
+      <File FileName="Assets\Scripts\SceneObjects\PointfulScnObj.cs" Line="57" Column="63" />
+      <File FileName="Assets\Scripts\SceneObjects\SceneObjects.cs" Line="144" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
