@@ -7,7 +7,7 @@ public class ButtonsMainMenu : MonoBehaviour {
 
 
 	[SerializeField]
-	private GameObject infoPanel, contactPanel, bioPanel, quitBtn;
+	private GameObject infoPanel, contactPanel, bioPanel, quitBtn, optionsPanel, creditsPanel;
 
 	[SerializeField]
 	private string faceURL = "https://www.facebook.com/raggabondband/";
@@ -39,6 +39,7 @@ public class ButtonsMainMenu : MonoBehaviour {
 
 	public void pressOptionsButton ()
 	{
+		optionsPanel.SetActive (true);
 	}
 
 	public void pressLeaderboardsButton ()
@@ -51,12 +52,14 @@ public class ButtonsMainMenu : MonoBehaviour {
 	}
 
 
-
-
-
 	public void pressBackInfoPanelButton ()
 	{
 		infoPanel.SetActive (false);
+	}
+
+	public void pressBackOptionsPanelButton ()
+	{
+		optionsPanel.SetActive (false);
 	}
 
 	public void pressContactButton ()
@@ -78,6 +81,18 @@ public class ButtonsMainMenu : MonoBehaviour {
 	{
 		bioPanel.SetActive (false);
 	}
+
+
+	public void pressCreditsButton ()
+	{
+		creditsPanel.SetActive (true);
+	}
+
+	public void pressBackCreditsButton ()
+	{
+		creditsPanel.SetActive (false);
+	}
+
 
 	public void pressQuitGameButton ()
 	{
