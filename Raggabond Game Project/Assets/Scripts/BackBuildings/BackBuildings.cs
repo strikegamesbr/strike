@@ -50,7 +50,7 @@ public class BackBuildings : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		transform.position = transform.position - new Vector3(speed/1000, 0, 0);
+		transform.position = transform.position - new Vector3((speed*Time.deltaTime)/10, 0, 0);
 
 	}
 }

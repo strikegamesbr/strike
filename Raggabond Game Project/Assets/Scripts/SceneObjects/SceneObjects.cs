@@ -128,7 +128,7 @@ public class SceneObjects : MonoBehaviour {
 	protected void toUpdate ()
 	{		
 		Lane = lane; //caso o valor seja mudado na janela 
-		transform.position = transform.position + new Vector3(speed/1000, 0, 0);
+		transform.position = transform.position + new Vector3((speed*Time.deltaTime)/10, 0, 0);
 
 
 //		//rolar a bola, enquanto for child de um mesh não dá, daí a troca de parent

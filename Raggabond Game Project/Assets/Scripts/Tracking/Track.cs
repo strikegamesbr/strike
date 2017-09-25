@@ -56,6 +56,49 @@ public class Track : MonoBehaviour {
 	}
 
 
+
+	public float DefaultNormalSpeed {
+		get {
+			return defaultNormalSpeed;
+		}
+
+		set {
+			defaultNormalSpeed = value;
+
+			if (NormalSpeed != 0) //se for zero está parado, não queremos que se mova -> quando se mover será o novo default de qualquer forma
+				NormalSpeed = DefaultNormalSpeed;
+
+		}
+	}
+
+
+	public float DefaultFastSpeed {
+		get {
+			return defaultFastSpeed;
+		}
+
+		set {			
+			defaultFastSpeed = value;
+
+			if (FastSpeed != 0) //se for zero está parado, não queremos que se mova -> quando se mover será o novo default de qualquer forma
+				FastSpeed = DefaultFastSpeed;
+		}
+	}
+
+	public float DefaultSlowSpeed {
+		get {
+			return defaultSlowSpeed;
+		}
+
+		set {			
+			defaultSlowSpeed = value;
+
+			if (SlowSpeed != 0) //se for zero está parado, não queremos que se mova -> quando se mover será o novo default de qualquer forma
+				SlowSpeed = DefaultSlowSpeed;
+		}
+	}
+
+
 	public float CurrentSpeed {
 		get {
 			return currentSpeed;
@@ -143,7 +186,7 @@ public class Track : MonoBehaviour {
 		}
 
 
-		transform.position = transform.position - new Vector3(currentSpeed/1000, 0, 0);
+		transform.position = transform.position - new Vector3((currentSpeed*Time.deltaTime)/10, 0, 0);
 
 	}
 }
