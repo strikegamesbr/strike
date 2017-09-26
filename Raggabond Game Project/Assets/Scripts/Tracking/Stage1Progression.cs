@@ -29,7 +29,7 @@ public class Stage1Progression : MonoBehaviour {
 
 
 	[SerializeField]
-	private GameObjectArray[] ObjectBlocksStage;
+	private GameObjectArray[] stageObstacles;
 
 
 
@@ -58,6 +58,18 @@ public class Stage1Progression : MonoBehaviour {
 		}
 
 		return scoreToChangeSpeed.Length;
+
+	}
+
+
+	public Transform getBlockOfObjects ()
+	{
+
+		GameObject[] blocks = stageObstacles [numCurrentStage () - 1]; //tem que ser os da fase atual
+
+
+
+
 
 	}
 
