@@ -20,21 +20,25 @@ public class SceneObjects : MonoBehaviour {
 
 			transform.parent = null;
 
-			switch (lane) {
+//			switch (lane) {
+//
+//			case Lane.lower:
+//				GetComponent<SpriteRenderer> ().sortingOrder = 2;
+//				transform.position = new Vector3 (transform.position.x, yLower, transform.position.z);
+//				break;
+//			case Lane.middle:
+//				GetComponent<SpriteRenderer> ().sortingOrder = 1;
+//				transform.position = new Vector3 (transform.position.x, yMedium, transform.position.z);
+//				break;
+//			case Lane.upper:
+//				GetComponent<SpriteRenderer> ().sortingOrder = 0;
+//				transform.position = new Vector3 (transform.position.x, yUpper, transform.position.z);
+//				break;
+//			}
 
-			case Lane.lower:
-				GetComponent<SpriteRenderer> ().sortingOrder = 2;
-				transform.position = new Vector3 (transform.position.x, yLower, transform.position.z);
-				break;
-			case Lane.middle:
-				GetComponent<SpriteRenderer> ().sortingOrder = 1;
-				transform.position = new Vector3 (transform.position.x, yMedium, transform.position.z);
-				break;
-			case Lane.upper:
-				GetComponent<SpriteRenderer> ().sortingOrder = 0;
-				transform.position = new Vector3 (transform.position.x, yUpper, transform.position.z);
-				break;
-			}
+
+			setYPositionAndSortingOrderByLane ();
+
 
 			transform.parent = defaultParent;
 
@@ -122,6 +126,27 @@ public class SceneObjects : MonoBehaviour {
 
 		}
 
+
+	}
+
+	public void setYPositionAndSortingOrderByLane ()
+	{
+
+		switch (lane) {
+
+		case Lane.lower:
+			GetComponent<SpriteRenderer> ().sortingOrder = 2;
+			transform.position = new Vector3 (transform.position.x, yLower, transform.position.z);
+			break;
+		case Lane.middle:
+			GetComponent<SpriteRenderer> ().sortingOrder = 1;
+			transform.position = new Vector3 (transform.position.x, yMedium, transform.position.z);
+			break;
+		case Lane.upper:
+			GetComponent<SpriteRenderer> ().sortingOrder = 0;
+			transform.position = new Vector3 (transform.position.x, yUpper, transform.position.z);
+			break;
+		}
 
 	}
 

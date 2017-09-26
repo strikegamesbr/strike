@@ -170,6 +170,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerState.cs" />
      <Compile Include="Assets\Scripts\Player\ScoreByTimeManager.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\HurtfulScnObj.cs" />
+     <Compile Include="Assets\Scripts\SceneObjects\ObjectsBlocks.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\PointfulScnObj.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\SceneObjects.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\ScnObjManager.cs" />
@@ -180,6 +181,7 @@
      <Compile Include="Assets\Scripts\Tracking\Stage1Progression.cs" />
      <Compile Include="Assets\Scripts\Tracking\Track.cs" />
      <Compile Include="Assets\Scripts\enums.cs" />
+     <Compile Include="Assets\Scripts\misc\GameObjectArray.cs" />
      <Compile Include="Assets\Scripts\misc\teste.cs" />
      <None Include="Assets\PlayFabSdk\link.xml" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
