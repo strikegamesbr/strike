@@ -7,38 +7,49 @@ public class MusicControl : MonoBehaviour {
 
 
 	[SerializeField]
-	private 	float 		timeBeforePlayingMusic = 3;
+	private float timeBeforePlayingMusic = 0, timeBetweenSongs = 1;
 
 	[SerializeField]
-	private 	AudioSource music;	
+	private AudioSource[] songs;	
 
 	// Use this for initialization
 	void Start () {
 
-		switch (SceneManager.GetActiveScene().name) {
-
-		case "Stage1":
-//			timeBeforePlayingMusic = 3;
-			break;
-
-		default:
-			timeBeforePlayingMusic = 3;
-			break;
-		}
-
-		StartCoroutine (startMusic ());
-
+		StartCoroutine (playSongs ());
 
 	}
-	
 
-	IEnumerator startMusic ()
+
+		
+	//toca as músicas, uma depois da outra, e quando acabar a última toca a primeira
+	IEnumerator playSongs ()
 	{
+
+		int index = 0;
 
 		yield return new WaitForSeconds (timeBeforePlayingMusic);
 
-		music.Play ();
 
+		while (true) {
+
+			//toca a música
+			songs [index].Play();
+
+			//enquanto a música estiver tocando , deixa tocando
+			do {
+				yield return new WaitForEndOfFrame ();
+			} while (songs [index].isPlaying);
+
+			//a música acabou
+			//vamos mudar o index para a pŕoxima música, ou primeira se for a última
+			if (index < songs.Length - 1)
+				index++;
+			else
+				index = 0;
+
+			yield return new WaitForSeconds (timeBetweenSongs);
+
+		}
 	}
 
 
