@@ -13,9 +13,6 @@ public class Blocks : MonoBehaviour {
 	[SerializeField]
 	private float startX = 12.9f;
 
-	[SerializeField]
-	private Transform player;
-
 	private Transform previousBlock, toEraseBlock;
 
 

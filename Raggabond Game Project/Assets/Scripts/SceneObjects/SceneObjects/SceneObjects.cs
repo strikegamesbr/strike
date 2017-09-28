@@ -87,9 +87,9 @@ public class SceneObjects : MonoBehaviour {
 
 	protected void toStart ()
 	{
-		_scnObjManager = transform.parent.GetComponent<ScnObjManager> (); 
+		_scnObjManager = FindObjectOfType<ScnObjManager> (); 
 		_playerState = FindObjectOfType<PlayerState> ();
-		defaultParent = _scnObjManager.transform; //o parent dele é o mesmo objeto que tem o script ScnObjManager
+		defaultParent = transform.parent; //o parent dele é o mesmo objeto que tem o script ScnObjManager
 
 
 
