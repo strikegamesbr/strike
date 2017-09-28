@@ -5,14 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class ButtonsStages : MonoBehaviour {
 
+	[SerializeField]
+	private Sounds sounds;
+
+
 	// Use this for initialization
 	void Start () {
 		
 	}
 
+	private void playSoundPressButton ()
+	{
+		sounds.playPressButtonSfx ();
+	}
+
 
 	public void pressBackMainMenuButton ()
 	{
+		playSoundPressButton ();
 		SceneManager.LoadScene ("MainMenu");
 	}
 

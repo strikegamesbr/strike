@@ -10,12 +10,17 @@ public class ButtonsMainMenu : MonoBehaviour {
 	private GameObject infoPanel, contactPanel, bioPanel, quitBtn, optionsPanel, creditsPanel;
 
 	[SerializeField]
+	private Sounds sounds;
+
+	[SerializeField]
 	private string faceURL = "https://www.facebook.com/raggabondband/";
 
+	private GameSettings settings;
 
 	// Use this for initialization
 	void Start () {
-
+		
+		settings = FindObjectOfType<GameSettings> ();
 
 		#if UNITY_ANDROID
 			quitBtn.SetActive(false);
@@ -24,21 +29,29 @@ public class ButtonsMainMenu : MonoBehaviour {
 
 	}
 
+	private void playSoundPressButton ()
+	{
+		sounds.playPressButtonSfx ();
+	}
+
 
 	public void pressPlayGameButton ()
 	{
+		playSoundPressButton ();
 		SceneManager.LoadScene ("Stage1");
 	}
 
 
 	public void pressInfoButton ()
 	{
+		playSoundPressButton ();
 		infoPanel.SetActive (true);
 	}
 
 
 	public void pressOptionsButton ()
 	{
+		playSoundPressButton ();
 		optionsPanel.SetActive (true);
 	}
 
@@ -48,54 +61,64 @@ public class ButtonsMainMenu : MonoBehaviour {
 
 	public void pressFaceButton ()
 	{
+		playSoundPressButton ();
 		Application.OpenURL (faceURL);
 	}
 
 
 	public void pressBackInfoPanelButton ()
 	{
+		playSoundPressButton ();
 		infoPanel.SetActive (false);
 	}
 
 	public void pressBackOptionsPanelButton ()
 	{
+		playSoundPressButton ();
 		optionsPanel.SetActive (false);
 	}
 
 	public void pressContactButton ()
 	{
+		playSoundPressButton ();
 		contactPanel.SetActive (true);
 	}
 
 	public void pressBackContactButton ()
 	{
+		playSoundPressButton ();
 		contactPanel.SetActive (false);
 	}
 
 	public void pressBioButton ()
 	{
+		playSoundPressButton ();
 		bioPanel.SetActive (true);
 	}
 
 	public void pressBackBioButton ()
 	{
+		playSoundPressButton ();
 		bioPanel.SetActive (false);
 	}
 
 
 	public void pressCreditsButton ()
 	{
+		playSoundPressButton ();
 		creditsPanel.SetActive (true);
 	}
 
 	public void pressBackCreditsButton ()
 	{
+		playSoundPressButton ();
 		creditsPanel.SetActive (false);
 	}
 
 
 	public void pressQuitGameButton ()
 	{
+		playSoundPressButton ();
 		Application.Quit();
 	}
 

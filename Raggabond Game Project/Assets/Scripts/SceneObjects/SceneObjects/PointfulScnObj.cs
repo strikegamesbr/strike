@@ -79,6 +79,7 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 
 
 		//as instruções pra valer começam agora
+		sounds.playCollectitemSfx ();
 		srPointObj.material = pointMat;
 		srPlayer.material = pointMat;
 		yield return new WaitForSeconds (timeToWait/3);

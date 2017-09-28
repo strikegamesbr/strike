@@ -22,7 +22,15 @@ public class PlacerObjectsBlocks : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//precisa deste "estado" inicial
+		placeFirstObjBlock ();
 
+	}
+
+
+
+	private void placeFirstObjBlock ()
+	{
 		//vamos instanciar o bloco inicial
 		Transform newBlock = stageProgression.getBlockOfObjects().transform;
 
@@ -34,10 +42,9 @@ public class PlacerObjectsBlocks : MonoBehaviour {
 		Transform[] objects = newBlock.GetComponentsInChildren<Transform> ();
 		foreach (Transform obj in objects) {
 			obj.parent = defaultParent;
-		}					
-
-
+		}	
 	}
+
 
 
 	public void putObjectsBlock ()

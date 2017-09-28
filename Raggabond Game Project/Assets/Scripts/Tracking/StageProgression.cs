@@ -108,12 +108,12 @@ public class StageProgression : MonoBehaviour {
 			break;
 		}
 
-		print ("blocks = " + blocks);
+//		print ("blocks = " + blocks);
 
 
 		GameObject objToReturn = Instantiate(blocks[Random.Range(0, blocks.Length)]);
 
-		print ("objToReturn = " + objToReturn);
+//		print ("objToReturn = " + objToReturn);
 
 
 		return objToReturn; //retorna um dos valores de blocks, aleatoriamente Random.Range(0, blocks.Length)		 

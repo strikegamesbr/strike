@@ -52,6 +52,7 @@ public class SceneObjects : MonoBehaviour {
 
 	private ScnObjManager _scnObjManager;
 	private PlayerState _playerState;
+	private Sounds _sounds;
 
 	public ScnObjManager scnObjManager {
 		get {
@@ -62,6 +63,12 @@ public class SceneObjects : MonoBehaviour {
 	public PlayerState playerState {
 		get {
 			return _playerState;
+		}
+	}
+
+	public Sounds sounds {
+		get {
+			return _sounds;
 		}
 	}
 
@@ -89,6 +96,7 @@ public class SceneObjects : MonoBehaviour {
 	{
 		_scnObjManager = FindObjectOfType<ScnObjManager> (); 
 		_playerState = FindObjectOfType<PlayerState> ();
+		_sounds = FindObjectOfType<Sounds> ();
 		defaultParent = transform.parent; //o parent dele é o mesmo objeto que tem o script ScnObjManager
 
 

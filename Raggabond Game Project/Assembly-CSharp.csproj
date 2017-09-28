@@ -157,6 +157,9 @@
      <Compile Include="Assets\Scripts\ButtonsStages.cs" />
      <Compile Include="Assets\Scripts\FadeInOut.cs" />
      <Compile Include="Assets\Scripts\FloorColliders.cs" />
+     <Compile Include="Assets\Scripts\GameSettings\GameSettings.cs" />
+     <Compile Include="Assets\Scripts\GameSettings\Singleton_GameSettings.cs" />
+     <Compile Include="Assets\Scripts\GameSettings\SpritesButtons.cs" />
      <Compile Include="Assets\Scripts\HUDManager.cs" />
      <Compile Include="Assets\Scripts\Leaderboard\FacebookAndPlayFabFunctions.cs" />
      <Compile Include="Assets\Scripts\Leaderboard\FacebookAndPlayFabInfo.cs" />
@@ -175,6 +178,7 @@
      <Compile Include="Assets\Scripts\SceneObjects\SceneObjects\PointfulScnObj.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\SceneObjects\SceneObjects.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\ScnObjManager.cs" />
+     <Compile Include="Assets\Scripts\Sounds.cs" />
      <Compile Include="Assets\Scripts\Tracking\Blocks.cs" />
      <Compile Include="Assets\Scripts\Tracking\InfiniteTrack.cs" />
      <Compile Include="Assets\Scripts\Tracking\MoreBlockCollisions.cs" />

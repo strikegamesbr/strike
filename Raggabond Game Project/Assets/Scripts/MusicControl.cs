@@ -12,10 +12,35 @@ public class MusicControl : MonoBehaviour {
 	[SerializeField]
 	private AudioSource[] songs;	
 
+	private GameSettings settings;
+
 	// Use this for initialization
 	void Start () {
 
-		StartCoroutine (playSongs ());
+		settings = FindObjectOfType<GameSettings> ();
+
+		if (settings.musicIsOn)
+			StartCoroutine (playSongs ());
+
+	}
+
+
+	public void muteAllSongs ()
+	{
+
+		foreach (AudioSource song in songs) {
+			song.mute = true;
+		}
+
+	}
+
+
+	public void unmuteAllSongs ()
+	{
+
+		foreach (AudioSource song in songs) {
+			song.mute = false;
+		}
 
 	}
 
@@ -38,6 +63,7 @@ public class MusicControl : MonoBehaviour {
 			//enquanto a música estiver tocando , deixa tocando
 			do {
 				yield return new WaitForEndOfFrame ();
+
 			} while (songs [index].isPlaying);
 
 			//a música acabou

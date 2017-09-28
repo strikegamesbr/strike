@@ -11,6 +11,9 @@ public class PlayerInputMoves : MonoBehaviour {
 
 	[SerializeField]
 	Track track; //a velocidade do jogador é definido em track, pois é ele que está se movendo na verdade
+	[SerializeField]
+	Sounds sounds;
+
 
 	[SerializeField]
 	float speedChangingLane = 5, jumpStrenght = 350; 
@@ -25,6 +28,10 @@ public class PlayerInputMoves : MonoBehaviour {
 	bool speedingSlow = false;
 
 	public bool pressedDownJump = false; // não permitir que pule várias vezes só por segurar o botão de pulo
+
+
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -132,9 +139,10 @@ public class PlayerInputMoves : MonoBehaviour {
 		track.CurrentSpeedType = speedType.fast;
 		if (playerState.Grounded) {
 			animator.SetInteger ("stateAnim", 1);
-				print("Colocou como 1");
+//				print("Colocou como 1");
 		}
 		speedNotNormal = true;
+
 	}
 
 
@@ -142,6 +150,7 @@ public class PlayerInputMoves : MonoBehaviour {
 	public void startSpeedFast ()
 	{
 		speedingFast = true;
+		sounds.playAcelerateSfx ();
 	}
 
 	public void stopSpeedFast ()
@@ -152,6 +161,7 @@ public class PlayerInputMoves : MonoBehaviour {
 	public void startSpeedSlow ()
 	{
 		speedingSlow = true;
+		sounds.playBrakeSfx ();
 	}
 
 	public void stopSpeedSlow ()
@@ -172,12 +182,31 @@ public class PlayerInputMoves : MonoBehaviour {
 		}
 
 
-		if (Input.GetKey (KeyCode.RightArrow)) {
-			setPlayerSpeedFast ();
+//		if (Input.GetKeyDown (KeyCode.RightArrow)) {
+//			setPlayerSpeedFast ();
+//
+//		} 
+
+		if (Input.GetKeyDown (KeyCode.RightArrow)) {
+			startSpeedFast ();
 		} 
 
-		if (Input.GetKey (KeyCode.LeftArrow)) {
-			setPlayerSpeedSlow ();
+		if (Input.GetKeyUp (KeyCode.RightArrow)) {
+			stopSpeedFast ();
+		} 
+
+
+
+//		if (Input.GetKey (KeyCode.LeftArrow)) {
+//			setPlayerSpeedSlow ();
+//		} 
+
+		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+			startSpeedSlow ();
+		} 
+
+		if (Input.GetKeyUp (KeyCode.LeftArrow)) {
+			stopSpeedSlow ();
 		} 
 
 

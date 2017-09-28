@@ -82,7 +82,7 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 
 		StartCoroutine (track ().stopTrackForSeconds(timeToWait));
 
-
+		sounds.playCollideSfx ();
 		srHurtObj.material = hurtMat;
 		srPlayer.material = hurtMat;
 		yield return new WaitForSeconds (timeToWait/3);

@@ -17,8 +17,6 @@ public class Blocks : MonoBehaviour {
 
 
 
-
-
 	// Use this for initialization
 	void Start () {
 
