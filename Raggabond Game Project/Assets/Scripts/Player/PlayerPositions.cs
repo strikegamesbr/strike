@@ -16,6 +16,10 @@ public class PlayerPositions : MonoBehaviour {
 
 
 
+
+
+
+
 	public float PosYPlayerLowerLane {
 		get {
 			return posYPlayerLowerLane;
@@ -34,6 +38,24 @@ public class PlayerPositions : MonoBehaviour {
 		}
 	}
 
+
+	public float PosXPlayerLowerLane {
+		get {
+			return posXPlayerLowerLane;
+		}
+	}
+
+	public float PosXPlayerMiddleLane {
+		get {
+			return posXPlayerMiddleLane;
+		}
+	}
+
+	public float PosXPlayerUpperLane {
+		get {
+			return posXPlayerUpperLane;
+		}
+	}
 
 
 

@@ -21,9 +21,17 @@ public class FloorColliders : MonoBehaviour {
 		float Ymiddle = playerPositions.PosYPlayerMiddleLane - 3.076f; //esta fórmula é específica para a montagem atual da cena 
 		float Yupper = playerPositions.PosYPlayerUpperLane - 3.076f; //esta fórmula é específica para a montagem atual da cena 
 
-		lowerFloorCollider.position = new Vector3 (0, Ylower, 0); //estes valores são específicos para a montagem atual da cena 
-		middleFloorCollider.position = new Vector3 (0, Ymiddle, 0); //estes valores são específicos para a montagem atual da cena 
-		upperFloorCollider.position = new Vector3 (0, Yupper, 0); //estes valores são específicos para a montagem atual da cena 
+
+		float Xlower = playerPositions.PosXPlayerLowerLane; //esta fórmula é específica para a montagem atual da cena 
+		float Xmiddle = playerPositions.PosXPlayerMiddleLane; //esta fórmula é específica para a montagem atual da cena 
+		float Xupper = playerPositions.PosXPlayerUpperLane; //esta fórmula é específica para a montagem atual da cena 
+
+
+
+
+		lowerFloorCollider.position = new Vector3 (Xlower, Ylower, 0); //estes valores são específicos para a montagem atual da cena 
+		middleFloorCollider.position = new Vector3 (Xmiddle, Ymiddle, 0); //estes valores são específicos para a montagem atual da cena 
+		upperFloorCollider.position = new Vector3 (Xupper, Yupper, 0); //estes valores são específicos para a montagem atual da cena 
 				
 	}
 

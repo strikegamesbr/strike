@@ -61,11 +61,20 @@ public class GameSettings : MonoBehaviour {
 	}
 
 
+	public void switchSoundOnOff ()
+	{
+
+		sfxIsOn = !sfxIsOn;
+
+	}
+
+
+
 	// Use this for initialization
 	void Start () {
-		
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 

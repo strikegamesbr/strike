@@ -19,19 +19,35 @@ public class ButtonsMainMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
 		settings = FindObjectOfType<GameSettings> ();
 
 		#if UNITY_ANDROID
-			quitBtn.SetActive(false);
+		quitBtn.SetActive(false);
 		#endif
 
 
 	}
 
+
+
 	private void playSoundPressButton ()
 	{
 		sounds.playPressButtonSfx ();
+	}
+
+	public void pressTTTSPad ()
+	{
+		playSoundPressButton ();
+		Application.OpenURL ("market://details?id=com.StrikeGames.TicTacToeSP.Mobile");
+
+	}
+
+
+	public void pressSwitchSoundOnOff ()
+	{
+		playSoundPressButton ();
+		settings.switchSoundOnOff ();
 	}
 
 
@@ -127,6 +143,6 @@ public class ButtonsMainMenu : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.Escape))
 			Application.Quit();
-		
+
 	}
 }
