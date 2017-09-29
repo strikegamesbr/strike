@@ -193,8 +193,8 @@ public class PlayerState : MonoBehaviour {
 		FindObjectOfType<Track> ().stopTrackAndLock ();
 
 		GetComponent<ScoreByTimeManager> ().haltGainingPoints = true;
-		ScoreTextHUDObject.SetActive (false);
-		GameOverScreen.GetComponent<Text> ().text = score.ToString ();
+//		ScoreTextHUDObject.SetActive (false);
+		GameOverScreen.GetComponentInChildren<Text> ().text = score.ToString ();
 		GameOverScreen.SetActive (true);
 
 

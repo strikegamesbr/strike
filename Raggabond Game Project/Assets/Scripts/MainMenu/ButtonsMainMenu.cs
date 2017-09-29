@@ -29,9 +29,25 @@ public class ButtonsMainMenu : MonoBehaviour {
 
 	}
 
+
+
 	private void playSoundPressButton ()
 	{
 		sounds.playPressButtonSfx ();
+	}
+
+	public void pressTTTSPad ()
+	{
+		playSoundPressButton ();
+		Application.OpenURL ("market://details?id=com.StrikeGames.TicTacToeSP.Mobile");
+
+	}
+
+
+	public void pressSwitchSoundOnOff ()
+	{
+		playSoundPressButton ();
+		settings.switchSoundOnOff ();
 	}
 
 

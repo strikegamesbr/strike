@@ -42,10 +42,10 @@ MonoBehaviour:
     y: 30
     width: 1366
     height: 636
-  m_MinSize: {x: 683, y: 492}
-  m_MaxSize: {x: 14004, y: 14042}
+  m_MinSize: {x: 681, y: 492}
+  m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 11
+  controlID: 51
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -64,8 +64,8 @@ MonoBehaviour:
     y: 0
     width: 398
     height: 636
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 12
+  controlID: 52
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 13
+  controlID: 53
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -411,19 +411,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Images/Stage1
+    - Assets/Prefabs/blocks
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Images/Stage1
+  - Assets/Prefabs/blocks
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Guilherme2\Unity\Git\strike\Raggabond Game Project
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 139}
-    m_SelectedIDs: a82b0000
-    m_LastClickedID: 11176
-    m_ExpandedIDs: 00000000bc260000ea2600002e27000036270000d82a0000a82b00002c2c0000ee2f0000f02f0000f22f000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 327}
+    m_SelectedIDs: 90280000
+    m_LastClickedID: 10384
+    m_ExpandedIDs: 00000000be260000ec2600003027000038270000d82a0000a82b0000cc2b00000e2c00002c2c0000463b0000483b00004a3b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -451,7 +451,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000bc260000ea2600002e27000036270000d82a0000cc2b00000e2c00002c2c0000ee2f0000f02f0000f22f0000
+    m_ExpandedIDs: 00000000be260000ec2600003027000038270000d82a0000a82b00002c2c0000463b0000483b00004a3b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -479,7 +479,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300005e3c0000d42a000026270000d02500002029000000000000ae2700001a270000e4270000cc2700003e2a0000b62a00005a2b0000c22900003c2800005029000032270000
+    m_ExpandedInstanceIDs: c62300005e3c0000d42a000026270000d02500002029000000000000ae270000e4270000cc2700003e2a0000b62a00005a2b0000c22900003c2800005029000032270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -569,21 +569,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 56c5feff1ec6feff18c7feff1ec7feff2ac7feffb4fbfeff48fcfeff7efefeffe014ffff6216fffff218ffff7a1dffffec35ffff0437ffff1638ffff00f8ffffd4fbfffff4ffffff00000000f2820000a0aa0000f2c5000012c60000
+    m_ExpandedIDs: 6a7bffff547dffff147effff347fffff3a7fffff467fffff328affff868fffff1e90ffffc49dffff729effffbe9fffffc49fffffd89fffff0cc4ffff0efaffffd4fbffff000000006e3b0000145c00000e5d00002a690000246a000088780000747900003c7a00004c7a0000667c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: FloorColliders
-      m_OriginalName: FloorColliders
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 12578
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
@@ -624,9 +624,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 2.7664218, y: -0.1549815, z: -10}
+    m_Target: {x: 1.2754247, y: 0.65158147, z: -10}
     speed: 2
-    m_Value: {x: 2.7664218, y: -0.1549815, z: -10}
+    m_Value: {x: 1.2754247, y: 0.65158147, z: -10}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -653,9 +653,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 12.738529
+    m_Target: 13.817523
     speed: 2
-    m_Value: 12.738529
+    m_Value: 13.817523
   m_Ortho:
     m_Target: 1
     speed: 2

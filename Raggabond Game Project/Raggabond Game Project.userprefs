@@ -1,9 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameSettings\GameSettings.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MainMenu\ButtonsMainMenu.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameSettings\GameSettings.cs" Line="56" Column="9" />
+      <File FileName="Assets\Scripts\GameSettings\GameSettings.cs" Line="67" Column="22" />
       <File FileName="Assets\Scripts\GameSettings\SpritesButtons.cs" Line="6" Column="70" />
+      <File FileName="Assets\Scripts\MainMenu\ButtonsMainMenu.cs" Line="42" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
