@@ -11,7 +11,7 @@ public class FadeInOut : MonoBehaviour {
 	public GameObject[] screens;
 
 
-	void Start(){
+	void Start() {
 
 		fadeImage = GetComponent<Image>();
 

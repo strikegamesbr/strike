@@ -13,6 +13,7 @@ public class Sounds : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		//as linhas abaixo são necessárias pois os atributos originalmente têm prefabs
 		pressButtonSfx = Instantiate (pressButtonSfx) as AudioSource;
 		acelerateSfx = Instantiate (acelerateSfx) as AudioSource;

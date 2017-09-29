@@ -21,7 +21,7 @@ public class MainController : MonoBehaviour {
 
 	void Awake () 
 	{
-
+		
 		playerState.Lane = Lane.middle;
 
 	}
@@ -29,8 +29,9 @@ public class MainController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
 
-
+		Debug.Log (Time.time);
 
 
 	}
