@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //todo quando chegar a zero
 
@@ -16,7 +17,7 @@ public class PlayerState : MonoBehaviour {
 	private ulong score = 0;
 
 	[SerializeField]
-	private GameObject GameOverScreen;
+	private GameObject GameOverScreen, ScoreTextHUDObject;
 
 
 
@@ -183,6 +184,7 @@ public class PlayerState : MonoBehaviour {
 
 		float timeStoppedByDamage = FindObjectOfType<ScnObjManager> ().TimeDamage;
 
+
 		//dá o tempo para ele parar com o dano
 		yield return new WaitForSeconds (timeStoppedByDamage);
 
@@ -190,7 +192,12 @@ public class PlayerState : MonoBehaviour {
 
 		FindObjectOfType<Track> ().stopTrackAndLock ();
 
+		GetComponent<ScoreByTimeManager> ().haltGainingPoints = true;
+		ScoreTextHUDObject.SetActive (false);
+		GameOverScreen.GetComponent<Text> ().text = score.ToString ();
 		GameOverScreen.SetActive (true);
+
+
 
 		yield return new WaitForSeconds (FindObjectOfType<MainController>().TimeGameOverToMainMenu);
 		SceneManager.LoadScene ("MainMenu");
