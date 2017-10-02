@@ -61,40 +61,50 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 
 	}
 
-
 	//somente as animações associadas, não a pontuação (vida?) em si
 	IEnumerator playerGetPointsFromObjRoutine ()
 	{
-
-		//mudar material de player e dele mesmo
-
-		//vamos colocar valores necessários em variáveis locais
-		Material pointMat = scnObjManager.PointMaterial;
-		Material normalMat = scnObjManager.NormalMaterial;
-		GameObject player = scnObjManager.Player;
-		float timeToWait = scnObjManager.TimeDamage;
-
-		SpriteRenderer srPointObj = GetComponent<SpriteRenderer> ();
-		SpriteRenderer srPlayer = player.GetComponent<SpriteRenderer> ();
-
-
 		//as instruções pra valer começam agora
 		sounds.playCollectitemSfx ();
-		srPointObj.material = pointMat;
-		srPlayer.material = pointMat;
-		yield return new WaitForSeconds (timeToWait/3);
-		srPointObj.material = normalMat;
-		srPlayer.material = normalMat;
-		srPointObj.enabled = false; //faz sumir;
-		yield return new WaitForSeconds (timeToWait/3);
-		srPointObj.material = pointMat;
-		srPlayer.material = pointMat;
-		yield return new WaitForSeconds (timeToWait/3);
-		srPointObj.material = normalMat;
-		srPlayer.material = normalMat;
+		yield return new WaitForSeconds (scnObjManager.TimeDamage/3);
 
 		Destroy (this.gameObject); //para destruir
 	}
+
+	//não delete abaixo ainda, é o código com shader
+//	//somente as animações associadas, não a pontuação (vida?) em si
+//	IEnumerator playerGetPointsFromObjRoutine ()
+//	{
+//
+//		//mudar material de player e dele mesmo
+//
+//		//vamos colocar valores necessários em variáveis locais
+////		Material pointMat = scnObjManager.PointMaterial;
+////		Material normalMat = scnObjManager.NormalMaterial;
+////		GameObject player = scnObjManager.Player;
+//		float timeToWait = scnObjManager.TimeDamage;
+//
+//		SpriteRenderer srPointObj = GetComponent<SpriteRenderer> ();
+////		SpriteRenderer srPlayer = player.GetComponent<SpriteRenderer> ();
+//
+//
+//		//as instruções pra valer começam agora
+//		sounds.playCollectitemSfx ();
+////		srPointObj.material = pointMat;
+////		srPlayer.material = pointMat;
+//		yield return new WaitForSeconds (timeToWait/3);
+////		srPointObj.material = normalMat;
+////		srPlayer.material = normalMat;
+//		srPointObj.enabled = false; //faz sumir;
+////		yield return new WaitForSeconds (timeToWait/3);
+////		srPointObj.material = pointMat;
+////		srPlayer.material = pointMat;
+////		yield return new WaitForSeconds (timeToWait/3);
+////		srPointObj.material = normalMat;
+////		srPlayer.material = normalMat;
+//
+//		Destroy (this.gameObject); //para destruir
+//	}
 
 //	//mostrar o score ganho ao pegar um item subindo
 //	IEnumerator showScoreGained (ulong scoreToGain)

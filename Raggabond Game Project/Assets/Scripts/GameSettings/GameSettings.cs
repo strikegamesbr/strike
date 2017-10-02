@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSettings : MonoBehaviour {
 
 
 	[SerializeField]
-	SpritesButtons spritesButtons;
-
-	[SerializeField]
 	private bool soundEffectsOn, musicOn;
 
+
+	// Use this for initialization
+	void Start () {
+
+
+
+	}
 
 
 	public bool sfxIsOn {
@@ -28,9 +33,9 @@ public class GameSettings : MonoBehaviour {
 
 			try {
 				if (value == true)
-					spritesButtons.switchSfxSpritesToOn();
+					FindObjectOfType<SpritesButtons>().switchSfxSpritesToOn();
 				else
-					spritesButtons.switchSfxSpritesToOff();
+					FindObjectOfType<SpritesButtons>().switchSfxSpritesToOff();
 			} catch {
 			}
 		}
@@ -52,9 +57,9 @@ public class GameSettings : MonoBehaviour {
 
 			try {
 				if (value == true)
-					spritesButtons.switchMusicSpritesToOn();
+					FindObjectOfType<SpritesButtons>().switchMusicSpritesToOn();
 				else
-					spritesButtons.switchMusicSpritesToOff();
+					FindObjectOfType<SpritesButtons>().switchMusicSpritesToOff();
 			} catch {
 			}
 		}
@@ -70,10 +75,7 @@ public class GameSettings : MonoBehaviour {
 
 
 
-	// Use this for initialization
-	void Start () {
 
-	}
 
 	// Update is called once per frame
 	void Update () {
@@ -81,6 +83,5 @@ public class GameSettings : MonoBehaviour {
 		//para quando mudar no hierarchy no Unity executar o set
 		sfxIsOn = soundEffectsOn;
 		musicIsOn = musicOn;
-
 	}
 }

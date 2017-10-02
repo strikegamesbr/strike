@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 //todo quando chegar a zero
@@ -16,7 +17,7 @@ public class PlayerState : MonoBehaviour {
 	private ulong score = 0;
 
 	[SerializeField]
-	private GameObject GameOverScreen;
+	private GameObject GameOverScreen, ScoreTextHUDObject;
 
 
 
@@ -25,6 +26,7 @@ public class PlayerState : MonoBehaviour {
 	[SerializeField]
 	bool grounded = true; //enquanto começar no chão, começará true
 
+	private bool gameOver = false;
 
 
 	[SerializeField]
@@ -89,6 +91,7 @@ public class PlayerState : MonoBehaviour {
 		set {
 
 			score = value;
+			print("Quem mudou o score?");
 		}
 
 	}
@@ -104,6 +107,13 @@ public class PlayerState : MonoBehaviour {
 			grounded = value;
 		}
 
+	}
+
+
+	public bool GameOver {
+		get {
+			return gameOver;
+		}
 	}
 
 
@@ -172,17 +182,20 @@ public class PlayerState : MonoBehaviour {
 
 		if (Lives <= 0) {//quando chegar a zero
 
-			StartCoroutine (GameOver ());
+			StartCoroutine (GameOverRoutine ());
 
 		}
 
 	}
 
 
-	IEnumerator GameOver () {
+	IEnumerator GameOverRoutine () { 
+
+		gameOver = true;
 
 		float timeStoppedByDamage = FindObjectOfType<ScnObjManager> ().TimeDamage;
 
+		GetComponent<ScoreByTimeManager> ().HaltGainingPoints = true;
 		//dá o tempo para ele parar com o dano
 		yield return new WaitForSeconds (timeStoppedByDamage);
 
@@ -190,10 +203,16 @@ public class PlayerState : MonoBehaviour {
 
 		FindObjectOfType<Track> ().stopTrackAndLock ();
 
+
+		//		ScoreTextHUDObject.SetActive (false);
+		GameOverScreen.GetComponentInChildren<Text> ().text = score.ToString ();
 		GameOverScreen.SetActive (true);
+
+
 
 		yield return new WaitForSeconds (FindObjectOfType<MainController>().TimeGameOverToMainMenu);
 		SceneManager.LoadScene ("MainMenu");
+
 
 
 

@@ -12,7 +12,21 @@ public class ScoreByTimeManager : MonoBehaviour {
 	private ulong pointsPerSecondNormal = 5;//, pointsPerSecondFast = 15, pointsPerSecondSlow = 5;
 
 
-	public bool haltGainingPoints = false;
+	private bool haltGainingPoints = false;
+
+	public bool HaltGainingPoints {
+		get {
+			return haltGainingPoints;
+		}
+
+		set {
+			haltGainingPoints = value;
+
+			print ("haltGainingPoints mudou para " + haltGainingPoints);
+
+
+		}
+	}
 
 
 
@@ -33,7 +47,8 @@ public class ScoreByTimeManager : MonoBehaviour {
 
 			yield return new WaitForSeconds (1); 
 
-			if (!haltGainingPoints) {
+			if (!HaltGainingPoints) {
+				print ("Entrou com HaltGainingPoints=" + HaltGainingPoints);
 					playerState.Score = playerState.Score + pointsPerSecondNormal;
 			}
 

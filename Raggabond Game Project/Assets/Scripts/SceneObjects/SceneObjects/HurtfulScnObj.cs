@@ -39,7 +39,7 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 
 		if (!lockDamage) {
 			lockDamage = true; //não precisa voltar a ser falso pois será destruído
-			playerState.gameObject.GetComponent<ScoreByTimeManager>().haltGainingPoints = true;
+			playerState.gameObject.GetComponent<ScoreByTimeManager>().HaltGainingPoints = true;
 
 
 			int damageToTake = 0;
@@ -95,7 +95,8 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 		srHurtObj.material = normalMat;
 		srPlayer.material = normalMat;
 
-		playerState.gameObject.GetComponent<ScoreByTimeManager>().haltGainingPoints = false;
+		if (!playerState.GameOver)
+			playerState.gameObject.GetComponent<ScoreByTimeManager>().HaltGainingPoints = false;
 
 		Destroy (this.gameObject);
 

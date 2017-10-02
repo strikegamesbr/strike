@@ -15,32 +15,6 @@ public class SpritesButtons : MonoBehaviour {
 	private Button musicButton, sfxButton;
 
 
-
-//	public void musicIsOn(bool isOn)
-//	{
-//
-//		SpriteState curSpriteState = new SpriteState ();
-//
-//		if (isOn) {
-//
-//			//			print ("now music is on");
-//
-//			musicButton.GetComponent<Image> ().sprite = musicOn;
-//			curSpriteState.pressedSprite = musicOn;
-//			curSpriteState.highlightedSprite = musicOn_over;	
-//
-//		} else {
-//			//			print ("now music is off");
-//			musicButton.GetComponent<Image> ().sprite = musicOff;
-//			curSpriteState.pressedSprite = musicOff;
-//			curSpriteState.highlightedSprite = musicOff_over;
-//		}
-//
-//		musicButton.spriteState = curSpriteState;
-//
-//	}
-
-
 	private void musicIsOn(bool isOn)
 	{
 
@@ -106,11 +80,13 @@ public class SpritesButtons : MonoBehaviour {
 
 
 
-
-
 	// Use this for initialization
 	void Start () {
 		
+		//verifica se o usuário desligou o som - se sim, muda os sprites do botão de som nas opções
+		//serve especialmente se o usuário voltar de outras cenas para o menu principal
+		sfxIsOn (FindObjectOfType<GameSettings> ().sfxIsOn);
+
 	}
 	
 	// Update is called once per frame
