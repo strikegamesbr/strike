@@ -16,10 +16,6 @@ public class PlayerPositions : MonoBehaviour {
 
 
 
-
-
-
-
 	public float PosYPlayerLowerLane {
 		get {
 			return posYPlayerLowerLane;

@@ -19,7 +19,7 @@ public class FacebookAndPlayFabFunctions : MonoBehaviour
 	public string gameTitleId;
 	public string scoreName;
 
-	public int numberPlayersFetched = 5; //O tamanho aqui eh o limite de quantos jogadores do leaderboard vai pegar. 
+	public int numberPlayersFetched; //O tamanho aqui eh o limite de quantos jogadores do leaderboard vai pegar. 
 	public positionPlayer[] leaderboardLoaded; 
 
 
@@ -36,6 +36,27 @@ public class FacebookAndPlayFabFunctions : MonoBehaviour
 		print ("PlayFabSettings.TitleId = " + PlayFabSettings.TitleId);
 
 	}
+
+
+	public bool FacebookIsInitialized {
+		get {
+			return FB.IsInitialized;
+		}
+	}
+
+
+	public bool FacebookIsLogged {
+		get {
+			return FB.IsLoggedIn;
+		}
+	}
+
+	public bool PlayFabIsLogged {
+		get {
+			return FacebookAndPlayFabInfo.isLoggedOnPlayFab;
+		}
+	}
+
 
 	private void InitCallback()
 	{

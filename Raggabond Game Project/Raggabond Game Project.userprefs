@@ -1,8 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Raggabond Game Project - 2017-09-29 - antes de rollback\Assets\Scripts\Player\PlayerState.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Leaderboard\FacebookAndPlayFabFunctions.cs">
     <Files>
-      <File FileName="..\..\Raggabond Game Project - 2017-09-29 - antes de rollback\Assets\Scripts\Player\PlayerState.cs" Line="14" Column="24" />
+      <File FileName="Assets\Scripts\Player\PlayerInputMoves.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Leaderboard\FacebookAndPlayFabFunctions.cs" Line="357" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

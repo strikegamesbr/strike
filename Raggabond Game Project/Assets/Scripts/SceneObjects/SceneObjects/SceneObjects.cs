@@ -136,15 +136,24 @@ public class SceneObjects : MonoBehaviour {
 		switch (lane) {
 
 		case Lane.lower:
-			GetComponent<SpriteRenderer> ().sortingOrder = 2;
+			if (Speed == 0) //se for um objeto parado
+				GetComponent<SpriteRenderer> ().sortingOrder = 4;
+			else
+				GetComponent<SpriteRenderer> ().sortingOrder = 5;
 			transform.position = new Vector3 (transform.position.x, yLower, transform.position.z);
 			break;
 		case Lane.middle:
-			GetComponent<SpriteRenderer> ().sortingOrder = 1;
+			if (Speed == 0) //se for um objeto parado
+				GetComponent<SpriteRenderer> ().sortingOrder = 2;
+			else
+				GetComponent<SpriteRenderer> ().sortingOrder = 3;
 			transform.position = new Vector3 (transform.position.x, yMedium, transform.position.z);
 			break;
 		case Lane.upper:
-			GetComponent<SpriteRenderer> ().sortingOrder = 0;
+			if (Speed == 0) //se for um objeto parado
+				GetComponent<SpriteRenderer> ().sortingOrder = 0;
+			else
+				GetComponent<SpriteRenderer> ().sortingOrder = 1;
 			transform.position = new Vector3 (transform.position.x, yUpper, transform.position.z);
 			break;
 		}

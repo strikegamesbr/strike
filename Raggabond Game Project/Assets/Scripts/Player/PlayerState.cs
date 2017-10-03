@@ -53,13 +53,13 @@ public class PlayerState : MonoBehaviour {
 			switch (lane) {
 
 			case Lane.lower:
-				GetComponent<SpriteRenderer> ().sortingOrder = 2;
+				GetComponent<SpriteRenderer> ().sortingOrder = 5;
 				break;
 			case Lane.middle:
-				GetComponent<SpriteRenderer> ().sortingOrder = 1;
+				GetComponent<SpriteRenderer> ().sortingOrder = 3;
 				break;
 			case Lane.upper:
-				GetComponent<SpriteRenderer> ().sortingOrder = 0;
+				GetComponent<SpriteRenderer> ().sortingOrder = 1;
 				break;
 			}
 
