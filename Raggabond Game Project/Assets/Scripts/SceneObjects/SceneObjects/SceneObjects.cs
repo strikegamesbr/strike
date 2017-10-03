@@ -20,22 +20,6 @@ public class SceneObjects : MonoBehaviour {
 
 			transform.parent = null;
 
-//			switch (lane) {
-//
-//			case Lane.lower:
-//				GetComponent<SpriteRenderer> ().sortingOrder = 2;
-//				transform.position = new Vector3 (transform.position.x, yLower, transform.position.z);
-//				break;
-//			case Lane.middle:
-//				GetComponent<SpriteRenderer> ().sortingOrder = 1;
-//				transform.position = new Vector3 (transform.position.x, yMedium, transform.position.z);
-//				break;
-//			case Lane.upper:
-//				GetComponent<SpriteRenderer> ().sortingOrder = 0;
-//				transform.position = new Vector3 (transform.position.x, yUpper, transform.position.z);
-//				break;
-//			}
-
 
 			setYPositionAndSortingOrderByLane ();
 
@@ -53,6 +37,9 @@ public class SceneObjects : MonoBehaviour {
 	private ScnObjManager _scnObjManager;
 	private PlayerState _playerState;
 	private Sounds _sounds;
+
+	[SerializeField]
+	private float speed;
 
 	public ScnObjManager scnObjManager {
 		get {
@@ -80,10 +67,16 @@ public class SceneObjects : MonoBehaviour {
 
 	}
 
-	[SerializeField]
-	private float speed;
+	public float Speed {
+		get {
+			return speed;
+		}
 
+		set {
+			speed = value;
+		}
 
+	}
 
 
 	// Use this for initialization
@@ -163,19 +156,6 @@ public class SceneObjects : MonoBehaviour {
 		Lane = lane; //caso o valor seja mudado na janela 
 		transform.position = transform.position + new Vector3((speed*Time.deltaTime)/10, 0, 0);
 
-
-//		//rolar a bola, enquanto for child de um mesh não dá, daí a troca de parent
-//		if (gameObject.name.Contains ("beachBall")) {
-//			
-//			float speedRoll = 60;
-//			transform.parent = null;
-//
-//			transform.Rotate(new Vector3(- 0.1f, - 0.1f, - 0.1f));
-//
-//			transform.parent = DefaultParent;
-//		}
-
-//		speedRoll*Time.deltaTime
 	}
 
 

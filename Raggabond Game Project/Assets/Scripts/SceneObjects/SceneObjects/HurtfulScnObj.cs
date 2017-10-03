@@ -6,11 +6,13 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 
 
 	bool lockDamage = false;
+	NumMovableObjsManager numMovObjMan;
 
 
 	// Use this for initialization
 	void Start () {
 		toStart ();
+		numMovObjMan = transform.parent.GetComponent<NumMovableObjsManager> ();
 	}
 
 	void OnTriggerStay2D (Collider2D col) {
@@ -20,8 +22,6 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
-
-//		print ("sem condição funciona 1");
 
 		if (col.name == "Player" && col.GetComponent<PlayerState> ().Lane == this.Lane) {
 			damagePlayer ();
@@ -109,6 +109,46 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 	}
 
 
+	//vai checar se este é um objeto que se move (tem speed>0) e que se tornou visível agora
+	//daí vai ser adicionado ao ScnObjManager como um novo visível
+	//e ele vai decidir se deixa na tela ou se já tem skatistas e patinadores demais e por isso vai destruí-lo
+	void OnBecameVisible ()
+	{
+
+		//se for a câmera do editor do Unity não interessa
+		#if UNITY_EDITOR
+		if (Camera.current.name == "SceneCamera") 
+			return;
+		#endif
+		// put your code here
+
+		if (Speed != 0) {
+			numMovObjMan.OneMovableObjectBecameVisible (this.gameObject);
+		}
+	}
+
+
+	void OnBecameInvisible ()
+	{
+//		//se for a câmera do editor do Unity não interessa
+//		#if UNITY_EDITOR
+//		if (Camera.current.name == "SceneCamera") 
+//			return;
+//		#endif
+//		// put your code here
+
+		//usamos o try pois um dos motivos dele se tornar invisível pode ser sua destruição
+		try {
+
+			if (Speed != 0) {
+				numMovObjMan.oneMovableObjectBecameInvisible ();
+			}
+
+		} catch {
+		}
+
+
+	}
 	
 	// Update is called once per frame
 	void Update () {

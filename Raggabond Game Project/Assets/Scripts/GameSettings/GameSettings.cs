@@ -26,12 +26,14 @@ public class GameSettings : MonoBehaviour {
 		set {
 			soundEffectsOn = value;
 
-			if (value == true)
-				FindObjectOfType<Sounds> ().unmuteAllSounds ();
-			else
-				FindObjectOfType<Sounds> ().muteAllSounds ();
-
 			try {
+
+				if (value == true)
+					FindObjectOfType<Sounds> ().unmuteAllSounds ();
+				else
+					FindObjectOfType<Sounds> ().muteAllSounds ();
+
+
 				if (value == true)
 					FindObjectOfType<SpritesButtons>().switchSfxSpritesToOn();
 				else
@@ -50,12 +52,14 @@ public class GameSettings : MonoBehaviour {
 		set {
 			musicOn = value;
 
-			if (value == true)
-				FindObjectOfType<MusicControl> ().unmuteAllSongs ();
-			else
-				FindObjectOfType<MusicControl> ().muteAllSongs ();
-
 			try {
+
+				if (value == true)
+					FindObjectOfType<MusicControl> ().unmuteAllSongs ();
+				else
+					FindObjectOfType<MusicControl> ().muteAllSongs ();
+
+
 				if (value == true)
 					FindObjectOfType<SpritesButtons>().switchMusicSpritesToOn();
 				else

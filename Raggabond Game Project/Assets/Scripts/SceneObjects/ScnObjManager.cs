@@ -37,7 +37,8 @@ public class ScnObjManager : MonoBehaviour {
 	public float speedSkatista = 50, speedPatinadora = 70, speedBeachBall = 30;
 
 
-
+	[SerializeField]
+	private int numMovableObjects=0, maxNumMovableObjects=3;
 
 
 	public Material NormalMaterial {
@@ -121,6 +122,27 @@ public class ScnObjManager : MonoBehaviour {
 
 
 		Destroy (scoreText.gameObject);
+
+	}
+
+	//avisa que um objeto se tornou visível ao mesmo tempo que pergunta se deve se auto-destruir
+	public bool destroyOneMovableObjectBecameVisible () {
+
+		if (numMovableObjects < maxNumMovableObjects) {
+			numMovableObjects++;
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
+	//avisa que um objeto se tornou invisível
+	public void oneMovableObjectBecameInvisible () {
+
+		if (numMovableObjects > 0) { //sanity check
+			numMovableObjects--;
+		}
 
 	}
 

@@ -22,7 +22,7 @@ public class ScoreByTimeManager : MonoBehaviour {
 		set {
 			haltGainingPoints = value;
 
-			print ("haltGainingPoints mudou para " + haltGainingPoints);
+//			print ("haltGainingPoints mudou para " + haltGainingPoints);
 
 
 		}
@@ -48,7 +48,7 @@ public class ScoreByTimeManager : MonoBehaviour {
 			yield return new WaitForSeconds (1); 
 
 			if (!HaltGainingPoints) {
-				print ("Entrou com HaltGainingPoints=" + HaltGainingPoints);
+//				print ("Entrou com HaltGainingPoints=" + HaltGainingPoints);
 					playerState.Score = playerState.Score + pointsPerSecondNormal;
 			}
 

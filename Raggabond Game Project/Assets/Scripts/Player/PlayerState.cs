@@ -91,7 +91,7 @@ public class PlayerState : MonoBehaviour {
 		set {
 
 			score = value;
-			print("Quem mudou o score?");
+//			print("Quem mudou o score?");
 		}
 
 	}

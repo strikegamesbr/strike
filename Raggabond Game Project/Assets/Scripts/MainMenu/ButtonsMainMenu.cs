@@ -54,7 +54,8 @@ public class ButtonsMainMenu : MonoBehaviour {
 	public void pressPlayGameButton ()
 	{
 		playSoundPressButton ();
-		SceneManager.LoadScene ("Stage1");
+		SceneManager.LoadScene ("LoadingScreen");
+//		SceneManager.LoadScene ("Stage1");
 	}
 
 
