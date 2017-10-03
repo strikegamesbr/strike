@@ -168,6 +168,7 @@
      <Compile Include="Assets\Scripts\MainMenu\ButtonsMainMenu.cs" />
      <Compile Include="Assets\Scripts\MusicScripts\MusicControl.cs" />
      <Compile Include="Assets\Scripts\MusicScripts\Singleton_Songs.cs" />
+     <Compile Include="Assets\Scripts\NewScripts\ForLoading.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerCollisions.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerInputMoves.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerPositions.cs" />
