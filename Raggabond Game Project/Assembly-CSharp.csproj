@@ -162,6 +162,8 @@
      <Compile Include="Assets\Scripts\GameSettings\Singleton_GameSettings.cs" />
      <Compile Include="Assets\Scripts\GameSettings\SpritesButtons.cs" />
      <Compile Include="Assets\Scripts\HUDManager.cs" />
+     <Compile Include="Assets\Scripts\Leaderboard\Backup\FacebookAndPlayFabFunctionsBackup.cs" />
+     <Compile Include="Assets\Scripts\Leaderboard\Backup\FacebookAndPlayFabInfoBackup.cs" />
      <Compile Include="Assets\Scripts\Leaderboard\FacebookAndPlayFabFunctions.cs" />
      <Compile Include="Assets\Scripts\Leaderboard\FacebookAndPlayFabInfo.cs" />
      <Compile Include="Assets\Scripts\Leaderboard\RankingController.cs" />
@@ -175,6 +177,8 @@
      <Compile Include="Assets\Scripts\Player\PlayerState.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerStateold.cs" />
      <Compile Include="Assets\Scripts\Player\ScoreByTimeManager.cs" />
+     <Compile Include="Assets\Scripts\SavedData\SavedData.cs" />
+     <Compile Include="Assets\Scripts\SavedData\Singleton_SavedData.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\MoreObjBlockTrigger.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\NumMovableObjsManager.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\PlacerObjectsBlocks.cs" />

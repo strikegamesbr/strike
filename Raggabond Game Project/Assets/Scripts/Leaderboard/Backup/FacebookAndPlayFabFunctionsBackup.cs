@@ -10,7 +10,7 @@ using System;
 
 
 //todo não está logando no PlayFab corretamente sme fazer isso na interface do Unity
-public class FacebookAndPlayFabFunctions : MonoBehaviour
+public class FacebookAndPlayFabFunctionsBackup : MonoBehaviour
 {
 
 	//Todos os atributos públicos abaixo não devem ser mudados durante a execução no editor do Unity
@@ -19,23 +19,30 @@ public class FacebookAndPlayFabFunctions : MonoBehaviour
 	public string gameTitleId;
 	public string scoreName;
 
-	public int numberPlayersFetched = 5; //O tamanho aqui eh o limite de quantos jogadores do leaderboard vai pegar. 
+	public int maxNumberPlayersFetched; //O tamanho aqui eh o limite de quantos jogadores do leaderboard vai pegar. 
 	public positionPlayer[] leaderboardLoaded; 
 
-	private ulong lastScoreUpdated = 0, tempLastScoreUpdated; //desta seção de jogo somente, não pega de seções anteriores
 
+	void Start()
+	{
 
-	public ulong LastScoreUpdated {
-		get {
-			return lastScoreUpdated;
-		}
+		leaderboardLoaded = new positionPlayer[maxNumberPlayersFetched];
+
+		//Usado para inicializar o sdk do facebook.
+		FB.Init(InitCallback, null, null);
+		//Usado para indicar ao sdk do PlayFab o Id do seu jogo.
+		PlayFabSettings.TitleId = gameTitleId;
+		print ("PlayFabSettings.TitleId = " + PlayFabSettings.TitleId);
+
 	}
+
 
 	public bool FacebookIsInitialized {
 		get {
 			return FB.IsInitialized;
 		}
 	}
+
 
 	public bool FacebookIsLogged {
 		get {
@@ -49,25 +56,44 @@ public class FacebookAndPlayFabFunctions : MonoBehaviour
 		}
 	}
 
-	//continue checando se um frame é o suficiente
-	public bool LeaderboardHasJustLoadedWaitTimeAfter {
+	private int howManyIsInLeaderboard = 0; //será carregado quando for pegando os jogadores
+	public bool LeaderboardIsLoaded {
 		get {
-			return FacebookAndPlayFabInfo.leaderboardLoaded;
+
+			if (howManyIsInLeaderboard == 0) {
+				print ("1");
+				return false;
+			}
+
+			//lembrando que o array leaderboardLoaded tem tamanho maxNumberPlayersFetched
+			//quantos valores estão nulos? (não foram preenchidos com jogadores do leaderboard)
+			int numArrayNull = 0;
+			foreach (positionPlayer posPlayer in leaderboardLoaded) {
+				if (posPlayer == null)
+					numArrayNull++;
+			}
+
+			//se preencheu leaderboardLoaded de valores não nulos, está carregado, retorna true
+			if (numArrayNull == 0) {
+				return true;
+
+				//se tiver menos jogadores cadastrados do que queremos pegar
+			} else if (howManyIsInLeaderboard < maxNumberPlayersFetched) { 
+
+				//e todos eles estão no array leaderboardLoaded
+				if (numArrayNull == maxNumberPlayersFetched - howManyIsInLeaderboard)
+					return true;
+				else {
+					print ("2");
+					return false;
+				}
+
+				//se tiver mais jogadores e ainda tem nulo no array leaderboardLoaded, retorna falso
+			} else {
+				print ("3");
+				return false;
+			}
 		}
-	}
-
-
-	void Start()
-	{
-
-		leaderboardLoaded = new positionPlayer[numberPlayersFetched];
-
-		//Usado para inicializar o sdk do facebook.
-		FB.Init(InitCallback, null, null);
-		//Usado para indicar ao sdk do PlayFab o Id do seu jogo.
-		PlayFabSettings.TitleId = gameTitleId;
-		print ("PlayFabSettings.TitleId = " + PlayFabSettings.TitleId);
-
 	}
 
 
@@ -232,7 +258,6 @@ public class FacebookAndPlayFabFunctions : MonoBehaviour
 			PlayFab.ClientModels.StatisticUpdate objeto = new PlayFab.ClientModels.StatisticUpdate ();
 
 			objeto.StatisticName = scoreName;//"Score";
-
 			objeto.Value = score;
 
 			stats.Add (objeto);
@@ -243,8 +268,6 @@ public class FacebookAndPlayFabFunctions : MonoBehaviour
 
 //			PlayFab.ClientModels.UpdateUserStatisticsRequest request = new PlayFab.ClientModels.UpdateUserStatisticsRequest();
 //			request.UserStatistics = stats;
-
-			tempLastScoreUpdated = (ulong)score;
 
 			//Utiliza o SDK do PlayFab para atualizar os dados. Informando a chamada e a função de callback de sucesso e erro.
 			PlayFabClientAPI.UpdatePlayerStatistics (request, UpdatePlayerStatisticsSucessCallback, PlayFabErrorCallBack);
@@ -262,9 +285,6 @@ public class FacebookAndPlayFabFunctions : MonoBehaviour
 	{
 		//Exibe no console da Unity que o dado foi alterado no PlayFab com sucesso.
 		Debug.Log("Sucesso ao inserir/atualizar o Score do jogador no PlayFab.");
-
-		lastScoreUpdated = tempLastScoreUpdated;
-
 	}
 
 
@@ -276,7 +296,7 @@ public class FacebookAndPlayFabFunctions : MonoBehaviour
 			//Configura a chamada para carregar os dados do Leaderboard. Informa qual é a o nome do Leaderboard e quantos
 			//resultados deve trazer no máximo.
 			PlayFab.ClientModels.GetLeaderboardRequest request = new PlayFab.ClientModels.GetLeaderboardRequest();
-			request.MaxResultsCount = numberPlayersFetched;
+			request.MaxResultsCount = maxNumberPlayersFetched;
 			request.StatisticName = scoreName;
 
 			//Atualiza a váriavel para falso indicando que os dados ainda não foram carregados.
@@ -311,10 +331,6 @@ public class FacebookAndPlayFabFunctions : MonoBehaviour
 			}
 		}
 	}
-
-
-
-
 
 	private void GetUserInfoAndUpdateLeaderboard( PlayFab.ClientModels.PlayerLeaderboardEntry leaderBoardLine, GetLeaderboardResult result )
 	{
@@ -353,9 +369,10 @@ public class FacebookAndPlayFabFunctions : MonoBehaviour
 				if (string.IsNullOrEmpty(userInfoResult.Error) && !userInfoResult.Cancelled && !string.IsNullOrEmpty(userInfoResult.RawResult))
 				{
 					Debug.Log("Sucesso ao coletar os dados da conta do usuário no Facebook");
-
+					print("0");
 					try
 					{
+						print("01");
 						//A resposta do Facebook vem em formato de Json e com isso nós convertemos o Json para um Dictionary
 						//para ser mais facil de coletar os dados
 						Dictionary<string, object> dict = Json.Deserialize(userInfoResult.RawResult) as Dictionary<string, object>;
@@ -374,13 +391,14 @@ public class FacebookAndPlayFabFunctions : MonoBehaviour
 //						playerLeadeboardGameObject.transform.FindChild("Score").GetComponent<Text>().text = leaderBoardLine.StatValue.ToString();
 
 						//agora o player é colocado em leaderboardLoaded
-						if (leaderBoardLine.Position < numberPlayersFetched) { //leaderBoardLine.Position vira índice de leaderboardLoaded, que tem tamanho máximo numberPlayersFetched 
-							
-							positionPlayer playerFetched = new positionPlayer(userFacebookName, leaderBoardLine.StatValue);
-							leaderboardLoaded[leaderBoardLine.Position] = playerFetched;
 
-							print("player: " + leaderboardLoaded[leaderBoardLine.Position].PlayerName + " has score: " + leaderboardLoaded[leaderBoardLine.Position].Score);
-						}
+//						try { //o índice leaderBoardLine.Position pode ser inválida em leaderboardLoaded
+						positionPlayer playerFetched = new positionPlayer(userFacebookName, leaderBoardLine.StatValue);
+						leaderboardLoaded[leaderBoardLine.Position] = playerFetched;
+						
+
+						print("player[" + leaderBoardLine.Position + "]: " + leaderboardLoaded[leaderBoardLine.Position].PlayerName + " has score: " + leaderboardLoaded[leaderBoardLine.Position].Score);
+//						} catch {}
 
 						//Verifica se está no ultimo registro do Leadeboard. Para indicar que finalizou o carregamento.
 						if (leaderBoardLine.Position + 1 == result.Leaderboard.Count)
@@ -390,12 +408,15 @@ public class FacebookAndPlayFabFunctions : MonoBehaviour
 							//Atualiza a váriavel para falso indicando que os dados estão já foram carregados.
 							FacebookAndPlayFabInfo.leaderboardIsLoading = false;
 
+//							print("leaderBoardLine.Position = " + leaderBoardLine.Position + " e result.Leaderboard.Count = " + result.Leaderboard.Count);
+							//vamos definir howManyIsInLeaderboard aqui 
+							howManyIsInLeaderboard = result.Leaderboard.Count;
 							Debug.Log("Os dados do Leaderboard foram carregados.");
 						}
 					}
 					//Usado caso o Facebook não tenha retornado o id ou o nome do usuário.
 					catch (KeyNotFoundException e)
-					{ 
+					{
 						//Verifica se está no ultimo registro do Leadeboard. Para indicar que finalizou o carregamento.
 						if (leaderBoardLine.Position + 1 == result.Leaderboard.Count)
 						{
@@ -409,7 +430,7 @@ public class FacebookAndPlayFabFunctions : MonoBehaviour
 
 						Debug.Log("Não foi possível coletar os dados do usuário no Facebook. Erro: " + e.Message);
 					}
-				} 
+				}
 				else
 				{
 					//Verifica se está no ultimo registro do Leadeboard. Para indicar que finalizou o carregamento.
@@ -427,6 +448,7 @@ public class FacebookAndPlayFabFunctions : MonoBehaviour
 				}
 			});
 	}
+
 
 
 

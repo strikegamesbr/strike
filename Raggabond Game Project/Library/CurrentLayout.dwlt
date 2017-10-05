@@ -42,10 +42,10 @@ MonoBehaviour:
     y: 30
     width: 1366
     height: 636
-  m_MinSize: {x: 681, y: 492}
-  m_MaxSize: {x: 14004, y: 14042}
+  m_MinSize: {x: 683, y: 342}
+  m_MaxSize: {x: 12008, y: 8042}
   vertical: 0
-  controlID: 55
+  controlID: 83
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -89,8 +89,8 @@ MonoBehaviour:
     y: 0
     width: 331
     height: 365
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -114,14 +114,14 @@ MonoBehaviour:
     y: 365
     width: 968
     height: 271
-  m_MinSize: {x: 232, y: 271}
-  m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 15}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
   - {fileID: 15}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -206,10 +206,10 @@ MonoBehaviour:
     y: 0
     width: 968
     height: 636
-  m_MinSize: {x: 404, y: 492}
-  m_MaxSize: {x: 10002, y: 14042}
+  m_MinSize: {x: 406, y: 342}
+  m_MaxSize: {x: 8006, y: 8042}
   vertical: 1
-  controlID: 56
+  controlID: 84
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -230,10 +230,10 @@ MonoBehaviour:
     y: 0
     width: 968
     height: 365
-  m_MinSize: {x: 404, y: 221}
-  m_MaxSize: {x: 8004, y: 4021}
+  m_MinSize: {x: 406, y: 221}
+  m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 57
+  controlID: 85
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -414,10 +414,10 @@ MonoBehaviour:
   m_LastProjectPath: D:\Guilherme2\Unity\Git\strike\Raggabond Game Project
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 315}
-    m_SelectedIDs: 34270000
-    m_LastClickedID: 10036
-    m_ExpandedIDs: 00000000c4260000342700003c270000ce2a0000bc2b0000f82b00000c2d0000403b0000423b0000443b000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 271}
+    m_SelectedIDs: 3a270000
+    m_LastClickedID: 10042
+    m_ExpandedIDs: 00000000ca2600003a27000042270000d42a0000c42b0000002c0000162d0000422e0000442e0000462e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -445,7 +445,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c4260000342700003c270000ce2a0000bc2b0000f82b0000162c00000c2d0000403b0000423b0000443b0000
+    m_ExpandedIDs: 00000000ca2600003a27000042270000d42a0000c42b0000002c0000162d0000422e0000442e0000462e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -470,8 +470,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: b0c10000
+    m_LastClickedInstanceID: 49584
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300005e3c0000d42a000026270000d02500002029000000000000ae270000322700001a270000e4270000cc270000
     m_RenameOverlay:
@@ -561,9 +561,9 @@ MonoBehaviour:
     height: 344
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 38010000
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 22dffaff3cdffaff48e1faff4ee1faff52e1faff64e1faffccebfaffa6edfaff5eeefaff5aeffaff62effaff7ceffaff88effaffd058ffffb8aeffffbab3ffff7ee9ffff42eaffff8eebffff96ebffffbcebffffc8ebffff14f2ffffa8f2ffff3cf3ffffd4f3ffffbef8ffffdafaffffd4fbfffff4ffffff000000005e490000e85300000a540000deb90000c8ba0000
+    m_ExpandedIDs: 6811feff1a12feff1413feff6e13feff7613feff9613feffa213feff462efeff8c76feff1696feffea9efeff3ca0feff6ebdfeff80bdfeffa0befeff76c0feff80cefeffd6cffeff1ed1feffeeecfeff921fffff2a2dffff2c33ffffc233ffffd037fffff638ffff8e39ffff283cffffeabaffff2ecbffff86d5ffff4cd6ffff9ed7ffffa6d7ffffacd7ffffc0d7ffff6ce1ffff32e2ffff86e3ffff90e3ffff98e3ffffaee3ffffb8e4ffff9ee5ffff64e6ffffb6e7ffffbee7ffffc4e7ffffd8e7fffff0f3ffffd4fbffff0000000072590000645a00009a680000be680000d66b0000e2790000868800003e9000003a9200006e92000052930000069500004e950000a0950000cc970000d0990000349a0000389b0000489b0000a69b000096c1000004c20000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -582,7 +582,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
   m_ExpandedScenes:
-  - MainMenu
+  - Ranking
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -647,9 +647,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 9.936797
+    m_Target: 10.526256
     speed: 2
-    m_Value: 9.936797
+    m_Value: 10.526256
   m_Ortho:
     m_Target: 1
     speed: 2

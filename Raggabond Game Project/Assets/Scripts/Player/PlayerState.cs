@@ -203,22 +203,17 @@ public class PlayerState : MonoBehaviour {
 
 		FindObjectOfType<Track> ().stopTrackAndLock ();
 
+		//aqui salva a pontuação
+		FindObjectOfType<SavedData>().saveScore(score);
 
-		//		ScoreTextHUDObject.SetActive (false);
 		GameOverScreen.GetComponentInChildren<Text> ().text = score.ToString ();
 		GameOverScreen.SetActive (true);
 
-
-
 		yield return new WaitForSeconds (FindObjectOfType<MainController>().TimeGameOverToMainMenu);
-		SceneManager.LoadScene ("MainMenu");
-
-
-
+		SceneManager.LoadScene ("Ranking");
+//		SceneManager.LoadScene ("MainMenu");
 
 	}
-
-
 
 
 	public void gainScoreLives (ulong scoreToGain, int livesToGain)
@@ -226,7 +221,6 @@ public class PlayerState : MonoBehaviour {
 		Score = Score + scoreToGain;
 		Lives = Lives + livesToGain;
 	}
-
 
 	
 	// Update is called once per frame
