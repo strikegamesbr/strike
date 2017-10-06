@@ -167,6 +167,8 @@
      <Compile Include="Assets\Scripts\Leaderboard\FacebookAndPlayFabFunctions.cs" />
      <Compile Include="Assets\Scripts\Leaderboard\FacebookAndPlayFabInfo.cs" />
      <Compile Include="Assets\Scripts\Leaderboard\RankingController.cs" />
+     <Compile Include="Assets\Scripts\Leaderboard\RankingOnScreen.cs" />
+     <Compile Include="Assets\Scripts\Leaderboard\fillingPlayersList.cs" />
      <Compile Include="Assets\Scripts\Leaderboard\positionPlayer.cs" />
      <Compile Include="Assets\Scripts\MainController.cs" />
      <Compile Include="Assets\Scripts\MainMenu\ButtonsMainMenu.cs" />

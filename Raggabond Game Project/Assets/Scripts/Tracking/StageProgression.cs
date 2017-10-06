@@ -11,6 +11,12 @@ using UnityEngine;
 //no começo será mais lento, quando chegar a determinada pontuação a velocidade aumentará, e isso ocorrerá novamente
 public class StageProgression : MonoBehaviour {
 
+
+	[SerializeField]
+	Animator playerAnimator;  // Animator param: int stateAnim; 0:normal, 1:speeding, 2:jumping 
+	[SerializeField]
+	Sounds sounds;
+
 	//velocidade para 
 	// index: 0->começo da fase, 1->primeira mudança, 2->segunda mudança, e se houver mais, podem haver
 	[SerializeField]
@@ -25,7 +31,6 @@ public class StageProgression : MonoBehaviour {
 	private Track track; //para mudar a velocidade
 	[SerializeField]
 	private PlayerState playerState; //para checar o score
-
 
 //	[SerializeField]
 //	private GameObjectArray[] stageObstaclesPrefabs;
@@ -108,10 +113,13 @@ public class StageProgression : MonoBehaviour {
 			break;
 		}
 
-//		print ("blocks = " + blocks);
+//		print ("blocks = " + blocks);ex = "
 
 
-		GameObject objToReturn = Instantiate(blocks[Random.Range(0, blocks.Length)]);
+		int randIndex = Random.Range (0, blocks.Length - 1);
+//		print ("randIndex = " + randIndex);
+//		print ("blocks.Length = " + blocks.Length);
+		GameObject objToReturn = Instantiate(blocks[randIndex]);
 
 //		print ("objToReturn = " + objToReturn);
 
@@ -119,6 +127,22 @@ public class StageProgression : MonoBehaviour {
 		return objToReturn; //retorna um dos valores de blocks, aleatoriamente Random.Range(0, blocks.Length)		 
 
 	}
+
+
+
+//	IEnumerator quicklyAnimatePlayerSpeeding () {
+//
+//		if (playerAnimator.GetInteger ("stateAnim") != 1) { //se já não estiver correndo
+//			
+//			sounds.playAcelerateSfx ();
+//			playerAnimator.SetInteger ("stateAnim", 1);
+//
+//			yield return new WaitForSeconds (5f);
+//
+//			playerAnimator.SetInteger ("stateAnim", 0);
+//		}
+//
+//	}
 
 
 
@@ -139,6 +163,10 @@ public class StageProgression : MonoBehaviour {
 					track.DefaultNormalSpeed = normalSpeed [i];
 					track.DefaultFastSpeed = fastSpeed [i];
 					track.DefaultSlowSpeed = slowSpeed [i];
+
+//					if (i>0) //não rodar no começo do jogo
+//						StartCoroutine (quicklyAnimatePlayerSpeeding ());
+
 				} 
 //				else print ("playerState.Score < scoreToChangeSpeed [" + i + "]");
 
