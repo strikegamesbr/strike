@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class ScnObjManager : MonoBehaviour {
 
+
+	[SerializeField]
+	public bool EmptyStreetsForTesting = false;
+
 	[SerializeField]
 	private Material normalMaterial, hurtMaterial, pointMaterial;
 

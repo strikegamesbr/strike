@@ -23,8 +23,6 @@ public class MoreBackGroundCollisions : MonoBehaviour {
 			infiniteBackGround.createBG ();
 		}
 
-
-
 	}
 
 	void OnTriggerExit2D (Collider2D col)
@@ -36,8 +34,6 @@ public class MoreBackGroundCollisions : MonoBehaviour {
 	{
 
 	}
-
-
 
 
 	// Update is called once per frame

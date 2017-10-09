@@ -23,7 +23,8 @@ public class PlacerObjectsBlocks : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//precisa deste "estado" inicial
-		placeFirstObjBlock ();
+		if (!GetComponent<ScnObjManager>().EmptyStreetsForTesting) 
+			placeFirstObjBlock ();
 
 	}
 
