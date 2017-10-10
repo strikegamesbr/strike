@@ -53,7 +53,7 @@ public class InfiniteBackGround : MonoBehaviour {
 
 		}
 
-		print ("j=" + j);
+//		print ("j=" + j);
 
 
 		if (j >= 0 && j < Backgrounds.Length) {

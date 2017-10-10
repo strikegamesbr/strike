@@ -14,8 +14,12 @@ public class BackBuildings : MonoBehaviour {
 		}
 
 		set {
-			if (!lockSpeedChange)
+			if (!lockSpeedChange) {
 				speed = value;
+
+				print ("backSpeed = " + value);
+
+			}
 		}
 	}
 
@@ -46,10 +50,6 @@ public class BackBuildings : MonoBehaviour {
 
 		lockSpeedChange = true;
 	}
-
-
-	void 
-
 
 
 	// Update is called once per frame
