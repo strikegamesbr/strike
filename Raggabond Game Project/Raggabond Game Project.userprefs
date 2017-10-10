@@ -1,10 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BackBuildings\InfiniteBackGround.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SceneObjects\SceneObjects\PointfulScnObj.cs">
     <Files>
-      <File FileName="Assets\Scripts\BackBuildings\InfiniteBackGround.cs" Line="29" Column="53" />
-      <File FileName="Assets\Scripts\BackBuildings\BackBuildings.cs" Line="51" Column="7" />
-      <File FileName="Assets\Scripts\BackBuildings\MoreBackGroundCollisions.cs" Line="24" Column="4" />
+      <File FileName="Assets\Scripts\SceneObjects\PlacerObjectsBlocks.cs" Line="357" Column="8" />
+      <File FileName="Assets\Scripts\Tracking\StageProgression.cs" Line="146" Column="5" />
+      <File FileName="Assets\Scripts\SceneObjects\ScnObjManager.cs" Line="96" Column="61" />
+      <File FileName="Assets\Scripts\SceneObjects\SceneObjects\SceneObjects.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PoolingAux.cs" Line="78" Column="3" />
+      <File FileName="Assets\Scripts\Tracking\Track.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SceneObjects\SceneObjects\PointfulScnObj.cs" Line="27" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

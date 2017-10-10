@@ -33,12 +33,38 @@ public class StageProgression : MonoBehaviour {
 	private PlayerState playerState; //para checar o score
 
 //	[SerializeField]
-//	private GameObjectArray[] stageObstaclesPrefabs;
+//	private GameObject[] stage1ObstaclesPrefab, stage2ObstaclesPrefab, stage3ObstaclesPrefab, stage4ObstaclesPrefab, stage5ObstaclesPrefab, 
+//						 stage6ObstaclesPrefab, stage7ObstaclesPrefab, stage8ObstaclesPrefab, stage9ObstaclesPrefab;
 
-	[SerializeField]
-	private GameObject[] stage1ObstaclesPrefab, stage2ObstaclesPrefab, stage3ObstaclesPrefab, stage4ObstaclesPrefab, stage5ObstaclesPrefab, 
-						 stage6ObstaclesPrefab, stage7ObstaclesPrefab, stage8ObstaclesPrefab, stage9ObstaclesPrefab;
+	private int lastStage=1;	//começa em 1
+	private int currentStage=1; //começa em 1
 
+	public int LastStage {//começa em 1
+		get {
+			return lastStage;
+		}
+	}
+
+	public int CurrentStage {//começa em 1
+		get {
+			return currentStage;
+		}
+
+	}
+
+
+
+	void Awake () {
+		lastStage = scoreToChangeSpeed.Length;
+	}
+
+	// Use this for initialization
+	void Start () {
+		
+		track = GetComponent<Track> ();
+
+
+	}
 
 	//vamos checar se a velocidade do jogador é a do índice indicado
 	private bool isPlayerSpeedOfIndex(int index)
@@ -59,74 +85,65 @@ public class StageProgression : MonoBehaviour {
 		//se for menor que scoreToChangeSpeed[3] a fase é 3
 		//se não for, saiu do for, a fase é 4, o tamanho de scoreToChangeSpeed
 
-//		print ("0");
 		for (int i = 1; i < scoreToChangeSpeed.Length; i++) {
-//			print ("1");
-//			print ("playerState.Score = " + playerState.Score + " scoreToChangeSpeed [i] = " + scoreToChangeSpeed [i]);
+
 			if (playerState.Score < scoreToChangeSpeed [i]) {
-//				print ("2");
 				return i;
 			}
 		}
-//		print ("3");
+
 		return scoreToChangeSpeed.Length;
 
 	}
 
 
-	public GameObject getBlockOfObjects ()
-	{
-
-		GameObject[] blocks;
-
-		switch (numCurrentStage ()) {
-
-		case 1:
-			blocks = stage1ObstaclesPrefab;
-			break;
-		case 2:
-			blocks = stage2ObstaclesPrefab;
-			break;
-		case 3:
-			blocks = stage3ObstaclesPrefab;
-			break;
-		case 4:
-			blocks = stage4ObstaclesPrefab;
-			break;
-		case 5:
-			blocks = stage5ObstaclesPrefab;
-			break;
-		case 6:
-			blocks = stage6ObstaclesPrefab;
-			break;
-		case 7:
-			blocks = stage7ObstaclesPrefab;
-			break;
-		case 8:
-			blocks = stage8ObstaclesPrefab;
-			break;
-		case 9:
-			blocks = stage9ObstaclesPrefab;
-			break;
-		default:
-			blocks = null;
-			break;
-		}
-
-//		print ("blocks = " + blocks);ex = "
-
-
-		int randIndex = Random.Range (0, blocks.Length - 1);
-//		print ("randIndex = " + randIndex);
-//		print ("blocks.Length = " + blocks.Length);
-		GameObject objToReturn = Instantiate(blocks[randIndex]);
-
-//		print ("objToReturn = " + objToReturn);
-
-
-		return objToReturn; //retorna um dos valores de blocks, aleatoriamente Random.Range(0, blocks.Length)		 
-
-	}
+//
+//	public GameObject getBlockOfObjects ()
+//	{
+//
+//		GameObject[] blocks;
+//
+//		switch (numCurrentStage ()) {
+//
+//		case 1:
+//			blocks = stage1ObstaclesPrefab;
+//			break;
+//		case 2:
+//			blocks = stage2ObstaclesPrefab;
+//			break;
+//		case 3:
+//			blocks = stage3ObstaclesPrefab;
+//			break;
+//		case 4:
+//			blocks = stage4ObstaclesPrefab;
+//			break;
+//		case 5:
+//			blocks = stage5ObstaclesPrefab;
+//			break;
+//		case 6:
+//			blocks = stage6ObstaclesPrefab;
+//			break;
+//		case 7:
+//			blocks = stage7ObstaclesPrefab;
+//			break;
+//		case 8:
+//			blocks = stage8ObstaclesPrefab;
+//			break;
+//		case 9:
+//			blocks = stage9ObstaclesPrefab;
+//			break;
+//		default:
+//			blocks = null;
+//			break;
+//		}
+//
+//
+//		int randIndex = Random.Range (0, blocks.Length - 1);
+//		GameObject objToReturn = Instantiate(blocks[randIndex]);
+//
+//		return objToReturn; //retorna um dos valores de blocks, aleatoriamente Random.Range(0, blocks.Length)		 
+//
+//	}
 
 
 
@@ -145,36 +162,54 @@ public class StageProgression : MonoBehaviour {
 //	}
 
 
+//	//deve ser mantido privado
+//	private void changeCurrentStageTo (int value, System.Object thisObject) { 
+//		//para garantir que é privado
+//		if (thisObject == this) {
+//			currentStage = value;
+//		}
+//	}
 
-	// Use this for initialization
-	void Start () {
-		track = GetComponent<Track> ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
 
+	private void checkCurStage() 
+	{
 		for (int i = scoreToChangeSpeed.Length-1; i >= 0; i--) {
-
 			if (playerState.Score >= scoreToChangeSpeed [i]) {
-
 				if (!isPlayerSpeedOfIndex(i)) {
-//					print ("playerState.Score >= scoreToChangeSpeed [" + i + "]");
 					track.DefaultNormalSpeed = normalSpeed [i];
 					track.DefaultFastSpeed = fastSpeed [i];
 					track.DefaultSlowSpeed = slowSpeed [i];
-
-//					if (i>0) //não rodar no começo do jogo
-//						StartCoroutine (quicklyAnimatePlayerSpeeding ());
-
+					currentStage = i+1; //começa em 1
+					//					changeCurrentStageTo (i, this); //começa de 0
 				} 
-//				else print ("playerState.Score < scoreToChangeSpeed [" + i + "]");
 
 				break;
 
 			}
 
 		}
+	}
+
+	// Update is called once per frame
+	void Update () {
+
+		checkCurStage ();
+
+//		for (int i = scoreToChangeSpeed.Length-1; i >= 0; i--) {
+//			if (playerState.Score >= scoreToChangeSpeed [i]) {
+//				if (!isPlayerSpeedOfIndex(i)) {
+//					track.DefaultNormalSpeed = normalSpeed [i];
+//					track.DefaultFastSpeed = fastSpeed [i];
+//					track.DefaultSlowSpeed = slowSpeed [i];
+//					currentStage = i+1; //começa em 1
+////					changeCurrentStageTo (i, this); //começa de 0
+//				} 
+//
+//				break;
+//
+//			}
+//
+//		}
 
 	}
 }

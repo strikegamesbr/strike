@@ -20,13 +20,13 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
+		print ("col.name=" + col.name + " gameObject.name=" + gameObject.name);
 
-		if (col.name == "Player" && col.GetComponent<PlayerState> ().Lane == this.Lane) {
-
+		if (col.name == "Player" && col.GetComponent<PlayerState> ().Lane == this.Lane) {			
 			useItem ();
-
-		} else if (col.name == "destroyer")
-			Destroy (this.gameObject);
+		}  
+//		else if (col.name == "destroyer")
+//			this.gameObject.SetActive(false);;
 	}
 
 
@@ -68,7 +68,8 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 		sounds.playCollectitemSfx ();
 		yield return new WaitForSeconds (scnObjManager.TimeDamage/3);
 
-		Destroy (this.gameObject); //para destruir
+		scnObjManager.simulActivInactivObj (this.gameObject, false);
+//		this.gameObject.SetActive(false); //para destruir
 	}
 
 	//não delete abaixo ainda, é o código com shader

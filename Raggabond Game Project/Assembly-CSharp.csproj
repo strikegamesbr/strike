@@ -179,6 +179,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerState.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerStateold.cs" />
      <Compile Include="Assets\Scripts\Player\ScoreByTimeManager.cs" />
+     <Compile Include="Assets\Scripts\PoolingAux.cs" />
      <Compile Include="Assets\Scripts\SavedData\SavedData.cs" />
      <Compile Include="Assets\Scripts\SavedData\Singleton_SavedData.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\MoreObjBlockTrigger.cs" />

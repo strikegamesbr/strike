@@ -27,9 +27,9 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 			damagePlayer ();
 		}
 
-		if (col.name == "destroyer") {
-			Destroy (this.gameObject);
-		}
+//		if (col.name == "destroyer") {
+//			this.gameObject.SetActive(false);;
+//		}
 
 	}
 
@@ -98,7 +98,10 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 		if (!playerState.GameOver)
 			playerState.gameObject.GetComponent<ScoreByTimeManager>().HaltGainingPoints = false;
 
-		Destroy (this.gameObject);
+		scnObjManager.simulActivInactivObj (this.gameObject, false);
+
+
+//		this.gameObject.SetActive(false);
 
 	}
 

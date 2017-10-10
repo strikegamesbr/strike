@@ -10,6 +10,8 @@ public class SceneObjects : MonoBehaviour {
 	[SerializeField]
 	private Lane lane;
 
+	private Transform originalParent;
+
 	public  Lane  Lane {
 		get {
 			return lane;
@@ -28,6 +30,16 @@ public class SceneObjects : MonoBehaviour {
 
 		}
 
+	}
+
+	public Transform OriginalParent {
+		get {
+			return originalParent;
+		}
+
+		set {
+			originalParent = value;
+		}
 	}
 
 

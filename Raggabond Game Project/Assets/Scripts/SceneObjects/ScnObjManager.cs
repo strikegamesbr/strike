@@ -18,7 +18,6 @@ public class ScnObjManager : MonoBehaviour {
 	[SerializeField]
 	private Transform canvasParent; //para colocar objetos UI como filhos dele
 
-
 	public Text ScoreFromItemTextPrefab;
 
 	[SerializeField]
@@ -85,6 +84,17 @@ public class ScnObjManager : MonoBehaviour {
 		get {
 			return canvasParent;
 		}
+	}
+
+
+
+	//se desativar aqui deve ativar por aqui tb
+	public void simulActivInactivObj(GameObject gObject, bool activate) 
+	{
+
+		gObject.GetComponent<SpriteRenderer> ().enabled = activate;
+		gObject.GetComponent<BoxCollider2D> ().enabled = activate;
+
 	}
 
 
