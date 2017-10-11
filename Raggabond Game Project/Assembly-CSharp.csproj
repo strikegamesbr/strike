@@ -184,6 +184,7 @@
      <Compile Include="Assets\Scripts\SavedData\Singleton_SavedData.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\MoreObjBlockTrigger.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\NumMovableObjsManager.cs" />
+     <Compile Include="Assets\Scripts\SceneObjects\ObjectsPool.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\PlacerObjectsBlocks.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\SceneObjects\HurtfulScnObj.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\SceneObjects\PointfulScnObj.cs" />

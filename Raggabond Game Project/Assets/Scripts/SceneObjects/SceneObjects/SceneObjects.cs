@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SceneObjects : MonoBehaviour {
 
+
 	[SerializeField]
 	private Transform defaultParent;
 
@@ -43,15 +44,30 @@ public class SceneObjects : MonoBehaviour {
 	}
 
 
+
+	private bool isVisible = false;
 	private float yUpper, yMedium, yLower;
 
 
 	private ScnObjManager _scnObjManager;
 	private PlayerState _playerState;
 	private Sounds _sounds;
+	private Track _track;
+
 
 	[SerializeField]
 	private float speed;
+
+
+	public bool IsVisible {
+		get {
+			return isVisible;
+		}
+		set {
+			isVisible = value;
+		}
+	}
+
 
 	public ScnObjManager scnObjManager {
 		get {
@@ -91,6 +107,13 @@ public class SceneObjects : MonoBehaviour {
 	}
 
 
+	public Track track {
+		get {
+			return _track;
+		}
+	}
+
+
 	// Use this for initialization
 	//start e update não são passados por herança!
 	void Start () {
@@ -102,6 +125,7 @@ public class SceneObjects : MonoBehaviour {
 		_scnObjManager = FindObjectOfType<ScnObjManager> (); 
 		_playerState = FindObjectOfType<PlayerState> ();
 		_sounds = FindObjectOfType<Sounds> ();
+		_track = FindObjectOfType<Track> ();
 		defaultParent = transform.parent; //o parent dele é o mesmo objeto que tem o script ScnObjManager
 
 

@@ -12,7 +12,7 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 	// Use this for initialization
 	void Start () {
 		toStart ();
-		numMovObjMan = transform.parent.GetComponent<NumMovableObjsManager> ();
+		numMovObjMan = FindObjectOfType<NumMovableObjsManager> ();
 	}
 
 	void OnTriggerStay2D (Collider2D col) {
@@ -80,7 +80,7 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 		//tanto a corotina abaixo quanto a espera devem durar o mesmo tempo
 		//a rotina abaixo pára a estrada
 
-		StartCoroutine (track ().stopTrackForSeconds(timeToWait));
+		StartCoroutine (track.stopTrackForSeconds(timeToWait));
 
 		sounds.playCollideSfx ();
 		srHurtObj.material = hurtMat;
@@ -98,18 +98,11 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 		if (!playerState.GameOver)
 			playerState.gameObject.GetComponent<ScoreByTimeManager>().HaltGainingPoints = false;
 
-		scnObjManager.simulActivInactivObj (this.gameObject, false);
-
-
-//		this.gameObject.SetActive(false);
+//		scnObjManager.simulActivInactivObj (this.gameObject, false);
+		gameObject.SetActive(false);
 
 	}
 
-
-	private Track track ()
-	{
-		return transform.parent.parent.GetComponent<Track> ();
-	}
 
 
 	//vai checar se este é um objeto que se move (tem speed>0) e que se tornou visível agora
@@ -125,6 +118,8 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 		#endif
 		// put your code here
 
+		IsVisible = true;
+
 		if (Speed != 0) {
 			numMovObjMan.OneMovableObjectBecameVisible (this.gameObject);
 		}
@@ -133,12 +128,14 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 
 	void OnBecameInvisible ()
 	{
-//		//se for a câmera do editor do Unity não interessa
-//		#if UNITY_EDITOR
-//		if (Camera.current.name == "SceneCamera") 
-//			return;
-//		#endif
-//		// put your code here
+		//se for a câmera do editor do Unity não interessa
+		#if UNITY_EDITOR
+		if (Camera.current.name == "SceneCamera") 
+			return;
+		#endif
+		// put your code here
+
+		IsVisible = false;
 
 		//usamos o try pois um dos motivos dele se tornar invisível pode ser sua destruição
 		try {

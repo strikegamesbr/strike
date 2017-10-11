@@ -68,9 +68,42 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 		sounds.playCollectitemSfx ();
 		yield return new WaitForSeconds (scnObjManager.TimeDamage/3);
 
-		scnObjManager.simulActivInactivObj (this.gameObject, false);
-//		this.gameObject.SetActive(false); //para destruir
+//		scnObjManager.simulActivInactivObj (this.gameObject, false);
+		gameObject.SetActive(false); //para destruir
 	}
+
+
+
+	void OnBecameVisible ()
+	{
+
+		//se for a câmera do editor do Unity não interessa
+		#if UNITY_EDITOR
+		if (Camera.current.name == "SceneCamera") 
+			return;
+		#endif
+		// put your code here
+
+		IsVisible = true;
+
+	}
+
+
+	void OnBecameInvisible ()
+	{
+		//se for a câmera do editor do Unity não interessa
+		#if UNITY_EDITOR
+		if (Camera.current.name == "SceneCamera") 
+			return;
+		#endif
+		// put your code here
+
+		IsVisible = false;
+
+
+	}
+
+
 
 	//não delete abaixo ainda, é o código com shader
 //	//somente as animações associadas, não a pontuação (vida?) em si

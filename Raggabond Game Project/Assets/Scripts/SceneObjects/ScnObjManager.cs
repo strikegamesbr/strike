@@ -88,14 +88,14 @@ public class ScnObjManager : MonoBehaviour {
 
 
 
-	//se desativar aqui deve ativar por aqui tb
-	public void simulActivInactivObj(GameObject gObject, bool activate) 
-	{
-
-		gObject.GetComponent<SpriteRenderer> ().enabled = activate;
-		gObject.GetComponent<BoxCollider2D> ().enabled = activate;
-
-	}
+//	//se desativar aqui deve ativar por aqui tb
+//	public void simulActivInactivObj(GameObject gObject, bool activate) 
+//	{
+//
+//		gObject.GetComponent<SpriteRenderer> ().enabled = activate;
+////		gObject.GetComponent<BoxCollider2D> ().enabled = activate;
+//
+//	}
 
 
 	//mostrar o score ganho ao pegar um item subindo

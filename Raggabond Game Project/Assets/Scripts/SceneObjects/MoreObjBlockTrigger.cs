@@ -10,7 +10,9 @@ public class MoreObjBlockTrigger : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		plObjBlocks = transform.parent.GetComponent<PlacerObjectsBlocks> ();
+//		plObjBlocks = transform.parent.GetComponent<PlacerObjectsBlocks> ();
+
+		plObjBlocks = FindObjectOfType<PlacerObjectsBlocks> ();
 
 	}
 

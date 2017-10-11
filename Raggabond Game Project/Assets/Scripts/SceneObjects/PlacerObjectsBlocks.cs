@@ -28,93 +28,6 @@ public class PlacerObjectsBlocks : MonoBehaviour {
 						stage6Obstacles, stage7Obstacles, stage8Obstacles, stage9Obstacles;
 
 
-	//hierarchy daqui, então esta classe retornará um aleatório para a fase dada, e a outra classe colocará
-	//no cenário, com algoritmo parecido com o dos blocos de casas, mas tirará todos os filhos dele e deixará
-	//o SceneObjectsManager como parent, e daí setará para mudar a posição de acordo com o lane.
-
-
-//	// Use this for initialization
-//	void Awake () {
-//
-//		//vamos instanciar cada bloco, cada stageObstacles será um pool de sua respectiva fase
-//		//lembre-se que eles são instanciados com null como parent
-//		int i = 0;
-//		int length = 0;
-//
-//		if (stageProgression.LastStage >= 1) {
-//			length = stage1ObstaclesPrefab.Length;
-//			stage1Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage1Obstacles [i] = Instantiate (stage1ObstaclesPrefab [i]);
-//			}
-//		}
-//
-//		if (stageProgression.LastStage >= 2) {
-//			length = stage2ObstaclesPrefab.Length;
-//			stage2Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage2Obstacles [i] = Instantiate (stage2ObstaclesPrefab [i]);
-//			}
-//		}
-//
-//		if (stageProgression.LastStage >= 3) {
-//			length = stage3ObstaclesPrefab.Length;
-//			stage3Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage3Obstacles [i] = Instantiate (stage3ObstaclesPrefab [i]);
-//			}
-//		}
-//
-//		if (stageProgression.LastStage >= 4) {
-//			length = stage4ObstaclesPrefab.Length;
-//			stage4Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage4Obstacles [i] = Instantiate (stage4ObstaclesPrefab [i]);
-//			}
-//		}
-//
-//		if (stageProgression.LastStage >= 5) {
-//			length = stage5ObstaclesPrefab.Length;
-//			stage5Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage5Obstacles [i] = Instantiate (stage5ObstaclesPrefab [i]);
-//			}
-//		}
-//
-//		if (stageProgression.LastStage >= 6) {
-//			length = stage6ObstaclesPrefab.Length;
-//			stage6Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage6Obstacles [i] = Instantiate (stage6ObstaclesPrefab [i]);
-//			}
-//		}
-//
-//		if (stageProgression.LastStage >= 7) {
-//			length = stage7ObstaclesPrefab.Length;
-//			stage7Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage7Obstacles [i] = Instantiate (stage7ObstaclesPrefab [i]);
-//			}
-//		}
-//
-//		if (stageProgression.LastStage >= 8) {
-//			length = stage8ObstaclesPrefab.Length;
-//			stage8Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage8Obstacles [i] = Instantiate (stage8ObstaclesPrefab [i]);
-//			}
-//		}
-//
-//		if (stageProgression.LastStage >= 9) {
-//			length = stage9ObstaclesPrefab.Length;
-//			stage9Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage1Obstacles [i] = Instantiate (stage9ObstaclesPrefab [i]);
-//			}
-//		}
-//
-//	}
-
 
 	void Start() {
 
@@ -163,92 +76,6 @@ public class PlacerObjectsBlocks : MonoBehaviour {
 
 	}
 
-//
-//		int i = 0;
-//		int length = 0;
-//
-//		if (stageProgression.LastStage >= 1) {
-//			length = stage1ObstaclesPrefab.Length;
-//			stage1Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage1Obstacles [i] = Instantiate (stage1ObstaclesPrefab [i]);
-//
-//				stage1Obstacles [i].SetActive (true);
-//				foreach (Transform obj in stage1Obstacles [i].transform) {
-//					obj.GetComponent<ScnObjManager> ().OriginalParent = obj.parent;
-//				}
-//				stage1Obstacles [i].SetActive (false);
-//			}
-//		}
-//
-//		if (stageProgression.LastStage >= 2) {
-//			length = stage2ObstaclesPrefab.Length;
-//			stage2Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage2Obstacles [i] = Instantiate (stage2ObstaclesPrefab [i]);
-//			}
-//
-//
-//		}
-//
-//		if (stageProgression.LastStage >= 3) {
-//			length = stage3ObstaclesPrefab.Length;
-//			stage3Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage3Obstacles [i] = Instantiate (stage3ObstaclesPrefab [i]);
-//			}
-//		}
-//
-//		if (stageProgression.LastStage >= 4) {
-//			length = stage4ObstaclesPrefab.Length;
-//			stage4Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage4Obstacles [i] = Instantiate (stage4ObstaclesPrefab [i]);
-//			}
-//		}
-//
-//		if (stageProgression.LastStage >= 5) {
-//			length = stage5ObstaclesPrefab.Length;
-//			stage5Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage5Obstacles [i] = Instantiate (stage5ObstaclesPrefab [i]);
-//			}
-//		}
-//
-//		if (stageProgression.LastStage >= 6) {
-//			length = stage6ObstaclesPrefab.Length;
-//			stage6Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage6Obstacles [i] = Instantiate (stage6ObstaclesPrefab [i]);
-//			}
-//		}
-//
-//		if (stageProgression.LastStage >= 7) {
-//			length = stage7ObstaclesPrefab.Length;
-//			stage7Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage7Obstacles [i] = Instantiate (stage7ObstaclesPrefab [i]);
-//			}
-//		}
-//
-//		if (stageProgression.LastStage >= 8) {
-//			length = stage8ObstaclesPrefab.Length;
-//			stage8Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage8Obstacles [i] = Instantiate (stage8ObstaclesPrefab [i]);
-//			}
-//		}
-//
-//		if (stageProgression.LastStage >= 9) {
-//			length = stage9ObstaclesPrefab.Length;
-//			stage9Obstacles = new GameObject[length];
-//			for (i = 0; i < length; i++) {
-//				stage1Obstacles [i] = Instantiate (stage9ObstaclesPrefab [i]);
-//			}
-//		}
-
-
-
 
 	private void InstantiateStageObstaclesFromPrefab(ref GameObject[] stageObstacles, GameObject[] stageObstaclesPrefab)
 	{
@@ -275,6 +102,7 @@ public class PlacerObjectsBlocks : MonoBehaviour {
 					}
 
 				}
+				stageObstacles [i].transform.parent = defaultParent;
 				stageObstacles [i].SetActive (false);
 			}
 		}
@@ -286,22 +114,18 @@ public class PlacerObjectsBlocks : MonoBehaviour {
 	private void placeFirstObjBlock ()
 	{
 		//vamos instanciar o bloco inicial
-//		Transform newBlock = stageProgression.getBlockOfObjects().transform;
-
 		Transform newBlock = stage1Obstacles [Random.Range (0, stage1Obstacles.Length)].transform;
+
+		//para a posição abaixo funcionar
+		newBlock.parent = null;
 
 		newBlock.position = new Vector3 (startX, newBlock.position.y, newBlock.position.z);
 
 		newBlock.gameObject.SetActive (true);
 
 		previousObjBlock = newBlock;
-//		toEraseObjBlock = null;
 
-		//cada objeto deverá ter SceneObjectsManager como parent, daí eles sairão de newblock
-		Transform[] objects = newBlock.GetComponentsInChildren<Transform> ();
-		foreach (Transform obj in objects) {
-			obj.parent = defaultParent;
-		}
+		newBlock.parent = defaultParent;
 
 	}
 
@@ -336,10 +160,10 @@ public class PlacerObjectsBlocks : MonoBehaviour {
 	}
 
 
-
-
 	public void putObjectsBlock ()
 	{
+		//para manipular as posições melhor
+//		previousObjBlock.parent = null;
 
 		//A posição currentX está no meio do bloco anterior
 		//Vamos mover meio bloco anterior para chegar ao seu fim
@@ -355,6 +179,9 @@ public class PlacerObjectsBlocks : MonoBehaviour {
 		print ("curStageObstacles = " + curStageObstacles);
 
 		Transform newBlock = poolAux.createObject(getcurStageObstacles(), ref previousObjBlock).transform;
+		//para manipular as posições melhor
+//		newBlock.parent = null;
+
 
 		print ("newBlock=" + newBlock);
 
@@ -364,40 +191,61 @@ public class PlacerObjectsBlocks : MonoBehaviour {
 		newX = newX + boundsNext.size.x/2;
 
 
+		//vamos reativar os objetos
+		foreach (Transform child in newBlock)
+			child.gameObject.SetActive (true);
+
+
+//		Transform[] objectsBlocksAll = defaultParent.GetComponentsInChildren<Transform> (true);
+//
+//		foreach (Transform blocksObj in objectsBlocksAll) {	
+//
+//			Transform[] objects = blocksObj.GetComponentsInChildren<Transform> (true);
+//
+//			foreach (Transform tObj in objects)
+//				tObj.gameObject.SetActive (true);
+//		}
+
+
+
 		//antes de mudar a posição vamos colocar cada objeto de volta a ser child dele
 		//e ativá-lo
-		Transform[] objectsAll = defaultParent.GetComponentsInChildren<Transform> ();
-
-		foreach (Transform obj in objectsAll) {	
-
-			//se não for um é outro
-			try {				
-				if (obj.GetComponent<HurtfulScnObj> ().OriginalParent == newBlock) {
-					obj.parent = newBlock;
-					scnObjMan.simulActivInactivObj (obj.gameObject, true);
-				}
-
-			} catch {	
-				try {	
-					if (obj.GetComponent<PointfulScnObj> ().OriginalParent == newBlock) {
-						obj.parent = newBlock;
-						scnObjMan.simulActivInactivObj (obj.gameObject, true);
-					}
-				} catch {
-				}
-			}
-
-		}
+//		Transform[] objectsAll = defaultParent.GetComponentsInChildren<Transform> (true);
+//
+//		foreach (Transform obj in objectsAll) {	
+//
+//			//se não for um é outro
+//			try {				
+//				if (obj.GetComponent<HurtfulScnObj> ().OriginalParent == newBlock) {
+//					obj.parent = newBlock;
+////					scnObjMan.simulActivInactivObj (obj.gameObject, true);
+//					obj.gameObject.SetActive(true);
+//				}
+//
+//			} catch {	
+//				try {	
+//					if (obj.GetComponent<PointfulScnObj> ().OriginalParent == newBlock) {
+//						obj.parent = newBlock;
+////						scnObjMan.simulActivInactivObj (obj.gameObject, true);
+//						obj.gameObject.SetActive(true);
+//					}
+//				} catch {
+//				}
+//			}
+//
+//		}
 
 		//posição
 		newBlock.position = new Vector3 (newX, newBlock.position.y, newBlock.position.z);
 
+		newBlock.parent = defaultParent;
+
 
 		//cada objeto deverá ter SceneObjectsManager como parent, daí eles sairão de newblock
-		Transform[] objects = newBlock.GetComponentsInChildren<Transform> ();
-		foreach (Transform obj in objects) {			
-			obj.parent = defaultParent;
-		}
+//		Transform[] objects = newBlock.GetComponentsInChildren<Transform> (true);
+//		foreach (Transform obj in objects) {			
+//			obj.parent = defaultParent;
+//		}
 
 //		//apagar toEraseBlock, o bem anterior
 //		if (toEraseObjBlock != null) //só é null se for a primeira iteração
@@ -419,7 +267,7 @@ public class PlacerObjectsBlocks : MonoBehaviour {
 	void Update () {
 
 
-		print ("previousObjBlock=" + previousObjBlock);
+//		print ("previousObjBlock=" + previousObjBlock);
 
 	}
 }
