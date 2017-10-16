@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MoreObjBlockTrigger : MonoBehaviour {
 
-	PlacerObjectsBlocks plObjBlocks;
+//	PlacerObjectsBlocks plObjBlocks;
+	BlockOfObjects blockOfObjects;
 
 
 	// Use this for initialization
@@ -12,7 +13,8 @@ public class MoreObjBlockTrigger : MonoBehaviour {
 
 //		plObjBlocks = transform.parent.GetComponent<PlacerObjectsBlocks> ();
 
-		plObjBlocks = FindObjectOfType<PlacerObjectsBlocks> ();
+//		plObjBlocks = FindObjectOfType<PlacerObjectsBlocks> ();
+		blockOfObjects = FindObjectOfType<BlockOfObjects> ();
 
 	}
 
@@ -22,7 +24,8 @@ public class MoreObjBlockTrigger : MonoBehaviour {
 	{
 
 		if (col.name == "Player") {
-			plObjBlocks.putObjectsBlock ();
+			blockOfObjects.placeObstaclesOnScene ();
+//			plObjBlocks.putObjectsBlock ();
 		}
 
 

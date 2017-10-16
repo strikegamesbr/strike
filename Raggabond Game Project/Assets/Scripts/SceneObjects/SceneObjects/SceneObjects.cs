@@ -46,6 +46,7 @@ public class SceneObjects : MonoBehaviour {
 
 
 	private bool isVisible = false;
+	private bool taken = false; //se já foi pega para fazer parte de um bloco de objetos
 	private float yUpper, yMedium, yLower;
 
 
@@ -65,6 +66,15 @@ public class SceneObjects : MonoBehaviour {
 		}
 		set {
 			isVisible = value;
+		}
+	}
+
+	public bool Taken {
+		get {
+			return taken;
+		}
+		set {
+			taken = value;
 		}
 	}
 
@@ -130,7 +140,7 @@ public class SceneObjects : MonoBehaviour {
 
 
 
-		if (gameObject.name.Contains ("apple")) {
+		if (gameObject.name.Contains ("coin")) {
 			yUpper = scnObjManager.yUpperApple;
 			yMedium = scnObjManager.yMediumApple;
 			yLower = scnObjManager.yLowerApple;
@@ -150,7 +160,7 @@ public class SceneObjects : MonoBehaviour {
 			yMedium = scnObjManager.yMediumPatinadora;
 			yLower = scnObjManager.yLowerPatinadora;
 			speed = scnObjManager.speedPatinadora;
-		} else if ( gameObject.name.Contains ("beachBall")) {
+		} else if ( gameObject.name.Contains ("cone")) {
 			yUpper = scnObjManager.yUpperBeachBall;
 			yMedium = scnObjManager.yMediumBeachBall;
 			yLower = scnObjManager.yLowerBeachBall;
@@ -199,7 +209,7 @@ public class SceneObjects : MonoBehaviour {
 	protected void toUpdate ()
 	{		
 		Lane = lane; //caso o valor seja mudado na janela 
-		transform.position = transform.position + new Vector3((speed*Time.deltaTime)/10, 0, 0);
+		transform.position = transform.position + new Vector3( ( (-track.CurrentSpeed+speed) * Time.deltaTime )/10 , 0, 0);
 
 	}
 

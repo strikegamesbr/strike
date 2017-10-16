@@ -184,7 +184,8 @@
      <Compile Include="Assets\Scripts\SavedData\Singleton_SavedData.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\MoreObjBlockTrigger.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\NumMovableObjsManager.cs" />
-     <Compile Include="Assets\Scripts\SceneObjects\ObjectsPool.cs" />
+     <Compile Include="Assets\Scripts\SceneObjects\ObjectsBlocks\BlockOfObjects.cs" />
+     <Compile Include="Assets\Scripts\SceneObjects\ObjectsBlocks\ObjectsPool.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\PlacerObjectsBlocks.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\SceneObjects\HurtfulScnObj.cs" />
      <Compile Include="Assets\Scripts\SceneObjects\SceneObjects\PointfulScnObj.cs" />
@@ -197,6 +198,7 @@
      <Compile Include="Assets\Scripts\Tracking\MoreFloorCollisions.cs" />
      <Compile Include="Assets\Scripts\Tracking\StageProgression.cs" />
      <Compile Include="Assets\Scripts\Tracking\Track.cs" />
+     <Compile Include="Assets\Scripts\Tracking\TrackSpeed.cs" />
      <Compile Include="Assets\Scripts\enums.cs" />
      <Compile Include="Assets\Scripts\misc\GameObjectArray.cs" />
      <Compile Include="Assets\Scripts\misc\teste.cs" />

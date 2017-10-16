@@ -17,7 +17,7 @@ public class BackBuildings : MonoBehaviour {
 			if (!lockSpeedChange) {
 				speed = value;
 
-				print ("backSpeed = " + value);
+//				print ("backSpeed = " + value);
 
 			}
 		}

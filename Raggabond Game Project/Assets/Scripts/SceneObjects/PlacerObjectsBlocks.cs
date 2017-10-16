@@ -8,7 +8,7 @@ public class PlacerObjectsBlocks : MonoBehaviour {
 	private PoolingAux poolAux;
 
 	[SerializeField]
-	private float startX = 12.9f;
+	private float startX = 40f;
 
 	private ScnObjManager scnObjMan;
 

@@ -1,13 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SceneObjects\SceneObjects\PointfulScnObj.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SceneObjects\SceneObjects\HurtfulScnObj.cs">
     <Files>
-      <File FileName="Assets\Scripts\SceneObjects\PlacerObjectsBlocks.cs" Line="119" Column="36" />
-      <File FileName="Assets\Scripts\SceneObjects\SceneObjects\PointfulScnObj.cs" Line="101" Column="21" />
-      <File FileName="Assets\Scripts\SceneObjects\SceneObjects\HurtfulScnObj.cs" Line="151" Column="3" />
-      <File FileName="Assets\Scripts\SceneObjects\SceneObjects\SceneObjects.cs" Line="44" Column="3" />
-      <File FileName="Assets\Scripts\SceneObjects\MoreObjBlockTrigger.cs" Line="15" Column="33" />
-      <File FileName="Assets\Scripts\SceneObjects\ObjectsPool.cs" Line="23" Column="9" />
+      <File FileName="Assets\Scripts\SceneObjects\ObjectsBlocks\BlockOfObjects.cs" Line="62" Column="29" />
+      <File FileName="Assets\Scripts\SceneObjects\SceneObjects\PointfulScnObj.cs" Line="123" Column="13" />
+      <File FileName="Assets\Scripts\SceneObjects\SceneObjects\HurtfulScnObj.cs" Line="122" Column="22" />
+      <File FileName="Assets\Scripts\SceneObjects\MoreObjBlockTrigger.cs" Line="27" Column="35" />
+      <File FileName="Assets\Scripts\SceneObjects\SceneObjects\SceneObjects.cs" Line="3" Column="19" />
+      <File FileName="Assets\Scripts\SceneObjects\ObjectsBlocks\ObjectsPool.cs" Line="64" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

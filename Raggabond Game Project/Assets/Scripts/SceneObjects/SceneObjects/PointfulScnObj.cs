@@ -20,7 +20,7 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		print ("col.name=" + col.name + " gameObject.name=" + gameObject.name);
+//		print ("col.name=" + col.name + " gameObject.name=" + gameObject.name);
 
 		if (col.name == "Player" && col.GetComponent<PlayerState> ().Lane == this.Lane) {			
 			useItem ();
@@ -35,12 +35,17 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 
 		if (!lockFurtherUse) {
 
-			lockFurtherUse = true; //não precisa voltar a ser falso pois será destruído
+
+//			lockFurtherUse = true; //não precisa voltar a ser falso pois será destruído
+
+//			StartCoroutine(lockFurtherUseForSeconds(3));
+
+			lockFurtherUse = true; //vai ser destrancado quando o objeto for desabilitado
 
 			ulong scoreToGain = 0;
 			int livesToGain = 0;
 
-			if (gameObject.name.Contains("apple")) {
+			if (gameObject.name.Contains("coin")) {
 				scoreToGain = scnObjManager.scoreApple;
 				livesToGain = scnObjManager.livesApple; //é 0, mas pode mudar
 			} else if (gameObject.name.Contains("guitar")) {
@@ -56,9 +61,16 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 			StartCoroutine (playerGetPointsFromObjRoutine ());
 			scnObjManager.showScoreGained(scoreToGain, this.transform);
 
-
 		}
 
+	}
+
+
+	IEnumerator lockFurtherUseForSeconds(float seconds)
+	{
+		lockFurtherUse = true;
+		yield return new WaitForSeconds (seconds);
+		lockFurtherUse = false;
 	}
 
 	//somente as animações associadas, não a pontuação (vida?) em si
@@ -93,16 +105,23 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 	{
 		//se for a câmera do editor do Unity não interessa
 		#if UNITY_EDITOR
+		try {
 		if (Camera.current.name == "SceneCamera") 
 			return;
+		} catch {}
 		#endif
 		// put your code here
 
 		IsVisible = false;
+		Taken = false; //se ficou invisível pode ficar disponível para outros blocos
 
 
 	}
 
+
+	void OnEnable () {
+		lockFurtherUse = false;
+	}
 
 
 	//não delete abaixo ainda, é o código com shader
@@ -171,6 +190,12 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 //
 //	}
 
+
+	void OnDestroy ()
+	{
+		print ("destruído?");
+
+	}
 
 
 	// Update is called once per frame

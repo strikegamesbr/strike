@@ -1,0 +1,305 @@
+Bloco 1:
+
+
+coin 0
+2.4f
+lower
+
+
+coin 1
+6.4f
+middle
+
+
+cone 2
+10.6f
+middle
+
+
+cone 3
+12.7f
+lower
+
+
+skatista 4
+20.3f
+upper
+
+
+cone 5
+22.0f
+middle
+
+
+lilMario 6
+29.3f
+upper
+
+
+skatista 7
+29.4f
+lower
+
+
+coin 8
+35.3f
+lower
+
+
+coin 9
+38.4f
+lower
+
+
+coin 10
+41.4f
+lower
+
+
+coin 11
+43.7f
+upper
+
+
+coin 12
+46.4f
+upper
+
+
+coin 13
+48.8f
+upper
+
+
+lilMario 14
+51.7f
+upper
+
+
+cone 15
+54.5f
+middle
+
+
+cone 16
+57.0f
+lower
+
+
+skatista 17
+65.6f
+upper
+
+
+lilMario 18
+68.9f
+lower
+
+
+
+
+
+Bloco 2:
+
+
+skatista 0
+6.8f
+upper
+
+
+skatista 1
+9.5f
+lower
+
+
+lilMario 2
+15.2f
+upper
+
+
+cone 3
+17.1f
+middle
+
+
+cone 4
+19.8f
+middle
+
+
+coin 5
+24.7f
+middle
+
+
+coin 6
+27.2f
+middle
+
+
+coin 7
+29.5f
+middle
+
+
+coin 8
+32.5f
+lower
+
+
+coin 9
+35.2f
+lower
+
+
+coin 10
+37.7f
+lower
+
+
+skatista 11
+39.7f
+upper
+
+
+lilMario 12
+41.5f
+middle
+
+
+skatista 13
+42.8f
+lower
+
+
+cone 14
+49.9f
+middle
+
+
+cone 15
+52.6f
+middle
+
+
+guitar 16
+57.5f
+middle
+
+
+skatista 17
+65.9f
+upper
+
+
+skatista 18
+68.6f
+lower
+
+
+Bloco 3:
+
+
+coin 0
+2.4f
+middle
+
+
+coin 1
+4.6f
+middle
+
+
+coin 2
+7f
+middle
+
+
+cone 3
+18.5f
+upper
+
+
+cone 4
+18.5f
+lower
+
+
+coin 5
+24.5f
+middle
+
+
+coin 6
+26.9f
+middle
+
+
+coin 7
+28.9f
+middle
+
+
+coin 8
+31.3f
+lower
+
+
+coin 9
+33.8f
+lower
+
+
+coin 10
+36.2f
+lower
+
+
+lilMario 11
+40.3f
+middle
+
+
+skatista 12
+41.2f
+lower
+
+
+skatista 13
+42f
+upper
+
+
+skatista 14
+48.6f
+middle
+
+
+skatista 15
+53f
+middle
+
+
+skatista 16
+55.4f
+lower
+
+
+coin 17
+57.7f
+lower
+
+
+coin 18
+60.3f
+lower
+
+
+coin 19
+63.3f
+lower
+
+
+lilMario 20
+68f
+lower

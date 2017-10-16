@@ -48,7 +48,7 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 				damageToTake = scnObjManager.danoSkatista;
 			else if (gameObject.name.Contains ("patinadora"))
 				damageToTake = scnObjManager.danoPatinadora;
-			else if (gameObject.name.Contains ("beachBall"))
+			else if (gameObject.name.Contains ("cone"))
 				damageToTake = scnObjManager.danoBeachBall;
 
 			playerState.takeDamage (damageToTake);
@@ -119,6 +119,7 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 		// put your code here
 
 		IsVisible = true;
+		lockDamage = false;
 
 		if (Speed != 0) {
 			numMovObjMan.OneMovableObjectBecameVisible (this.gameObject);
@@ -130,12 +131,15 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 	{
 		//se for a câmera do editor do Unity não interessa
 		#if UNITY_EDITOR
+		try {
 		if (Camera.current.name == "SceneCamera") 
 			return;
+		} catch {}
 		#endif
 		// put your code here
 
 		IsVisible = false;
+		Taken = false; //se ficou invisível pode ficar disponível para outros blocos
 
 		//usamos o try pois um dos motivos dele se tornar invisível pode ser sua destruição
 		try {
@@ -149,6 +153,12 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 
 
 	}
+
+//	void OnDestroy ()
+//	{
+//		print ("destruído? " + this.gameObject.name);
+//
+//	}
 	
 	// Update is called once per frame
 	void Update () {
