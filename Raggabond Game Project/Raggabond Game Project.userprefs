@@ -1,13 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SceneObjects\SceneObjects\HurtfulScnObj.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Leaderboard\FacebookAndPlayFabFunctions.cs">
     <Files>
-      <File FileName="Assets\Scripts\SceneObjects\ObjectsBlocks\BlockOfObjects.cs" Line="62" Column="29" />
-      <File FileName="Assets\Scripts\SceneObjects\SceneObjects\PointfulScnObj.cs" Line="123" Column="13" />
-      <File FileName="Assets\Scripts\SceneObjects\SceneObjects\HurtfulScnObj.cs" Line="122" Column="22" />
-      <File FileName="Assets\Scripts\SceneObjects\MoreObjBlockTrigger.cs" Line="27" Column="35" />
-      <File FileName="Assets\Scripts\SceneObjects\SceneObjects\SceneObjects.cs" Line="3" Column="19" />
-      <File FileName="Assets\Scripts\SceneObjects\ObjectsBlocks\ObjectsPool.cs" Line="64" Column="1" />
+      <File FileName="Assets\Scripts\SceneObjects\ObjectsBlocks\BlockOfObjects.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SceneObjects\SceneObjects\PointfulScnObj.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SceneObjects\SceneObjects\HurtfulScnObj.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SceneObjects\MoreObjBlockTrigger.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SceneObjects\SceneObjects\SceneObjects.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SceneObjects\ObjectsBlocks\ObjectsPool.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Leaderboard\FacebookAndPlayFabFunctions.cs" Line="26" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
