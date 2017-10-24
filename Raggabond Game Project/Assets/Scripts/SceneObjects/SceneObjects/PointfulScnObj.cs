@@ -15,19 +15,34 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 
 
 	void OnTriggerStay2D (Collider2D col) {
-		OnTriggerEnter2D (col);
+		
+		checkAndUseItem (col);
+//		if (col.name == "Player" && col.GetComponent<PlayerState> ().Lane == this.Lane) {
+//			useItem ();
+//		}
 	}
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
-//		print ("col.name=" + col.name + " gameObject.name=" + gameObject.name);
 
-		if (col.name == "Player" && col.GetComponent<PlayerState> ().Lane == this.Lane) {			
-			useItem ();
-		}  
+		checkAndUseItem (col);
+//		print ("col.name=" + col.name + " gameObject.name=" + gameObject.name);
+//
+//		if (col.name == "Player" && col.GetComponent<PlayerState> ().Lane == this.Lane) {			
+//			useItem ();
+//		}  
 //		else if (col.name == "destroyer")
 //			this.gameObject.SetActive(false);;
 	}
+
+
+	private void checkAndUseItem (Collider2D col) {
+		if (col.name == "Player" && col.GetComponent<PlayerState> ().Lane == this.Lane) {
+			
+			useItem ();
+		} 
+	}
+
 
 
 	private void useItem ()
@@ -35,7 +50,7 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 
 		if (!lockFurtherUse) {
 
-
+			Debug.Log ("Pegou item " + Kind + " (009)");
 //			lockFurtherUse = true; //não precisa voltar a ser falso pois será destruído
 
 //			StartCoroutine(lockFurtherUseForSeconds(3));
@@ -193,7 +208,7 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 
 	void OnDestroy ()
 	{
-		print ("destruído?");
+//		print ("destruído?");
 
 	}
 

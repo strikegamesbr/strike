@@ -74,10 +74,12 @@
      <Compile Include="Assets\PlayFabEditorExtensions\Editor\Scripts\Utils\PlayFabGuiFieldHelper.cs" />
      <Compile Include="Assets\PlayFabSdk\Shared\Editor\PlayFabHelp.cs" />
      <Compile Include="Assets\PlayFabSdk\Shared\Models\Editor\MakeSharedSettingsObj.cs" />
+     <Compile Include="Assets\Unity-Logs-Viewer\Reporter\Editor\ReporterEditor.cs" />
      <None Include="Assets\PlayFabSdk\link.xml" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\PlayServicesResolver\Editor\play-services-resolver.txt" />
      <None Include="Assets\FacebookSDK\link.xml" />
+     <None Include="Assets\StreamingAssets\build_info.txt" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>D:/Guilherme2/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>

@@ -10,7 +10,8 @@ public class PoolingAux : MonoBehaviour {
 	//prefabsToFillPool são os prefabs dos objetos que preencherão PoolArray, serão instanciados aqui
 	//mais um objeto ocupará PoolArray, e é startVisibleObj - ele é o objeto inicial, aparecerá na tela
 	//ele já deve estar colocado no editor - a rotação dos outros será copiada dele
-	public void toStart(ref GameObject[] PoolArray, Transform[] prefabsToFillPool, Transform startVisibleObj, Transform parent) {
+	public void toStart(ref GameObject[] PoolArray, Transform[] prefabsToFillPool, Transform startVisibleObj, Transform parent) 
+	{
 
 		PoolArray = new GameObject[prefabsToFillPool.Length + 1];
 

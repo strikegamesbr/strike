@@ -25,6 +25,8 @@ public class Blocks : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+
+		Debug.Log ("Vamos colocar o quarteirão inicial - (002)");
 		//vamos instanciar o bloco inicial, que vai aparecer no início do jogo
 		Transform newBlock = Instantiate (blocksPrefabs [0].gameObject).transform;
 		newBlock.position = new Vector3 (startX, blocksPrefabs [0].position.y, blocksPrefabs [0].position.z);
@@ -33,6 +35,7 @@ public class Blocks : MonoBehaviour {
 //		toEraseBlock = null;
 
 
+		Debug.Log ("E vamos instanciar os outros quarteirões para fazerem parte do pool de quarteirões - (003)");
 		//agora começar o pooling
 
 		//primeiro, vamos fazer um newBlocksPrefab sem o inicial, sem o índice 0
@@ -49,6 +52,9 @@ public class Blocks : MonoBehaviour {
 
 	public void putRandomBlock ()
 	{
+
+		Debug.Log ("Vamos colocar um novo quarteirão randômico do pool mais na frente - (006)");
+
 		//A posição currentX está no meio do bloco anterior
 		//Vamos mover meio bloco anterior para chegar ao seu fim
 		float newX;

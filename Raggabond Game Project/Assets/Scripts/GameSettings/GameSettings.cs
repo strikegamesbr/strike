@@ -6,15 +6,33 @@ using UnityEngine.SceneManagement;
 public class GameSettings : MonoBehaviour {
 
 
+	//for debugging
+	public bool divideObstaclesBlocksBy4 = false, divideObstaclesBlocksBy2 = false, emptyStrees = false;
+
+
+
+
 	[SerializeField]
 	private bool soundEffectsOn, musicOn;
 
+	#if UNITY_EDITOR //os campos abaixo serão usados para atualizações a cada frame
+
+	Sounds sounds;
+	MusicControl musicControl;
+	SpritesButtons spritesButtons;
+
+	#endif
 
 	// Use this for initialization
 	void Start () {
+		
+		#if UNITY_EDITOR //os campos abaixo serão usados para atualizações a cada frame
 
+		sounds = FindObjectOfType<Sounds> ();
+		spritesButtons = FindObjectOfType<SpritesButtons> ();
+		musicControl = FindObjectOfType<MusicControl> ();
 
-
+		#endif
 	}
 
 
@@ -26,20 +44,52 @@ public class GameSettings : MonoBehaviour {
 		set {
 			soundEffectsOn = value;
 
+			#if UNITY_EDITOR //vai rodar todo frame
+
 			try {
 
 				if (value == true)
-					FindObjectOfType<Sounds> ().unmuteAllSounds ();
+					sounds.unmuteAllSounds ();
 				else
-					FindObjectOfType<Sounds> ().muteAllSounds ();
+					sounds.muteAllSounds ();
 
+			} catch {
+				sounds = FindObjectOfType<Sounds> ();
+				//e daí faz no próximo frame
+			}
 
+			try {
 				if (value == true)
-					FindObjectOfType<SpritesButtons>().switchSfxSpritesToOn();
+					spritesButtons.switchSfxSpritesToOn();
 				else
-					FindObjectOfType<SpritesButtons>().switchSfxSpritesToOff();
+					spritesButtons.switchSfxSpritesToOff();
+			} catch {				
+				spritesButtons = FindObjectOfType<SpritesButtons> ();
+				//e daí faz no próximo frame
+			}
+
+			#else
+
+			try {
+
+			if (value == true)
+				FindObjectOfType<Sounds> ().unmuteAllSounds ();
+			else
+				FindObjectOfType<Sounds> ().muteAllSounds ();
+
 			} catch {
 			}
+
+			try {
+			if (value == true)
+				FindObjectOfType<SpritesButtons> ().switchSfxSpritesToOn();
+			else
+				FindObjectOfType<SpritesButtons> ().switchSfxSpritesToOff();
+			} catch {				
+			//e daí faz no próximo frame
+			}
+
+			#endif
 		}
 
 	}
@@ -51,6 +101,32 @@ public class GameSettings : MonoBehaviour {
 
 		set {
 			musicOn = value;
+
+			#if UNITY_EDITOR
+
+			try {
+
+				if (value == true)
+					musicControl.unmuteAllSongs ();
+				else
+					musicControl.muteAllSongs ();
+			} catch {
+				musicControl = FindObjectOfType<MusicControl> ();
+				//e daí faz no próximo frame
+			}
+
+			try {
+				if (value == true)
+					spritesButtons.switchMusicSpritesToOn();
+				else
+					spritesButtons.switchMusicSpritesToOff();
+			} catch {
+				spritesButtons = FindObjectOfType<SpritesButtons> ();
+				//e daí faz no próximo frame
+			}
+
+			#else
+
 
 			try {
 
@@ -65,7 +141,13 @@ public class GameSettings : MonoBehaviour {
 				else
 					FindObjectOfType<SpritesButtons>().switchMusicSpritesToOff();
 			} catch {
+				
 			}
+
+			#endif
+
+
+
 		}
 	}
 
@@ -84,8 +166,10 @@ public class GameSettings : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		#if UNITY_EDITOR
 		//para quando mudar no hierarchy no Unity executar o set
 		sfxIsOn = soundEffectsOn;
 		musicIsOn = musicOn;
+		#endif
 	}
 }

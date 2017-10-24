@@ -44,7 +44,7 @@ public class SceneObjects : MonoBehaviour {
 	}
 
 
-
+	private kindObj kind = kindObj.none;
 	private bool isVisible = false;
 	private bool taken = false; //se já foi pega para fazer parte de um bloco de objetos
 	private float yUpper, yMedium, yLower;
@@ -59,6 +59,14 @@ public class SceneObjects : MonoBehaviour {
 	[SerializeField]
 	private float speed;
 
+	public kindObj Kind {
+		get {
+			return kind;
+		}
+		set {
+			kind = value;
+		}
+	}
 
 	public bool IsVisible {
 		get {
@@ -141,31 +149,47 @@ public class SceneObjects : MonoBehaviour {
 
 
 		if (gameObject.name.Contains ("coin")) {
+			kind = kindObj.coin;
 			yUpper = scnObjManager.yUpperApple;
 			yMedium = scnObjManager.yMediumApple;
 			yLower = scnObjManager.yLowerApple;
 			speed = scnObjManager.speedApple;
 		} else if ( gameObject.name.Contains ("guitar")) {
+			kind = kindObj.guitar;
 			yUpper = scnObjManager.yUpperGuitar;
 			yMedium = scnObjManager.yMediumGuitar;
 			yLower = scnObjManager.yLowerGuitar;
 			speed = scnObjManager.speedGuitar;
 		} else if (gameObject.name.Contains ("lilMario")) {
+			kind = kindObj.lilMario;
 			yUpper = scnObjManager.yUpperLilMario;
 			yMedium = scnObjManager.yMediumLilMario;
 			yLower = scnObjManager.yLowerLilMario;
 			speed = scnObjManager.speedLilMario;
 		} else if ( gameObject.name.Contains ("patinadora")) {
+
+			if (gameObject.name.Contains ("patinadora_var"))
+				kind = kindObj.patinadora_var;
+			else
+				kind = kindObj.patinadora;
+
 			yUpper = scnObjManager.yUpperPatinadora;
 			yMedium = scnObjManager.yMediumPatinadora;
 			yLower = scnObjManager.yLowerPatinadora;
 			speed = scnObjManager.speedPatinadora;
 		} else if ( gameObject.name.Contains ("cone")) {
+			kind = kindObj.cone;
 			yUpper = scnObjManager.yUpperBeachBall;
 			yMedium = scnObjManager.yMediumBeachBall;
 			yLower = scnObjManager.yLowerBeachBall;
 			speed = scnObjManager.speedBeachBall;
 		} else if (gameObject.name.Contains ("skatista")) {
+			
+			if (gameObject.name.Contains ("skatista_var"))
+				kind = kindObj.skatista_var;
+			else
+				kind = kindObj.skatista;
+			
 			yUpper = scnObjManager.yUpperSkatista;
 			yMedium = scnObjManager.yMediumSkatista;
 			yLower = scnObjManager.yLowerSkatista;	

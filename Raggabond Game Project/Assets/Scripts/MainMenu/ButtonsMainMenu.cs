@@ -7,7 +7,7 @@ public class ButtonsMainMenu : MonoBehaviour {
 
 
 	[SerializeField]
-	private GameObject infoPanel, contactPanel, bioPanel, quitBtn, optionsPanel, creditsPanel;
+	private GameObject infoPanel, contactPanel, bioPanel, quitBtn, optionsPanel, creditsPanel, secretSettings;
 
 	[SerializeField]
 	private Sounds sounds;
@@ -16,6 +16,8 @@ public class ButtonsMainMenu : MonoBehaviour {
 	private string faceURL = "https://www.facebook.com/raggabondband/";
 
 	private GameSettings settings;
+
+	private int secretButtonPressesCount = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +31,58 @@ public class ButtonsMainMenu : MonoBehaviour {
 
 	}
 
+
+	public void pressSecretButton () 
+	{
+
+		secretButtonPressesCount++;
+
+		if (secretButtonPressesCount >= 4) {
+
+			secretButtonPressesCount = 0;
+			openSecretSettings ();
+
+		}
+
+
+	}
+
+	private void openSecretSettings ()
+	{
+		secretSettings.SetActive (true);
+	}
+
+	public void secretNormal ()
+	{
+		settings.emptyStrees = false;
+		settings.divideObstaclesBlocksBy4 = false;
+		settings.divideObstaclesBlocksBy2 = false;
+		secretSettings.SetActive (false);
+	}
+
+	public void secretEmpty ()
+	{
+		settings.emptyStrees = true;
+		settings.divideObstaclesBlocksBy4 = false;
+		settings.divideObstaclesBlocksBy2 = false;
+		secretSettings.SetActive (false);
+	}
+
+	public void secretQuarter ()
+	{
+		settings.emptyStrees = false;
+		settings.divideObstaclesBlocksBy4 = true;
+		settings.divideObstaclesBlocksBy2 = false;
+		secretSettings.SetActive (false);
+	}
+
+	public void secretHalf ()
+	{
+		settings.emptyStrees = false;
+		settings.divideObstaclesBlocksBy4 = false;
+		settings.divideObstaclesBlocksBy2 = true;
+		secretSettings.SetActive (false);
+	}
 
 
 	private void playSoundPressButton ()

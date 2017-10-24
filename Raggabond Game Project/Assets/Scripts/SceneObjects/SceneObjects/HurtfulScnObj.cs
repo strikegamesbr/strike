@@ -15,22 +15,35 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 		numMovObjMan = FindObjectOfType<NumMovableObjsManager> ();
 	}
 
-	void OnTriggerStay2D (Collider2D col) {
-		OnTriggerEnter2D (col);
+	void OnTriggerStay2D (Collider2D col) 
+	{
+		checkAndDamagePlayer (col);
+//		OnTriggerEnter2D (col);
 	}
 
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
 
-		if (col.name == "Player" && col.GetComponent<PlayerState> ().Lane == this.Lane) {
-			damagePlayer ();
-		}
+		checkAndDamagePlayer (col);
+
+//		if (col.name == "Player" && col.GetComponent<PlayerState> ().Lane == this.Lane) {
+//			damagePlayer ();
+//		}
 
 //		if (col.name == "destroyer") {
 //			this.gameObject.SetActive(false);;
 //		}
 
+	}
+
+
+	private void checkAndDamagePlayer (Collider2D col)
+	{
+		if (col.name == "Player" && col.GetComponent<PlayerState> ().Lane == this.Lane) {
+			
+			damagePlayer ();		
+		}
 	}
 
 
@@ -41,7 +54,7 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 			lockDamage = true; //não precisa voltar a ser falso pois será destruído
 			playerState.gameObject.GetComponent<ScoreByTimeManager>().HaltGainingPoints = true;
 
-
+			Debug.Log ("Recebeu dano " + Kind + " (008)");
 			int damageToTake = 0;
 
 			if (gameObject.name.Contains ("skatista"))

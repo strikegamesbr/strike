@@ -24,6 +24,7 @@ public class MoreObjBlockTrigger : MonoBehaviour {
 	{
 
 		if (col.name == "Player") {
+			Debug.Log ("Vamos colocar os obstáculos na cena - (007)");
 			blockOfObjects.placeObstaclesOnScene ();
 //			plObjBlocks.putObjectsBlock ();
 		}

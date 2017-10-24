@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ScnObjManager : MonoBehaviour {
 
 
-	[SerializeField]
+//	[SerializeField]
 	public bool EmptyStreetsForTesting = false;
 
 	[SerializeField]
@@ -109,18 +109,18 @@ public class ScnObjManager : MonoBehaviour {
 	IEnumerator showScoreGainedRoutine (ulong scoreToGain, Transform item) //lembre-se que este item será logo destruído, use antes do frame passar
 	{
 		//instanciar o texto e escrever o valor da pontuação ganha
-		Text scoreText = Instantiate (ScoreFromItemTextPrefab);
+		Text scoreText = Instantiate (ScoreFromItemTextPrefab, CanvasParent);
 		scoreText.text = scoreToGain.ToString ();
 
-		scoreText.text = string.Concat ("+", scoreText.text);
+		scoreText.text = "+" + scoreText.text; //string.Concat ("+", scoreText.text);
 
 
 		//colocá-lo na mesma posição do item, o que requer que tenha o mesmo parent do item
-		scoreText.transform.parent = item.transform.parent;
+//		scoreText.transform.parent = item.transform.parent;
 		scoreText.transform.position = item.transform.position;
 
 		//agora vamos deixar o Canvas como parent para ele aparecer!
-		scoreText.transform.parent = CanvasParent;
+//		scoreText.transform.parent = CanvasParent;
 
 
 		//agora vamos definir a posição de destino do texto, que fica na linha da cabeça do player

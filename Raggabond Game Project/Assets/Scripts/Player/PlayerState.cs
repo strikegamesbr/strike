@@ -181,7 +181,7 @@ public class PlayerState : MonoBehaviour {
 		Lives = Lives - howMuch;
 
 		if (Lives <= 0) {//quando chegar a zero
-
+			Debug.Log("Vai dar game over - (010)");
 			StartCoroutine (GameOverRoutine ());
 
 		}

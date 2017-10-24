@@ -51,6 +51,7 @@
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\PlayServicesResolver\Editor\play-services-resolver.txt" />
      <None Include="Assets\FacebookSDK\link.xml" />
+     <None Include="Assets\StreamingAssets\build_info.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Guilherme2/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

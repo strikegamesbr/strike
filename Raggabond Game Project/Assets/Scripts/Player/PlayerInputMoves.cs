@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,6 +40,16 @@ public class PlayerInputMoves : MonoBehaviour {
 		playerState = GetComponent <PlayerState> ();
 		positions = GetComponent <PlayerPositions> ();
 		animator = GetComponent <Animator> ();
+
+		TouchGesture touchGesture = FindObjectOfType<TouchGesture> ();
+
+		Action onToUpSwipe = goUpOneLane;
+		Action onToDownSwipe = goDownOneLane;
+		StartCoroutine (touchGesture.CheckVerticalSwipes (onToUpSwipe, goDownOneLane));
+
+		Action onStationary = startSpeedSlow;
+		Action onEnded = stopSpeedSlow;
+		StartCoroutine (touchGesture.checkStationary (onStationary, onEnded));
 
 	}
 
@@ -182,11 +193,6 @@ public class PlayerInputMoves : MonoBehaviour {
 		}
 
 
-//		if (Input.GetKeyDown (KeyCode.RightArrow)) {
-//			setPlayerSpeedFast ();
-//
-//		} 
-
 		if (Input.GetKeyDown (KeyCode.RightArrow)) {
 			startSpeedFast ();
 		} 
@@ -195,11 +201,6 @@ public class PlayerInputMoves : MonoBehaviour {
 			stopSpeedFast ();
 		} 
 
-
-
-//		if (Input.GetKey (KeyCode.LeftArrow)) {
-//			setPlayerSpeedSlow ();
-//		} 
 
 		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
 			startSpeedSlow ();

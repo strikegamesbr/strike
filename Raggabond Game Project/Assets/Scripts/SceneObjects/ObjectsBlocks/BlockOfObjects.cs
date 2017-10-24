@@ -7,6 +7,11 @@ using UnityEngine;
 //tem a descrição de cada bloco de obstáculos, com as posições x e lanes de cada objeto
 public class BlockOfObjects : MonoBehaviour {
 
+
+
+	[SerializeField]
+	public bool EmptyStreetsForTesting = false, divideBlocksByTwo = false, divideBlocksByFour = false;
+
 	ObjectsPool objectsPool;
 	StageProgression stageProgression;
 
@@ -28,9 +33,7 @@ public class BlockOfObjects : MonoBehaviour {
 	private Transform startXOfBlock;
 
 
-
 	private float nextOffsetStartXOfBlock= 0;
-
 
 
 	Coroutine[] curCoroutines;
@@ -39,82 +42,134 @@ public class BlockOfObjects : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		GameSettings settings = FindObjectOfType <GameSettings> ();
+
+		EmptyStreetsForTesting = settings.emptyStrees;
+		divideBlocksByTwo = settings.divideObstaclesBlocksBy2;
+		divideBlocksByFour = settings.divideObstaclesBlocksBy4;
+
+
+
+		if (EmptyStreetsForTesting) //se no editor colocar true não vão aparecer obstáculos
+			MoreObjBlockTrigger.gameObject.SetActive (false);
+
+
 		objectsPool = FindObjectOfType<ObjectsPool> ();
 		stageProgression = FindObjectOfType<StageProgression> ();
 
 		//vamos listar abaixo os blocos de obstáculos, em suas versões em script
 
+		//tanto divideBlocksByFour quanto divideBlocksByTwo são selecionados no editor do Unity
+		if (divideBlocksByFour) { //dividir por 4 tem preferência, mesmo se divideBlocksByTwo também estiver dividido
+			objectsInBlock1 = new ObjectInBlock[5];
+			objectsInBlock2 = new ObjectInBlock[5];
+			objectsInBlock3 = new ObjectInBlock[5];
+		} else if (divideBlocksByTwo) {
+			objectsInBlock1 = new ObjectInBlock[10];
+			objectsInBlock2 = new ObjectInBlock[10];
+			objectsInBlock3 = new ObjectInBlock[10];
+		} else { //nenhum dos dois acima está ligado
+			objectsInBlock1 = new ObjectInBlock[19];
+			objectsInBlock2 = new ObjectInBlock[19];
+			objectsInBlock3 = new ObjectInBlock[21];
+		}
+
+
 		//bloco1
-		objectsInBlock1 = new ObjectInBlock[19];
-		objectsInBlock1[0] = new ObjectInBlock (kindObj.coin, 2.4f, Lane.lower);
-		objectsInBlock1[1] = new ObjectInBlock(kindObj.coin, 2.4f, Lane.middle);
-		objectsInBlock1[2] = new ObjectInBlock(kindObj.cone, 10.6f, Lane.middle);
-		objectsInBlock1[3] = new ObjectInBlock(kindObj.cone, 12.7f, Lane.lower);
-		objectsInBlock1[4] = new ObjectInBlock(kindObj.skatista, 20.3f, Lane.upper);
-		objectsInBlock1[5] = new ObjectInBlock(kindObj.cone, 22f, Lane.middle);
-		objectsInBlock1[6] = new ObjectInBlock(kindObj.lilMario, 29.3f, Lane.upper);
-		objectsInBlock1[7] = new ObjectInBlock(kindObj.skatista, 29.4f, Lane.lower);
-		objectsInBlock1[8] = new ObjectInBlock(kindObj.coin, 35.3f, Lane.lower);
-		objectsInBlock1[9] = new ObjectInBlock(kindObj.coin, 38.4f, Lane.lower);
-		objectsInBlock1[10] = new ObjectInBlock(kindObj.coin, 41.4f, Lane.lower);
-		objectsInBlock1[11] = new ObjectInBlock(kindObj.coin, 43.7f, Lane.upper);
-		objectsInBlock1[12] = new ObjectInBlock(kindObj.coin, 46.4f, Lane.upper);
-		objectsInBlock1[13] = new ObjectInBlock(kindObj.coin, 48.8f, Lane.upper);
-		objectsInBlock1[14] = new ObjectInBlock(kindObj.lilMario, 51.7f, Lane.upper);
-		objectsInBlock1[15] = new ObjectInBlock(kindObj.cone, 54.5f, Lane.middle);
-		objectsInBlock1[16] = new ObjectInBlock(kindObj.cone, 57f, Lane.lower);
-		objectsInBlock1[17] = new ObjectInBlock(kindObj.skatista, 65.6f, Lane.upper);
-		objectsInBlock1[18] = new ObjectInBlock(kindObj.lilMario, 68.9f, Lane.lower);
+
+		objectsInBlock1 [0] = new ObjectInBlock (kindObj.coin, 2.4f, Lane.lower);
+		objectsInBlock1 [1] = new ObjectInBlock (kindObj.coin, 2.4f, Lane.middle);
+		objectsInBlock1 [2] = new ObjectInBlock (kindObj.cone, 10.6f, Lane.middle);
+		objectsInBlock1 [3] = new ObjectInBlock (kindObj.cone, 12.7f, Lane.lower);
+		objectsInBlock1 [4] = new ObjectInBlock (kindObj.skatista, 20.3f, Lane.upper);
+
+		if (!divideBlocksByFour) {
+			objectsInBlock1 [5] = new ObjectInBlock (kindObj.cone, 22f, Lane.middle);
+			objectsInBlock1 [6] = new ObjectInBlock (kindObj.lilMario, 29.3f, Lane.upper);
+			objectsInBlock1 [7] = new ObjectInBlock (kindObj.skatista, 29.4f, Lane.lower);
+			objectsInBlock1 [8] = new ObjectInBlock (kindObj.coin, 35.3f, Lane.lower);
+			objectsInBlock1 [9] = new ObjectInBlock (kindObj.coin, 38.4f, Lane.lower);
+
+			if (!divideBlocksByTwo) {
+				objectsInBlock1 [10] = new ObjectInBlock (kindObj.coin, 41.4f, Lane.lower);
+				objectsInBlock1 [11] = new ObjectInBlock (kindObj.coin, 43.7f, Lane.upper);
+				objectsInBlock1 [12] = new ObjectInBlock (kindObj.coin, 46.4f, Lane.upper);
+				objectsInBlock1 [13] = new ObjectInBlock (kindObj.coin, 48.8f, Lane.upper);
+				objectsInBlock1 [14] = new ObjectInBlock (kindObj.lilMario, 51.7f, Lane.upper);
+				objectsInBlock1 [15] = new ObjectInBlock (kindObj.cone, 54.5f, Lane.middle);
+				objectsInBlock1 [16] = new ObjectInBlock (kindObj.cone, 57f, Lane.lower);
+				objectsInBlock1 [17] = new ObjectInBlock (kindObj.skatista, 65.6f, Lane.upper);
+				objectsInBlock1 [18] = new ObjectInBlock (kindObj.lilMario, 68.9f, Lane.lower);
+			}
+		}
 
 
 //		print ("Testando: objectsInBlock1[0].KindOfObject = " + objectsInBlock1[0].KindOfObject);
 
 
 		//bloco2
-		objectsInBlock2 = new ObjectInBlock[19];
-		objectsInBlock2[0] = new ObjectInBlock (kindObj.skatista, 6.8f, Lane.upper);
-		objectsInBlock2[1] = new ObjectInBlock(kindObj.skatista, 9.5f, Lane.lower);
-		objectsInBlock2[2] = new ObjectInBlock(kindObj.lilMario, 15.2f, Lane.upper);
-		objectsInBlock2[3] = new ObjectInBlock(kindObj.cone, 17.1f, Lane.middle);
-		objectsInBlock2[4] = new ObjectInBlock(kindObj.cone, 19.8f, Lane.middle);
-		objectsInBlock2[5] = new ObjectInBlock(kindObj.coin, 24.7f, Lane.middle);
-		objectsInBlock2[6] = new ObjectInBlock(kindObj.coin, 27.2f, Lane.middle);
-		objectsInBlock2[7] = new ObjectInBlock(kindObj.coin, 29.5f, Lane.middle);
-		objectsInBlock2[8] = new ObjectInBlock(kindObj.coin, 32.5f, Lane.lower);
-		objectsInBlock2[9] = new ObjectInBlock(kindObj.coin, 35.2f, Lane.lower);
-		objectsInBlock2[10] = new ObjectInBlock(kindObj.coin, 37.7f, Lane.lower);
-		objectsInBlock2[11] = new ObjectInBlock(kindObj.skatista, 39.7f, Lane.upper);
-		objectsInBlock2[12] = new ObjectInBlock(kindObj.lilMario, 41.5f, Lane.middle);
-		objectsInBlock2[13] = new ObjectInBlock(kindObj.skatista, 42.8f, Lane.lower);
-		objectsInBlock2[14] = new ObjectInBlock(kindObj.cone, 49.9f, Lane.middle);
-		objectsInBlock2[15] = new ObjectInBlock(kindObj.cone, 52.6f, Lane.middle);
-		objectsInBlock2[16] = new ObjectInBlock(kindObj.guitar, 57.5f, Lane.middle);
-		objectsInBlock2[17] = new ObjectInBlock(kindObj.skatista, 65.9f, Lane.upper);
-		objectsInBlock2[18] = new ObjectInBlock(kindObj.skatista, 68.6f, Lane.lower);
+
+		objectsInBlock2 [0] = new ObjectInBlock (kindObj.skatista, 6.8f, Lane.upper);
+		objectsInBlock2 [1] = new ObjectInBlock (kindObj.skatista, 9.5f, Lane.lower);
+		objectsInBlock2 [2] = new ObjectInBlock (kindObj.lilMario, 15.2f, Lane.upper);
+		objectsInBlock2 [3] = new ObjectInBlock (kindObj.cone, 17.1f, Lane.middle);
+		objectsInBlock2 [4] = new ObjectInBlock (kindObj.cone, 19.8f, Lane.middle);
+
+		if (!divideBlocksByFour) {
+			
+			objectsInBlock2 [5] = new ObjectInBlock (kindObj.coin, 24.7f, Lane.middle);
+			objectsInBlock2 [6] = new ObjectInBlock (kindObj.coin, 27.2f, Lane.middle);
+			objectsInBlock2 [7] = new ObjectInBlock (kindObj.coin, 29.5f, Lane.middle);
+			objectsInBlock2 [8] = new ObjectInBlock (kindObj.coin, 32.5f, Lane.lower);
+			objectsInBlock2 [9] = new ObjectInBlock (kindObj.coin, 35.2f, Lane.lower);
+
+			if (!divideBlocksByTwo) {
+
+				objectsInBlock2 [10] = new ObjectInBlock (kindObj.coin, 37.7f, Lane.lower);
+				objectsInBlock2 [11] = new ObjectInBlock (kindObj.skatista, 39.7f, Lane.upper);
+				objectsInBlock2 [12] = new ObjectInBlock (kindObj.lilMario, 41.5f, Lane.middle);
+				objectsInBlock2 [13] = new ObjectInBlock (kindObj.skatista, 42.8f, Lane.lower);
+				objectsInBlock2 [14] = new ObjectInBlock (kindObj.cone, 49.9f, Lane.middle);
+				objectsInBlock2 [15] = new ObjectInBlock (kindObj.cone, 52.6f, Lane.middle);
+				objectsInBlock2 [16] = new ObjectInBlock (kindObj.guitar, 57.5f, Lane.middle);
+				objectsInBlock2 [17] = new ObjectInBlock (kindObj.skatista, 65.9f, Lane.upper);
+				objectsInBlock2 [18] = new ObjectInBlock (kindObj.skatista, 68.6f, Lane.lower);
+			}
+
+		}
+
 
 		//bloco3
-		objectsInBlock3 = new ObjectInBlock[21];
-		objectsInBlock3[0] = new ObjectInBlock (kindObj.coin, 2.4f, Lane.upper);
-		objectsInBlock3[1] = new ObjectInBlock(kindObj.coin, 4.6f, Lane.lower);
-		objectsInBlock3[2] = new ObjectInBlock(kindObj.coin, 7f, Lane.upper);
-		objectsInBlock3[3] = new ObjectInBlock(kindObj.cone, 18.5f, Lane.middle);
-		objectsInBlock3[4] = new ObjectInBlock(kindObj.cone, 18.5f, Lane.middle);
-		objectsInBlock3[5] = new ObjectInBlock(kindObj.coin, 24.5f, Lane.middle);
-		objectsInBlock3[6] = new ObjectInBlock(kindObj.coin, 26.9f, Lane.middle);
-		objectsInBlock3[7] = new ObjectInBlock(kindObj.coin, 28.9f, Lane.middle);
-		objectsInBlock3[8] = new ObjectInBlock(kindObj.coin, 31.3f, Lane.lower);
-		objectsInBlock3[9] = new ObjectInBlock(kindObj.coin, 33.8f, Lane.lower);
-		objectsInBlock3[10] = new ObjectInBlock(kindObj.coin, 36.2f, Lane.lower);
-		objectsInBlock3[11] = new ObjectInBlock(kindObj.lilMario, 40.3f, Lane.upper);
-		objectsInBlock3[12] = new ObjectInBlock(kindObj.skatista, 41.2f, Lane.middle);
-		objectsInBlock3[13] = new ObjectInBlock(kindObj.skatista, 42f, Lane.lower);
-		objectsInBlock3[14] = new ObjectInBlock(kindObj.skatista, 48.6f, Lane.middle);
-		objectsInBlock3[15] = new ObjectInBlock(kindObj.skatista, 53f, Lane.middle);
-		objectsInBlock3[16] = new ObjectInBlock(kindObj.skatista, 55.4f, Lane.middle);
-		objectsInBlock3[17] = new ObjectInBlock(kindObj.coin, 57.7f, Lane.upper);
-		objectsInBlock3[18] = new ObjectInBlock(kindObj.coin, 60.3f, Lane.lower);
-		objectsInBlock3[19] = new ObjectInBlock(kindObj.coin, 63.3f, Lane.upper);
-		objectsInBlock3[20] = new ObjectInBlock(kindObj.lilMario, 68f, Lane.lower);
+
+		objectsInBlock3 [0] = new ObjectInBlock (kindObj.coin, 2.4f, Lane.upper);
+		objectsInBlock3 [1] = new ObjectInBlock (kindObj.coin, 4.6f, Lane.lower);
+		objectsInBlock3 [2] = new ObjectInBlock (kindObj.coin, 7f, Lane.upper);
+		objectsInBlock3 [3] = new ObjectInBlock (kindObj.cone, 18.5f, Lane.middle);
+		objectsInBlock3 [4] = new ObjectInBlock (kindObj.cone, 18.5f, Lane.middle);
+
+		if (!divideBlocksByFour) {
+
+			objectsInBlock3 [5] = new ObjectInBlock (kindObj.coin, 24.5f, Lane.middle);
+			objectsInBlock3 [6] = new ObjectInBlock (kindObj.coin, 26.9f, Lane.middle);
+			objectsInBlock3 [7] = new ObjectInBlock (kindObj.coin, 28.9f, Lane.middle);
+			objectsInBlock3 [8] = new ObjectInBlock (kindObj.coin, 31.3f, Lane.lower);
+			objectsInBlock3 [9] = new ObjectInBlock (kindObj.coin, 33.8f, Lane.lower);
+
+			if (!divideBlocksByTwo) {
+				
+				objectsInBlock3 [10] = new ObjectInBlock (kindObj.coin, 36.2f, Lane.lower);
+				objectsInBlock3 [11] = new ObjectInBlock (kindObj.lilMario, 40.3f, Lane.upper);
+				objectsInBlock3 [12] = new ObjectInBlock (kindObj.skatista, 41.2f, Lane.middle);
+				objectsInBlock3 [13] = new ObjectInBlock (kindObj.skatista, 42f, Lane.lower);
+				objectsInBlock3 [14] = new ObjectInBlock (kindObj.skatista, 48.6f, Lane.middle);
+				objectsInBlock3 [15] = new ObjectInBlock (kindObj.skatista, 53f, Lane.middle);
+				objectsInBlock3 [16] = new ObjectInBlock (kindObj.skatista, 55.4f, Lane.middle);
+				objectsInBlock3 [17] = new ObjectInBlock (kindObj.coin, 57.7f, Lane.upper);
+				objectsInBlock3 [18] = new ObjectInBlock (kindObj.coin, 60.3f, Lane.lower);
+				objectsInBlock3 [19] = new ObjectInBlock (kindObj.coin, 63.3f, Lane.upper);
+				objectsInBlock3 [20] = new ObjectInBlock (kindObj.lilMario, 68f, Lane.lower);
+			}
+		}
 
 	}
 
@@ -152,7 +207,7 @@ public class BlockOfObjects : MonoBehaviour {
 
 		}
 
-		Debug.Log ("whichBlocksOfObjects="+whichBlocksOfObjects);
+//		Debug.Log ("whichBlocksOfObjects="+whichBlocksOfObjects);
 
 		placeObstaclesOnScene (whichBlocksOfObjects);
 
@@ -168,10 +223,12 @@ public class BlockOfObjects : MonoBehaviour {
 
 	IEnumerator placeObstaclesOnSceneRoutine (int[] whichBlocksOfObjects)
 	{
+
 		//vamos escolher uma entre as opções de blocos dadas aleatoriamente
 		int numBlock = whichBlocksOfObjects[Random.Range(0, whichBlocksOfObjects.Length)];
 
-		print ("numBlock=" + numBlock);
+		Debug.Log ("Até agora definiu um conjunto de bloco de obstáculos baseado no estágio - (007.1)");
+//		yield return new WaitForEndOfFrame(); //dar o tempo de dar o log
 
 
 		ObjectInBlock[] blockObjToPlace;
@@ -213,17 +270,28 @@ public class BlockOfObjects : MonoBehaviour {
 		Debug.Assert (blockObjToPlace.Length != 0);
 
 
+		Debug.Log ("E já escolheu o bloco em si - (007.2)");
+//		yield return new WaitForEndOfFrame(); //dar o tempo de dar o log
+
+
 		//vamos mover o "cursor" startXOfBlock
 		startXOfBlock.position = startXOfBlock.position + new Vector3 (nextOffsetStartXOfBlock,0,0);
 
-//		print ("numBlock=" + numBlock);
+		Debug.Log ("(007.3)");
 		//e atualizar nextOffsetStartXOfBlock para o próximo bloco
 		nextOffsetStartXOfBlock = ObjBlockLength[numBlock-1];
 
+		if (divideBlocksByTwo)
+			nextOffsetStartXOfBlock = nextOffsetStartXOfBlock / 2;
+		else if (divideBlocksByFour) 
+			nextOffsetStartXOfBlock = nextOffsetStartXOfBlock / 4;
+
+
+		Debug.Log ("(007.4)");
 		//e vamos mover o trigger MoreObjBlockTrigger
-		MoreObjBlockTrigger.position = MoreObjBlockTrigger.position + new Vector3(ObjBlockLength[numBlock-1] * 4/5, 0, 0);
+		MoreObjBlockTrigger.position = MoreObjBlockTrigger.position + new Vector3(nextOffsetStartXOfBlock * 4/5, 0, 0);
 
-
+		Debug.Log ("(007.5)");
 		//vamos matar as corotinas anteriores, se houver
 		if (curCoroutines != null) {
 			foreach (Coroutine coroutine in curCoroutines) {
@@ -234,35 +302,36 @@ public class BlockOfObjects : MonoBehaviour {
 			}
 		}
 
-		print ("blockObjToPlace.Length=" + blockObjToPlace.Length);
-
+//		print ("blockObjToPlace.Length=" + blockObjToPlace.Length);
+		Debug.Log ("(007.6)");
 		//vamos guardar as novas corotinas
 		curCoroutines = new Coroutine[blockObjToPlace.Length];
 
 
-
-		for (int i = 0; i < blockObjToPlace.Length; i++) {		
+		for (int i = 0; i < blockObjToPlace.Length; i++) {	
+			Debug.Log ("(007.7) [" + i + "]");
 			//todo aumentar	startXOfBlock matando as corotinas - na hora que chama outro? depois de um tempo?
-			curCoroutines[i] = StartCoroutine(putObjectFromPool (blockObjToPlace [i]));
+			curCoroutines[i] = StartCoroutine(putObjectFromPool (blockObjToPlace [i], i));
 			yield return new WaitForEndOfFrame (); //para dar preferência aos primeiros objetos, vamos chamar eles antes, dando este espeço de tempo
+			Debug.Log ("(007.12) [" + i + "]");
 		}
 
+		Debug.Log ("(007.13)");
 	}
 
 
-	IEnumerator putObjectFromPool (ObjectInBlock objToBlock)
+	IEnumerator putObjectFromPool (ObjectInBlock objToBlock, int i) //o i é só para debug, não tem utilidade real aqui
 	{
-
+		Debug.Log ("(007.8) [" + i + "]");
 		GameObject gObject;
-
-//		print ("tentando " + objToBlock.KindOfObject );
 
 		do {
 			gObject = objectsPool.getObject (objToBlock.KindOfObject);
 			yield return new WaitForEndOfFrame (); 
+			Debug.Log ("(007.9) [" + i + "] - veja se este aparece muito " + objToBlock.KindOfObject);
 		} while (gObject == null); //significa que não achou um objeto invisível ainda, tenta de novo
 
-
+		Debug.Log ("(007.10) [" + i + "]");
 //		print ("pegou " + gObject.name );
 
 		gObject.SetActive(true);
@@ -273,7 +342,7 @@ public class BlockOfObjects : MonoBehaviour {
 
 		gObject.transform.position = new Vector3 (startXOfBlock.position.x + objToBlock.X, gObject.transform.position.y, gObject.transform.position.z);
 		changeLaneOfObject (gObject, objToBlock.Lane);
-
+		Debug.Log ("(007.11) [" + i + "]");
 	}
 
 

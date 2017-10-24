@@ -30,7 +30,7 @@ public class MainController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-
+		Debug.Log ("A cena começou - (001)");
 
 
 	}
