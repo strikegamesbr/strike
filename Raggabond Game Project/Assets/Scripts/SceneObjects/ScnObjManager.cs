@@ -136,6 +136,7 @@ public class ScnObjManager : MonoBehaviour {
 
 
 		Destroy (scoreText.gameObject);
+//		yield return null;
 
 	}
 

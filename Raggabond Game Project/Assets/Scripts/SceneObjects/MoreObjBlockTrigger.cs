@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class MoreObjBlockTrigger : MonoBehaviour {
 
-//	PlacerObjectsBlocks plObjBlocks;
 	BlockOfObjects blockOfObjects;
+	DebuggingRag debug;
 
 
 	// Use this for initialization
 	void Start () {
-
-//		plObjBlocks = transform.parent.GetComponent<PlacerObjectsBlocks> ();
-
-//		plObjBlocks = FindObjectOfType<PlacerObjectsBlocks> ();
+		
 		blockOfObjects = FindObjectOfType<BlockOfObjects> ();
-
+		debug = FindObjectOfType<DebuggingRag> ();
 	}
 
 
@@ -24,12 +21,10 @@ public class MoreObjBlockTrigger : MonoBehaviour {
 	{
 
 		if (col.name == "Player") {
-			Debug.Log ("Vamos colocar os obstáculos na cena - (007)");
+			debug.debugLog (7);
+//			Debug.Log ("Vamos colocar os obstáculos na cena - (007)");
 			blockOfObjects.placeObstaclesOnScene ();
-//			plObjBlocks.putObjectsBlock ();
 		}
-
-
 
 	}
 
@@ -40,7 +35,6 @@ public class MoreObjBlockTrigger : MonoBehaviour {
 
 	void OnTriggerStay2D (Collider2D col)
 	{
-
 	}
 
 

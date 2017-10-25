@@ -55,8 +55,6 @@ public class ObjectsPool : MonoBehaviour {
 		}
 
 
-//		print ("goArray.Length = " + goArray.Length);
-
 		foreach (GameObject obj in goArray) {
 //			obj.SetActive (true);
 			//vamos pegar o componente SceneObjects correto

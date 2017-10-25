@@ -5,6 +5,8 @@ using UnityEngine;
 public class SceneObjects : MonoBehaviour {
 
 
+	protected DebuggingRag debug;
+
 	[SerializeField]
 	private Transform defaultParent;
 
@@ -132,6 +134,8 @@ public class SceneObjects : MonoBehaviour {
 	}
 
 
+
+
 	// Use this for initialization
 	//start e update não são passados por herança!
 	void Start () {
@@ -145,7 +149,7 @@ public class SceneObjects : MonoBehaviour {
 		_sounds = FindObjectOfType<Sounds> ();
 		_track = FindObjectOfType<Track> ();
 		defaultParent = transform.parent; //o parent dele é o mesmo objeto que tem o script ScnObjManager
-
+		debug = FindObjectOfType<DebuggingRag>();
 
 
 		if (gameObject.name.Contains ("coin")) {

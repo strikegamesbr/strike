@@ -7,9 +7,7 @@ public class GameSettings : MonoBehaviour {
 
 
 	//for debugging
-	public bool divideObstaclesBlocksBy4 = false, divideObstaclesBlocksBy2 = false, emptyStrees = false;
-
-
+	public bool divideObstaclesBlocksBy4 = false, divideObstaclesBlocksBy2 = false, emptyStrees = false, showLogs = false;
 
 
 	[SerializeField]
@@ -158,9 +156,6 @@ public class GameSettings : MonoBehaviour {
 		sfxIsOn = !sfxIsOn;
 
 	}
-
-
-
 
 
 	// Update is called once per frame

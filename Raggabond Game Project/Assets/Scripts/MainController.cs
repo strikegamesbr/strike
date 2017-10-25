@@ -21,18 +21,14 @@ public class MainController : MonoBehaviour {
 
 	void Awake () 
 	{
-
 		playerState.Lane = Lane.middle;
-
 	}
 
 
 	// Use this for initialization
 	void Start () {
 
-		Debug.Log ("A cena começou - (001)");
-
-
+		GetComponent<DebuggingRag> ().debugLog (1);//  Debug.Log ("A cena começou - (001)");
 	}
 	
 	// Update is called once per frame

@@ -49,11 +49,13 @@ public class ButtonsMainMenu : MonoBehaviour {
 
 	private void openSecretSettings ()
 	{
+		sounds.playPressButtonSfx ();
 		secretSettings.SetActive (true);
 	}
 
 	public void secretNormal ()
 	{
+		sounds.playPressButtonSfx ();
 		settings.emptyStrees = false;
 		settings.divideObstaclesBlocksBy4 = false;
 		settings.divideObstaclesBlocksBy2 = false;
@@ -62,6 +64,7 @@ public class ButtonsMainMenu : MonoBehaviour {
 
 	public void secretEmpty ()
 	{
+		sounds.playPressButtonSfx ();
 		settings.emptyStrees = true;
 		settings.divideObstaclesBlocksBy4 = false;
 		settings.divideObstaclesBlocksBy2 = false;
@@ -70,6 +73,7 @@ public class ButtonsMainMenu : MonoBehaviour {
 
 	public void secretQuarter ()
 	{
+		sounds.playPressButtonSfx ();
 		settings.emptyStrees = false;
 		settings.divideObstaclesBlocksBy4 = true;
 		settings.divideObstaclesBlocksBy2 = false;
@@ -78,9 +82,17 @@ public class ButtonsMainMenu : MonoBehaviour {
 
 	public void secretHalf ()
 	{
+		sounds.playPressButtonSfx ();
 		settings.emptyStrees = false;
 		settings.divideObstaclesBlocksBy4 = false;
 		settings.divideObstaclesBlocksBy2 = true;
+		secretSettings.SetActive (false);
+	}
+
+	public void secretLog ()
+	{
+		sounds.playPressButtonSfx ();
+		settings.showLogs = true;
 		secretSettings.SetActive (false);
 	}
 

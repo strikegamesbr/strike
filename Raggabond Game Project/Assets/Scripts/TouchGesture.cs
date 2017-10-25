@@ -85,7 +85,7 @@ public class TouchGesture : MonoBehaviour
 		float swipeTime = Time.time - swipeStartTime; //Time the touch stayed at the screen till now.
 		float swipeDist = Mathf.Abs(touch.position.x - startPos.x); //Swipe distance
 
-		Debug.Log ("(016) couldBeSwipe=" + couldBeSwipe + " swipeTime=" + swipeTime + " swipeDist=" + swipeDist + " " + (couldBeSwipe && swipeTime < settings.maxSwipeTime && swipeDist > settings.minSwipeDist));
+//		Debug.Log ("(016) couldBeSwipe=" + couldBeSwipe + " swipeTime=" + swipeTime + " swipeDist=" + swipeDist + " " + (couldBeSwipe && swipeTime < settings.maxSwipeTime && swipeDist > settings.minSwipeDist));
 
 
 		return couldBeSwipe && swipeTime < settings.maxSwipeTime && swipeDist > settings.minSwipeDist;
@@ -95,7 +95,7 @@ public class TouchGesture : MonoBehaviour
 	public IEnumerator CheckVerticalSwipes(Action onToUpSwipe, Action onToDownSwipe) //Coroutine, which gets Started in "Start()" and runs over the whole game to check for swipes
 	{
 
-		Debug.Log ("CheckVerticalSwipes - (015)");
+//		Debug.Log ("CheckVerticalSwipes - (015)");
 
 		while (true)
 		{ //Loop. Otherwise we wouldnt check continuously ;-)
@@ -115,10 +115,10 @@ public class TouchGesture : MonoBehaviour
 					if (couldBeSwipe) {
 						couldBeSwipe = false; //<-- Otherwise this part would be called over and over again.
 						if (Mathf.Sign (touch.position.y - startPos.y) == 1f) { //Swipe-direction, either 1 or -1.   
-							Debug.Log ("Swipe para cima - (013)");
+//							Debug.Log ("Swipe para cima - (013)");
 							onToUpSwipe (); //Right-swipe
 						} else {
-							Debug.Log ("Swipe para baixo - (014)");
+//							Debug.Log ("Swipe para baixo - (014)");
 							onToDownSwipe (); //Left-swipe
 						}
 					}

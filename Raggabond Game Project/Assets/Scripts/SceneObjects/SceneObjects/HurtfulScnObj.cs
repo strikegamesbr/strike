@@ -7,12 +7,14 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 
 	bool lockDamage = false;
 	NumMovableObjsManager numMovObjMan;
+	ScoreByTimeManager scoreByTimeMan;
 
 
 	// Use this for initialization
 	void Start () {
 		toStart ();
 		numMovObjMan = FindObjectOfType<NumMovableObjsManager> ();
+		scoreByTimeMan = playerState.gameObject.GetComponent<ScoreByTimeManager> ();
 	}
 
 	void OnTriggerStay2D (Collider2D col) 
@@ -52,9 +54,10 @@ public class HurtfulScnObj : SceneObjects { //SceneObjects herda de MonoBehaviou
 
 		if (!lockDamage) {
 			lockDamage = true; //não precisa voltar a ser falso pois será destruído
-			playerState.gameObject.GetComponent<ScoreByTimeManager>().HaltGainingPoints = true;
+//			playerState.gameObject.GetComponent<ScoreByTimeManager>().HaltGainingPoints = true;
+			scoreByTimeMan.HaltGainingPoints = true;
 
-			Debug.Log ("Recebeu dano " + Kind + " (008)");
+			debug.debugLog (8);//"Recebeu dano " + Kind + " (008)");
 			int damageToTake = 0;
 
 			if (gameObject.name.Contains ("skatista"))

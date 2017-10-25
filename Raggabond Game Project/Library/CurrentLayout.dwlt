@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -89,8 +89,8 @@ MonoBehaviour:
     y: 0
     width: 329
     height: 358
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -143,7 +143,7 @@ MonoBehaviour:
     y: 0
     width: 1366
     height: 686
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &7
 MonoBehaviour:
@@ -325,10 +325,10 @@ MonoBehaviour:
     - {x: 329.80002, y: 231.00002}
     - {x: 386.2, y: 182.8}
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 2d44788b55ab63e4ea80c364446f3c37,
+  m_AnimatorController: {fileID: 9100000, guid: 484794af2759ee04d863a23446d78a1f,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 1107255969269969586, guid: 2d44788b55ab63e4ea80c364446f3c37,
+  - m_Target: {fileID: 1107407242171154614, guid: 484794af2759ee04d863a23446d78a1f,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -414,10 +414,10 @@ MonoBehaviour:
   m_LastProjectPath: D:\Guilherme2\Unity\Git\strike\Raggabond Game Project
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 308}
-    m_SelectedIDs: 9e2b0000
-    m_LastClickedID: 11166
-    m_ExpandedIDs: 00000000ec260000682700007227000094270000482b0000302c00001c3200001e3200002032000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 240}
+    m_SelectedIDs: a02b0000
+    m_LastClickedID: 11168
+    m_ExpandedIDs: 00000000ee2600006a270000742700004a2b0000322c000020320000223200002432000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -445,7 +445,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ec260000682700007227000094270000482b0000302c00001c3200001e32000020320000
+    m_ExpandedIDs: 00000000ee2600006a270000742700004a2b0000203200002232000024320000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -476,18 +476,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c62300005e3c0000d42a000026270000d02500002029000000000000ae270000322700001a270000e4270000cc270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: StageProgression
-      m_OriginalName: StageProgression
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 1998
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 5}
     m_CreateAssetUtility:
@@ -560,10 +560,10 @@ MonoBehaviour:
     width: 327
     height: 337
   m_TreeViewState:
-    scrollPos: {x: 0, y: 120}
-    m_SelectedIDs: ce070000
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: d4fbffff00000000262e000030300000
+    m_ExpandedIDs: d4fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -613,14 +613,14 @@ MonoBehaviour:
     width: 635
     height: 337
   m_SceneLighting: 1
-  lastFramingTime: 186.273052631699
+  lastFramingTime: 22717.012699229028
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.09154205, y: -0.07174942, z: -10}
+    m_Target: {x: 2.1834724, y: -0.431603, z: -10}
     speed: 2
-    m_Value: {x: 0.09154205, y: -0.07174942, z: -10}
+    m_Value: {x: 2.1834724, y: -0.431603, z: -10}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -647,9 +647,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 10.920945
+    m_Target: 15.466997
     speed: 2
-    m_Value: 10.920945
+    m_Value: 15.466997
   m_Ortho:
     m_Target: 1
     speed: 2

@@ -155,6 +155,7 @@
      <Compile Include="Assets\Scripts\BackBuildings\InfiniteBackGround.cs" />
      <Compile Include="Assets\Scripts\BackBuildings\MoreBackGroundCollisions.cs" />
      <Compile Include="Assets\Scripts\ButtonsStages.cs" />
+     <Compile Include="Assets\Scripts\DebuggingRag.cs" />
      <Compile Include="Assets\Scripts\FadeInOut.cs" />
      <Compile Include="Assets\Scripts\FloorColliders.cs" />
      <Compile Include="Assets\Scripts\ForLoading.cs" />
