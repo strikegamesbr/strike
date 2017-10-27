@@ -120,7 +120,7 @@ public class PlayerInputMoves : MonoBehaviour {
 
 			animator.SetInteger("stateAnim", 2);
 			playerState.Grounded = false; //vamos adiantar para outras checagens, saída de colisão também seta isso
-			print("Colocou como 2");
+//			print("Colocou como 2");
 
 
 		}

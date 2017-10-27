@@ -54,7 +54,7 @@ public class NumMovableObjsManager : MonoBehaviour {
 		while (obj != null) {
 
 			try {
-				Destroy(obj);
+				obj.SetActive(false);
 			} catch {}
 
 //			tentativas++;

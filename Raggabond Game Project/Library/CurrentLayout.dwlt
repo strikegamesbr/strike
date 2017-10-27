@@ -45,7 +45,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 11
+  controlID: 13
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 12
+  controlID: 14
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 13
+  controlID: 15
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -405,19 +405,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts/Tracking
+    - Assets/Prefabs/blocks
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts/Tracking
+  - Assets/Prefabs/blocks
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Guilherme2\Unity\Git\strike\Raggabond Game Project
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 240}
-    m_SelectedIDs: a02b0000
-    m_LastClickedID: 11168
-    m_ExpandedIDs: 00000000ee2600006a270000742700004a2b0000322c000020320000223200002432000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 248}
+    m_SelectedIDs: f8280000
+    m_LastClickedID: 10488
+    m_ExpandedIDs: 00000000ee2600006a270000742700004a2b0000f22b0000322c00002a3200002c3200002e32000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -445,7 +445,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ee2600006a270000742700004a2b0000203200002232000024320000
+    m_ExpandedIDs: 00000000ee2600006a270000742700004a2b0000322c00005a2c00002a3200002c3200002e320000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -473,7 +473,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300005e3c0000d42a000026270000d02500002029000000000000ae270000322700001a270000e4270000cc270000
+    m_ExpandedInstanceIDs: c62300005e3c0000d42a000026270000d02500002029000000000000ae270000322700001a270000e4270000cc270000d02b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -563,7 +563,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: d4fbffff00000000
+    m_ExpandedIDs: 601ffbff2e20fbff3c21fbff4221fbff4a21fbff6421fbff7021fbffd4fbffff000000002a2e0000ac2e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -613,14 +613,14 @@ MonoBehaviour:
     width: 635
     height: 337
   m_SceneLighting: 1
-  lastFramingTime: 22717.012699229028
+  lastFramingTime: 13652.18317724185
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 2.1834724, y: -0.431603, z: -10}
+    m_Target: {x: 2.400447, y: -0.2769894, z: 0.53125}
     speed: 2
-    m_Value: {x: 2.1834724, y: -0.431603, z: -10}
+    m_Value: {x: 2.400447, y: -0.2769894, z: 0.53125}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -647,9 +647,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 15.466997
+    m_Target: 13.442464
     speed: 2
-    m_Value: 15.466997
+    m_Value: 13.442464
   m_Ortho:
     m_Target: 1
     speed: 2

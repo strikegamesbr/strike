@@ -47,6 +47,7 @@ public class StageProgression : MonoBehaviour {
 
 	public int CurrentStage {//começa em 1
 		get {
+//			return 1; //para debug
 			return currentStage;
 		}
 

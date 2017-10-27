@@ -105,12 +105,12 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 	void OnBecameInvisible ()
 	{
 		//se for a câmera do editor do Unity não interessa
-		#if UNITY_EDITOR
-		try {
-		if (Camera.current.name == "SceneCamera") 
-			return;
-		} catch {}
-		#endif
+//		#if UNITY_EDITOR
+//		try {
+//		if (Camera.current.name == "SceneCamera") 
+//			return;
+//		} catch {}
+//		#endif
 		// put your code here
 
 		IsVisible = false;
@@ -127,7 +127,7 @@ public class PointfulScnObj : SceneObjects { //SceneObjects herda de MonoBehavio
 
 	void OnDestroy ()
 	{
-//		print ("destruído?");
+//		print ("destruído?" + this.gameObject.name);
 
 	}
 

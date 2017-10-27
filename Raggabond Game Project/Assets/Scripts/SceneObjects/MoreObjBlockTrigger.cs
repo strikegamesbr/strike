@@ -5,23 +5,24 @@ using UnityEngine;
 public class MoreObjBlockTrigger : MonoBehaviour {
 
 	BlockOfObjects blockOfObjects;
-	DebuggingRag debug;
+	DebuggingRag debugRag;
 
 
 	// Use this for initialization
 	void Start () {
 		
 		blockOfObjects = FindObjectOfType<BlockOfObjects> ();
-		debug = FindObjectOfType<DebuggingRag> ();
+		debugRag = FindObjectOfType<DebuggingRag> ();
 	}
 
 
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
+//		Debug.Log ("Houve colisão");
 
-		if (col.name == "Player") {
-			debug.debugLog (7);
+		if (col.name == "Player") {			
+			debugRag.debugLog (7);
 //			Debug.Log ("Vamos colocar os obstáculos na cena - (007)");
 			blockOfObjects.placeObstaclesOnScene ();
 		}

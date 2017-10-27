@@ -65,14 +65,32 @@ public class BlockOfObjects : MonoBehaviour {
 			objectsInBlock1 = new ObjectInBlock[5];
 			objectsInBlock2 = new ObjectInBlock[5];
 			objectsInBlock3 = new ObjectInBlock[5];
+			objectsInBlock4 = new ObjectInBlock[5];
+			objectsInBlock5 = new ObjectInBlock[5];
+			objectsInBlock6 = new ObjectInBlock[5];
+			objectsInBlock7 = new ObjectInBlock[5];
+			objectsInBlock8 = new ObjectInBlock[5];
+			objectsInBlock9 = new ObjectInBlock[5];
 		} else if (divideBlocksByTwo) {
 			objectsInBlock1 = new ObjectInBlock[10];
 			objectsInBlock2 = new ObjectInBlock[10];
 			objectsInBlock3 = new ObjectInBlock[10];
+			objectsInBlock4 = new ObjectInBlock[10];
+			objectsInBlock5 = new ObjectInBlock[10];
+			objectsInBlock6 = new ObjectInBlock[10];
+			objectsInBlock7 = new ObjectInBlock[10];
+			objectsInBlock8 = new ObjectInBlock[10];
+			objectsInBlock9 = new ObjectInBlock[10];
 		} else { //nenhum dos dois acima está ligado
 			objectsInBlock1 = new ObjectInBlock[19];
 			objectsInBlock2 = new ObjectInBlock[19];
 			objectsInBlock3 = new ObjectInBlock[21];
+			objectsInBlock4 = new ObjectInBlock[21];
+			objectsInBlock5 = new ObjectInBlock[18];
+			objectsInBlock6 = new ObjectInBlock[22];
+			objectsInBlock7 = new ObjectInBlock[19];
+			objectsInBlock8 = new ObjectInBlock[20];
+			objectsInBlock9 = new ObjectInBlock[19];
 		}
 
 
@@ -379,15 +397,60 @@ public class BlockOfObjects : MonoBehaviour {
 		
 	}
 
+//	//vamos descobrir a fase que está, gerar whichBlocksOfObjects e chamar o método com esta informação
+//	public void placeObstaclesOnScene ()
+//	{
+
+//		print ("placeObstaclesOnScene ()");
+
+//		Debug.Assert (stageProgression.CurrentStage >= 1 && stageProgression.CurrentStage <= 4);
+//
+//		int[] whichBlocksOfObjects;
+//
+//		switch (stageProgression.CurrentStage) {
+//
+//		case 1:
+//			whichBlocksOfObjects = new int[] {1,2,3};
+//			break;
+//		case 2:
+//			whichBlocksOfObjects = new int[] {4,5};
+//			break;
+//		case 3:
+//			whichBlocksOfObjects = new int[] {6,7};
+//			break;
+//		case 4:
+//			whichBlocksOfObjects = new int[]{8,9};
+//			break;
+//		default: //se não for um de cima, está errado
+//			return;
+//
+//		}
+
+//		placeObstaclesOnScene (whichBlocksOfObjects);
+
+	//coloca na fase um dos blocos de obstáculos informados em número por whichBlocksOfObjects
+	//	public void placeObstaclesOnScene (int[] whichBlocksOfObjects) 
+	//	{
+	//		StartCoroutine (placeObstaclesOnSceneRoutine (whichBlocksOfObjects));
+	//	}
+
+
+
 	//vamos descobrir a fase que está, gerar whichBlocksOfObjects e chamar o método com esta informação
 	public void placeObstaclesOnScene ()
 	{
+		StartCoroutine (placeObstaclesOnSceneRoutine ());
+	}
 
-//		print ("placeObstaclesOnScene ()");
+
+	//coloca na fase um dos blocos de obstáculos informados em número por whichBlocksOfObjects
+	IEnumerator placeObstaclesOnSceneRoutine ()//(int[] whichBlocksOfObjects)
+	{
 
 		Debug.Assert (stageProgression.CurrentStage >= 1 && stageProgression.CurrentStage <= 4);
 
 		int[] whichBlocksOfObjects;
+		bool continueCoroutine = true;
 
 		switch (stageProgression.CurrentStage) {
 
@@ -404,130 +467,126 @@ public class BlockOfObjects : MonoBehaviour {
 			whichBlocksOfObjects = new int[]{8,9};
 			break;
 		default: //se não for um de cima, está errado
-			return;
-
+			whichBlocksOfObjects = new int[0]; //só para não dar erro de compilação "use of unassigned local variable", não vai usar se cair aqui
+			continueCoroutine = false; //porque return sozinho não funcionou com IEnumerator, e não conheço ainda um equivalente
+			break;
 		}
 
-		placeObstaclesOnScene (whichBlocksOfObjects);
-
-	}
 
 
-	//coloca na fase um dos blocos de obstáculos informados em número por whichBlocksOfObjects
-	public void placeObstaclesOnScene (int[] whichBlocksOfObjects) 
-	{
-		StartCoroutine (placeObstaclesOnSceneRoutine (whichBlocksOfObjects));
-	}
+		if (continueCoroutine) { //se der falso, algo está errado com a implementação
+
+			//vamos escolher uma entre as opções de blocos dadas aleatoriamente
+			int numBlock = whichBlocksOfObjects [Random.Range (0, whichBlocksOfObjects.Length)];
+//			int numBlock = 1; //para debug, troque este pelo de cima
 
 
-	IEnumerator placeObstaclesOnSceneRoutine (int[] whichBlocksOfObjects)
-	{
-
-		//vamos escolher uma entre as opções de blocos dadas aleatoriamente
-		int numBlock = whichBlocksOfObjects[Random.Range(0, whichBlocksOfObjects.Length)];
-
-		debug.debugLog (7.01f);
+			debug.debugLog (7.01f);
 //		Debug.Log ("Até agora definiu um conjunto de bloco de obstáculos baseado no estágio - (007.1)");
 //		yield return new WaitForEndOfFrame(); //dar o tempo de dar o log
 
 
-		ObjectInBlock[] blockObjToPlace;
+			ObjectInBlock[] blockObjToPlace;
 
-		switch (numBlock) {
+			switch (numBlock) {
 
-		case 1:
-			blockObjToPlace = objectsInBlock1;
-			break;
-		case 2:
-			blockObjToPlace = objectsInBlock2;
-			break;
-		case 3:
-			blockObjToPlace = objectsInBlock3;
-			break;
-		case 4:
-			blockObjToPlace = objectsInBlock4;
-			break;
-		case 5:
-			blockObjToPlace = objectsInBlock5;
-			break;
-		case 6:
-			blockObjToPlace = objectsInBlock6;
-			break;
-		case 7:
-			blockObjToPlace = objectsInBlock7;
-			break;
-		case 8:
-			blockObjToPlace = objectsInBlock8;
-			break;
-		case 9:
-			blockObjToPlace = objectsInBlock9;
-			break;
-		default: //se não for um de cima, está errado
-			blockObjToPlace = new ObjectInBlock[0];
-			break;
-		}
+			case 1:
+				blockObjToPlace = objectsInBlock1;
+				break;
+			case 2:
+				blockObjToPlace = objectsInBlock2;
+				break;
+			case 3:
+				blockObjToPlace = objectsInBlock3;
+				break;
+			case 4:
+				blockObjToPlace = objectsInBlock4;
+				break;
+			case 5:
+				blockObjToPlace = objectsInBlock5;
+				break;
+			case 6:
+				blockObjToPlace = objectsInBlock6;
+				break;
+			case 7:
+				blockObjToPlace = objectsInBlock7;
+				break;
+			case 8:
+				blockObjToPlace = objectsInBlock8;
+				break;
+			case 9:
+				blockObjToPlace = objectsInBlock9;
+				break;
+			default: //se não for um de cima, está errado
+				blockObjToPlace = new ObjectInBlock[0];
+				break;
+			}
 
-		Debug.Assert (blockObjToPlace.Length != 0);
+			Debug.Assert (blockObjToPlace.Length != 0);
 
-		debug.debugLog (7.02f);
+			debug.debugLog (7.02f);
 //		Debug.Log ("E já escolheu o bloco em si - (007.2)");
 //		yield return new WaitForEndOfFrame(); //dar o tempo de dar o log
 
 
-		//vamos mover o "cursor" startXOfBlock
-		startXOfBlock.position = startXOfBlock.position + new Vector3 (nextOffsetStartXOfBlock,0,0);
+			//vamos mover o "cursor" startXOfBlock
+//			Transform startY = Instantiate(startXOfBlock); //para debug
+			startXOfBlock.position = startXOfBlock.position + new Vector3 (nextOffsetStartXOfBlock, 0, 0);
 
 //		Debug.Log ("(007.3)");
-		debug.debugLog (7.03f);
-		//e atualizar nextOffsetStartXOfBlock para o próximo bloco
-		nextOffsetStartXOfBlock = ObjBlockLength[numBlock-1];
+			debug.debugLog (7.03f);
+			//e atualizar nextOffsetStartXOfBlock para o próximo bloco
 
-		if (divideBlocksByTwo)
-			nextOffsetStartXOfBlock = nextOffsetStartXOfBlock / 2;
-		else if (divideBlocksByFour) 
-			nextOffsetStartXOfBlock = nextOffsetStartXOfBlock / 4;
+			nextOffsetStartXOfBlock = ObjBlockLength [numBlock-1];
+//			print("ObjBlockLength [numBlock=" + numBlock + "-1] = " + ObjBlockLength [numBlock-1]);
+
+
+			if (divideBlocksByTwo)
+				nextOffsetStartXOfBlock = nextOffsetStartXOfBlock / 2;
+			else if (divideBlocksByFour)
+				nextOffsetStartXOfBlock = nextOffsetStartXOfBlock / 4;
 
 
 //		Debug.Log ("(007.4)");
-		debug.debugLog (7.04f);
-		//e vamos mover o trigger MoreObjBlockTrigger
-		MoreObjBlockTrigger.position = MoreObjBlockTrigger.position + new Vector3(nextOffsetStartXOfBlock * 4/5, 0, 0);
+			debug.debugLog (7.04f);
+			//e vamos mover o trigger MoreObjBlockTrigger
+			MoreObjBlockTrigger.position = MoreObjBlockTrigger.position + new Vector3 (nextOffsetStartXOfBlock /* * 4 / 5*/, 0, 0);
 
 //		Debug.Log ("(007.5)");
-		debug.debugLog (7.05f);
-		//vamos matar as corotinas anteriores, se houver
-		if (curCoroutines != null) {
-			foreach (Coroutine coroutine in curCoroutines) {
-				try {
-					StopCoroutine (coroutine);
-				} catch {
+			debug.debugLog (7.05f);
+			//vamos matar as corotinas anteriores, se houver
+			if (curCoroutines != null) {
+				foreach (Coroutine coroutine in curCoroutines) {
+					try {
+						StopCoroutine (coroutine);
+					} catch {
+					}
 				}
 			}
-		}
 
 //		print ("blockObjToPlace.Length=" + blockObjToPlace.Length);
 //		Debug.Log ("(007.6)");
-		debug.debugLog (7.06f);
-		//vamos guardar as novas corotinas
-		curCoroutines = new Coroutine[blockObjToPlace.Length];
+			debug.debugLog (7.06f);
+			//vamos guardar as novas corotinas
+			curCoroutines = new Coroutine[blockObjToPlace.Length];
 
 
-		for (int i = 0; i < blockObjToPlace.Length; i++) {	
-			debug.debugLogWithindex (7.07f, i);
+			for (int i = 0; i < blockObjToPlace.Length; i++) {	
+				debug.debugLogWithindex (7.07f, i);
 //			Debug.Log ("(007.7) [" + i + "]");
-			//todo aumentar	startXOfBlock matando as corotinas - na hora que chama outro? depois de um tempo?
-			curCoroutines[i] = StartCoroutine(putObjectFromPool (blockObjToPlace [i], i));
-			yield return new WaitForEndOfFrame (); //para dar preferência aos primeiros objetos, vamos chamar eles antes, dando este espeço de tempo
+				//todo aumentar	startXOfBlock matando as corotinas - na hora que chama outro? depois de um tempo?
+				curCoroutines [i] = StartCoroutine (putObjectFromPool (blockObjToPlace [i], i));
+				yield return new WaitForEndOfFrame (); //para dar preferência aos primeiros objetos, vamos chamar eles antes, dando este espeço de tempo
 //			yield return new WaitForSeconds(0.1f);
 
-			debug.debugLogWithindex (7.12f, i);
+				debug.debugLogWithindex (7.12f, i);
 //			Debug.Log ("(007.12) [" + i + "]");
+			}
+
+			debug.debugLog (7.13f);
+
 		}
 
-		debug.debugLog (7.13f);
-
-//		Debug.Log ("(007.13)");
-//		yield return null;
 	}
 
 
@@ -546,19 +605,33 @@ public class BlockOfObjects : MonoBehaviour {
 
 		debug.debugLogWithindex (7.10f, i);
 //		Debug.Log ("(007.10) [" + i + "]");
-//		print ("pegou " + gObject.name );
 
-		gObject.SetActive(true);
+		Vector3 newPosition = new Vector3 (startXOfBlock.position.x + objToBlock.X, gObject.transform.position.y, gObject.transform.position.z);
 
-//		print ("position=" + (startXOfBlock + objToBlock.X));
-//		print ("startXOfBlock = " + startXOfBlock);
-//		print ("objToBlock.X = " + objToBlock.X);
+		//com o if abaixo vamos ver se agora, depois de "tanto" tempo, o objeto continua fora da visão da câmera
+		//se estiver dentro da visão da câmera melhor não colocar para o objeto não aparecer "de repente"
+		if (!positionIsInCameraViewport(newPosition)) {
+			gObject.SetActive (true);
+			gObject.transform.position = newPosition;// new Vector3 (startXOfBlock.position.x + objToBlock.X, gObject.transform.position.y, gObject.transform.position.z);
+			changeLaneOfObject (gObject, objToBlock.Lane);
+			debug.debugLogWithindex (7.11f, i); //"(007.11) [" + i + "]"
+		}
 
-		gObject.transform.position = new Vector3 (startXOfBlock.position.x + objToBlock.X, gObject.transform.position.y, gObject.transform.position.z);
-		changeLaneOfObject (gObject, objToBlock.Lane);
-		debug.debugLogWithindex (7.11f, i);
-//		Debug.Log ("(007.11) [" + i + "]");
 	}
+
+	//a posição dada é visível pela câmera?
+	//não considera a posição z nem se o objeto está atrás de outro, desativo, com alpha transparente, etc...
+	private bool positionIsInCameraViewport (Vector3 position) 
+	{
+		Vector3 cameraPos = Camera.main.WorldToViewportPoint(position);
+
+		if (cameraPos.x > 0 && cameraPos.x < 1 && cameraPos.y > 0 && cameraPos.y < 1)
+			return true;
+		else
+			return false;
+
+	}
+
 
 
 	private void changeLaneOfObject (GameObject gObject, Lane lane) 

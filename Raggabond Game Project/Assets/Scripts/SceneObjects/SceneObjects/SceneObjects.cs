@@ -23,13 +23,9 @@ public class SceneObjects : MonoBehaviour {
 		set {
 			lane = value;
 
-			transform.parent = null;
-
-
+//			transform.parent = null;
 			setYPositionAndSortingOrderByLane ();
-
-
-			transform.parent = defaultParent;
+//			transform.parent = defaultParent;
 
 		}
 
