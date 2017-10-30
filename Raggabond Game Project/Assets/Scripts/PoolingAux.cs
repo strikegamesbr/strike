@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PoolingAux : MonoBehaviour {
 
-	//esta função funciona quando há um objeto inicial visível já colocado no editor
+	//esta função funciona quando há um objeto inicial visível já colocado no editor  (NOTA: acabou sendo a instanciação do primeiro)
 	//prefabsToFillPool não deve conter o mesmo de startVisibleObj a não ser que uma cópia dele seja desejável
 	//PoolArray é o array de objetos que será preenchido
 	//prefabsToFillPool são os prefabs dos objetos que preencherão PoolArray, serão instanciados aqui
